@@ -37,7 +37,9 @@ fun ListOfAccountsMainScreen() {
                 AccountDetailButton()
                 Spacer(Modifier.weight(1f))
                 RecordButton()
+
             }
+            Spacer(Modifier.height(8.dp))
         }
     }
 
