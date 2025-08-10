@@ -43,6 +43,7 @@ import androidx.compose.animation.core.exponentialDecay
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
+import com.ojasx.wallet_clone.ui.theme.walletblue
 
 @Composable
 fun Card1(modifier: Modifier) {
@@ -329,7 +330,7 @@ fun Card4(modifier: Modifier) {
                         modifier = Modifier
                             .size(if (index == currentindex) 10.dp else 8.dp)
                             .background(
-                                color = if (index == currentindex) Color.Black else Color.Gray,
+                                color = if (index == currentindex) walletblue else Color.Gray,
                                 shape = CircleShape
                             )
                     )
