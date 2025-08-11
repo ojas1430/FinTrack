@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.androidx.tv.material)
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.foundation)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -87,6 +89,30 @@ dependencies {
     implementation ("androidx.compose:compose-bom:2024.05.00")
     implementation ("androidx.compose.foundation:foundation")
     implementation ("androidx.compose.material3:material3")
+
+    // Runtime ^& Live Data
+    val lifecycle_version = "2.9.2"
+    val arch_version = "2.2.0"
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // ViewModel utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    // Lifecycle utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
+
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+
+    // ViewModel integration with Navigation3
+    implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:1.0.0-alpha04")
+
+    implementation("org.mozilla:rhino:1.7R4")
+
 
 
 }

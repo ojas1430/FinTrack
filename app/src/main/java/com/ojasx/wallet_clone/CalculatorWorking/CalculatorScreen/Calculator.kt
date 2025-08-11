@@ -25,8 +25,11 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import com.ojasx.wallet_clone.ui.theme.calculatorcolor
 import com.ojasx.wallet_clone.ui.theme.walletblue
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 
 
 @Preview
@@ -109,6 +112,9 @@ fun Calculator() {
                 Text("TRANSFER", fontWeight = FontWeight.Medium, color = Color.White)
             }
         }
+            Spacer(Modifier.height(10.dp))
+            CalculatorButtons(viewModel = viewModel())
+
     }
 
     }

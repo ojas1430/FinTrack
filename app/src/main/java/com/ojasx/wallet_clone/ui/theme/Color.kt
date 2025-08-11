@@ -18,3 +18,5 @@ val purpleBlue = Color(0xFF4300FF)
 val warmwhite = Color(0xFFEFF3EA)
 
 val premium = Color(0xFF910A67)
+
+val calculatorcolor = Color(0xFF7A85C1)

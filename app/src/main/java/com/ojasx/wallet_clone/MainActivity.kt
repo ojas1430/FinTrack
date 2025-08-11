@@ -12,11 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorViewModel
 import com.ojasx.wallet_clone.ui.theme.WalletCloneTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val CalculatorViewModel = ViewModelProvider(this)[CalculatorViewModel :: class.java]
         enableEdgeToEdge()
         setContent {
 
