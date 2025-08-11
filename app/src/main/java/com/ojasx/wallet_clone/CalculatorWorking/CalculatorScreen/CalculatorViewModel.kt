@@ -31,28 +31,59 @@ class CalculatorViewModel : ViewModel() {
 
             if(btn == "C" ){
                 if(it.isNotEmpty()){
-                    _equationText.value = it.substring(0,it.length)
+                    _equationText.value = it.substring(0,it.length-1)
                     return
                 }
             }
+
+            if (btn == "=") {
+                try {
+                    _resultdata.value = CalculateResult(_equationText.value ?: "")
+                } catch (_: Exception) {
+                    // Ignoring exceptions to prevent app crash on invalid input
+                }
+                return
+            }
+
+
             // concatinate numbers and symbols
             _equationText.value = it + btn
 
-            //calculate result
+            // Live calculate result as you type
             try {
-               _resultdata.value =  CalculateResult(equationText.value.toString())
-            }catch (_ : Exception){}
+                _resultdata.value = CalculateResult(_equationText.value ?: "")
+            } catch (_: Exception) { }
 
         }
 
-
-
     }
-    fun CalculateResult(equation : String) : String {
-        val context: Context = Context.enter()
-        context.optimizationLevel = -1
-        val scriptable : Scriptable = context.initStandardObjects()
-       val finalresult =  context.evaluateString(scriptable,equation,"JavaScript",1,null)
-       return finalresult as String
-    }
+
+        fun CalculateResult(equation: String): String {
+            if (equation.isEmpty()) return "0"
+
+            val context: Context = Context.enter()
+            try {
+                context.optimizationLevel = -1
+                val scriptable: Scriptable = context.initStandardObjects()
+                val finalresult = context.evaluateString(scriptable, equation, "JavaScript", 1, null)
+
+                // Convert the result to string properly
+                val resultString = when (finalresult) {
+                    is Number -> finalresult.toString()
+                    is String -> finalresult
+                    else -> finalresult.toString()
+                }
+
+                // Remove .0 from the end if present
+                return if (resultString.endsWith(".0")) {
+                    resultString.substring(0, resultString.length - 2)
+                } else {
+                    resultString
+                }
+            } finally {
+                // Always exit the context to prevent memory leaks
+                Context.exit()
+            }
+        }
+
 }
