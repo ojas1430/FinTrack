@@ -37,12 +37,12 @@ import androidx.lifecycle.ViewModel
 import com.ojasx.wallet_clone.ui.theme.calculatorcolor
 import com.ojasx.wallet_clone.ui.theme.walletblue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Templates.TemplatesButton
 
 
-@Preview
 @Composable
-fun Calculator() {
+fun Calculator(navController: NavController) {
 
     var selectedButton by remember { mutableStateOf("INCOME") }
 
@@ -142,7 +142,9 @@ fun Calculator() {
             Row {
                 // Account Selection Button
                 Button(
-                    onClick = {},
+                    onClick = {
+                        navController.navigate("Calculator-Account-Screen")
+                    },
                     modifier = Modifier.weight(1f)
                         .border(1.dp,Color.White),
                     colors = ButtonDefaults.buttonColors(

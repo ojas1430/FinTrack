@@ -13,7 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.compose.rememberNavController
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelection.AccountCards
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelection.AccountSelection
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Calculator
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorViewModel
+import com.ojasx.wallet_clone.Navigation.Navigation
 import com.ojasx.wallet_clone.ui.theme.WalletCloneTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +28,7 @@ class MainActivity : ComponentActivity() {
         val CalculatorViewModel = ViewModelProvider(this)[CalculatorViewModel :: class.java]
         enableEdgeToEdge()
         setContent {
-
+            Navigation()
         }
     }
 }
