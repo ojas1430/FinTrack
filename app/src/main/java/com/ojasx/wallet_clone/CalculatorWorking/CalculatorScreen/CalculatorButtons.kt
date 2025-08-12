@@ -4,12 +4,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -46,16 +50,23 @@ fun buttonlist() = listOf(
 )
 
 @Composable
-fun CalculatorButtons(viewModel: CalculatorViewModel) {
+fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) {
 
     val equationText = viewModel.equationText.observeAsState()
     val resultText = viewModel.resultdata.observeAsState()
+
+    val PrefixSign = when (selectedButton){
+        "INCOME" -> "+"
+        "EXPENSE" -> "-"
+        else -> ""
+    }
 
     Box(modifier = Modifier.background(calculatorcolor)) {
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.End
         ) {
+            // Calcualating the numbers text
             Text(text = equationText.value?:"",
                 style = TextStyle(
                     fontSize = 30.sp,
@@ -66,19 +77,46 @@ fun CalculatorButtons(viewModel: CalculatorViewModel) {
                 )
             Spacer(Modifier.height(15.dp))
 
-            Text(resultText.value?:"",
-                style = TextStyle(
-                    fontSize = 60.sp,
-                    textAlign = TextAlign.End
-                ),
-                maxLines = 3,
-                overflow = TextOverflow.Ellipsis
-            )
 
+            //placing sign and result in a row
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp)) {
+
+                //showing sign
+                Spacer(Modifier.width(10.dp))
+                Text(
+                    text = "$PrefixSign",
+                    style = TextStyle(
+                        fontSize = 60.sp,
+                        textAlign = TextAlign.Start
+                    ),
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis
+                )
+
+                //Showing Result
+                Text(
+                    resultText.value ?: ""
+                    , modifier = Modifier.weight(1f),
+                    style = TextStyle(
+                        fontSize = 80.sp,
+                        textAlign = TextAlign.End,
+                    ),
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis
+                )
+
+            }
+
+
+            //Passing  Calculator Buttons
             Spacer(Modifier.weight(1f))
 
             LazyVerticalGrid(
-                columns = GridCells.Fixed(4)
+                columns = GridCells.Fixed(4),
+                modifier = Modifier
+                    .fillMaxWidth()
             ) {
                 items(buttonlist()){
                     CalculatorBtn(it, onClick = {
@@ -90,22 +128,27 @@ fun CalculatorButtons(viewModel: CalculatorViewModel) {
     }
 }
 
+
+// Providing the size of buttons
 @Composable
 fun CalculatorBtn(btn : String,onClick : ()-> Unit) {
-    Box(modifier = Modifier.padding(8.dp)){
-        FloatingActionButton(onClick = onClick,
-            modifier = Modifier.size(80.dp),
+    Box(
+        modifier = Modifier.padding(8.dp)
+    ){
+        FloatingActionButton(
+            onClick = onClick,
+            modifier = Modifier.size(64.dp),
             shape = RoundedCornerShape(10.dp),
             backgroundColor = getBtnColor(btn)
         ) {
             Text(btn,
                 color = getNumberColor(btn),
                         fontSize = if (btn in listOf("+", "-", "*", "/", "=",".")) 24.sp else 16.sp,
-
             )
         }
     }
 }
+
 
 fun getBtnColor(btn : String): Color {
     if(btn == "C" || btn == "AC"){
