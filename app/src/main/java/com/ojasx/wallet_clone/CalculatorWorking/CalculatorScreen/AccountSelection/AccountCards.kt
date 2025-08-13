@@ -1,8 +1,7 @@
-package com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable
+package com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelection
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,53 +10,36 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsDataClass
+import com.ojasx.wallet_clone.R
 
 @Composable
-fun CardStructure(
-    cardsDataClass: CardsDataClass,
-    navController: NavController
-) {
-
+fun AccountCards() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .border(1.dp, Color.Gray)
-            .padding(8.dp),
-        elevation = 4.dp,
+            .padding(8.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .clickable {
-                    navController.navigate("")
-                },
-            verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(id = cardsDataClass.images),
-                contentDescription = "",
+                painter = painterResource(id = R.drawable.moneybag),
+                contentDescription = "Money Bag",
                 modifier = Modifier.size(48.dp)
             )
             Spacer(Modifier.width(20.dp))
             Column {
-                Text(
-                    text = cardsDataClass.title, style = MaterialTheme.typography.h6
-                )
+                Text("Cash")
+                Text("Cash", color = Color.Gray)
             }
         }
     }

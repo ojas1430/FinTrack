@@ -18,24 +18,31 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 
 @Composable
-fun CardLazyList(cards: List<CardsDataClass>, navController: NavController) {
+fun CardLazyList(
+    cards: List<CardsDataClass>,
+    navController: NavController,
+
+) {
     LazyColumn {
         items(cards) { card ->
             CardItem(
                 card = card,
                 onClick = {
-                    when(card.title){
-                        "Food&Drinks" -> navController.navigate("")
+                    when(card.title) {
+                        "Food & Drinks" -> {
+                        }
+
+
                     }
                 }
             )
         }
     }
 }
-
 @Composable
 fun CardItem(card: CardsDataClass, onClick: () -> Unit) {
     Card(

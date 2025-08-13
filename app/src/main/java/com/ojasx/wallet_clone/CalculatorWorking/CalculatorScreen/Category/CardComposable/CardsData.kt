@@ -56,3 +56,20 @@ fun CardsData(): List<CardsDataClass> {
         )
     )
 }
+
+fun getFoodsCards() : List<CardsDataClass> {
+    return listOf(
+        CardsDataClass(
+            title = "Bar, Cafe",
+            images = R.drawable.bar
+        ),
+        CardsDataClass(
+            title = "Groceries",
+            images = R.drawable.groceries
+        ),
+        CardsDataClass(
+            title = "Restrauant, fast-food",
+            images = R.drawable.restrauant
+        )
+    )
+}

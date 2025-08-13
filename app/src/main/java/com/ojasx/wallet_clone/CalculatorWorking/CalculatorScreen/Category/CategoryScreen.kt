@@ -138,7 +138,7 @@ fun CategoryScreen(navController: NavController) {
                     .padding(8.dp)
             )
 
-            CardsScreen()
+            CardsScreen(navController)
             }
         }
 

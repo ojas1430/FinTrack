@@ -42,10 +42,11 @@ import com.ojasx.wallet_clone.R
 fun AccountSelection(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
         Column {
+            Spacer(Modifier.height(25.dp))
             TopAppBar(
                 backgroundColor = walletblue,
                 modifier = Modifier
-                    .height(80.dp)
+                    .height(60.dp)
                     .fillMaxWidth(),
                 contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp)
             ) {
@@ -54,13 +55,13 @@ fun AccountSelection(navController: NavController) {
                         .fillMaxWidth()
                         .padding(horizontal = 10.dp)
                         .height(80.dp),
-                    verticalAlignment = Alignment.Bottom
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(
                         onClick = {
                             navController.navigate("CalculatorScreen")
                         },
-                        modifier = Modifier.align(Alignment.Bottom)
+                        modifier = Modifier.align(Alignment.CenterVertically)
                     ) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
@@ -78,14 +79,14 @@ fun AccountSelection(navController: NavController) {
                             fontSize = 24.sp,
                             color = Color.White
                         ),
-                        modifier = Modifier.align(Alignment.Bottom)
+                        modifier = Modifier.align(Alignment.CenterVertically)
                     )
 
                     Spacer(Modifier.weight(1f))
 
                     IconButton(
                         onClick = {},
-                        modifier = Modifier.align(Alignment.Bottom)
+                        modifier = Modifier.align(Alignment.CenterVertically)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Settings,
@@ -108,29 +109,3 @@ fun AccountSelection(navController: NavController) {
 }
 
 
-            @Composable
-            fun AccountCards() {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .border(1.dp, Color.Gray)
-                        .padding(8.dp)
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.moneybag),
-                            contentDescription = "Money Bag",
-                            modifier = Modifier.size(48.dp)
-                        )
-                        Spacer(Modifier.width(20.dp))
-                        Column {
-                            Text("Cash")
-                            Text("Cash", color = Color.Gray)
-                        }
-                    }
-                }
-            }

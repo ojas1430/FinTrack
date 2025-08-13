@@ -164,7 +164,9 @@ fun Calculator(navController: NavController) {
 
                 // Category Selection Button
                 Button(
-                    onClick = {},
+                    onClick = {
+                        navController.navigate("Category")
+                    },
                     modifier = Modifier.weight(1f)
                         .border(width = 1.dp,Color.White),
                     colors = ButtonDefaults.buttonColors(
@@ -187,10 +189,8 @@ fun Calculator(navController: NavController) {
         Spacer(Modifier.height(10.dp))
 
         // passing buttons here
-            CalculatorButtons(viewModel = viewModel(),selectedButton)
+        CalculatorButtons(viewModel = viewModel(),selectedButton)
 
     }
 
-    }
-
-
+}
