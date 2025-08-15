@@ -33,12 +33,13 @@ import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelectio
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelection.PlusButton
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsData
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsScreen
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
 import com.ojasx.wallet_clone.ui.theme.walletblue
 import com.ojasx.wallet_clone.ui.theme.warmwhite
 
 
 @Composable
-fun CategoryScreen(navController: NavController) {
+fun CategoryScreen(navController: NavController,viewModel: MainViewModel) {
     Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
         Column {
             Spacer(Modifier.height(25.dp))
@@ -112,17 +113,17 @@ fun CategoryScreen(navController: NavController) {
             Spacer(Modifier.width(25.dp))
 
 
-                Text(
-                    "MOST FREQUENT",
-                    style = TextStyle(
-                        color = Color.Gray,
-                        fontSize = 15.sp
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color.LightGray)
-                        .padding(8.dp)
-                )
+            Text(
+                "MOST FREQUENT",
+                style = TextStyle(
+                    color = Color.Gray,
+                    fontSize = 15.sp
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.LightGray)
+                    .padding(8.dp)
+            )
             Spacer(Modifier.height(120.dp))
 
 
@@ -139,8 +140,8 @@ fun CategoryScreen(navController: NavController) {
             )
 
             CardsScreen(navController)
-            }
         }
-
-
     }
+
+
+}

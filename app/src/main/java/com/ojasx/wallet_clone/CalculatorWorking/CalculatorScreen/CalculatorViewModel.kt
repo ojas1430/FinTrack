@@ -1,8 +1,10 @@
 package com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,9 +19,18 @@ class CalculatorViewModel : ViewModel() {
     private val _equationText = MutableLiveData("")
     val equationText : LiveData<String> = _equationText
 
-   // Result Calculator live data code
+    // Result Calculator live data code
     private val _resultdata = MutableLiveData("0")
     val resultdata : LiveData<String> = _resultdata
+
+
+    //to update live category
+    var selectedCategory by mutableStateOf("ELECTRONICS")
+        private set
+
+    fun updateCategory(newCategory: String) {
+        selectedCategory = newCategory
+    }
 
 
     fun onButtonClick(btn : String){
@@ -62,34 +73,33 @@ class CalculatorViewModel : ViewModel() {
 
     }
 
-        fun CalculateResult(equation: String): String {
-            if (equation.isEmpty()) return "0"
+    fun CalculateResult(equation: String): String {
+        if (equation.isEmpty()) return "0"
 
-            val context: Context = Context.enter()
-            try {
-                context.optimizationLevel = -1
-                val scriptable: Scriptable = context.initStandardObjects()
-                val finalresult = context.evaluateString(scriptable, equation, "JavaScript", 1, null)
+        val context: Context = Context.enter()
+        try {
+            context.optimizationLevel = -1
+            val scriptable: Scriptable = context.initStandardObjects()
+            val finalresult = context.evaluateString(scriptable, equation, "JavaScript", 1, null)
 
-                // Convert the result to string properly
-                val resultString = when (finalresult) {
-                    is Number -> finalresult.toString()
-                    is String -> finalresult
-                    else -> finalresult.toString()
-                }
-
-                // Remove .0 from the end if present
-                return if (resultString.endsWith(".0")) {
-                    resultString.substring(0, resultString.length - 2)
-                } else {
-                    resultString
-                }
-            } finally {
-                // Always exit the context to prevent memory leaks
-                Context.exit()
+            // Convert the result to string properly
+            val resultString = when (finalresult) {
+                is Number -> finalresult.toString()
+                is String -> finalresult
+                else -> finalresult.toString()
             }
+
+            // Remove .0 from the end if present
+            return if (resultString.endsWith(".0")) {
+                resultString.substring(0, resultString.length - 2)
+            } else {
+                resultString
+            }
+        } finally {
+            // Always exit the context to prevent memory leaks
+            Context.exit()
         }
+    }
 }
 
 
-    

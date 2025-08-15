@@ -26,7 +26,7 @@ fun CardLazyList(
     cards: List<CardsDataClass>,
     navController: NavController,
 
-) {
+    ) {
     LazyColumn {
         items(cards) { card ->
             CardItem(
@@ -34,6 +34,7 @@ fun CardLazyList(
                 onClick = {
                     when(card.title) {
                         "Food & Drinks" -> {
+                            navController.navigate("GetFoodCards")
                         }
 
 

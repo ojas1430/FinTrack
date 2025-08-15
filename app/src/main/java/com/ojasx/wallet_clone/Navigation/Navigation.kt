@@ -7,13 +7,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelection.AccountSelection
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Calculator
-import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsData
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.FoodScreen
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CategoryScreen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
+    val mainViewModel: MainViewModel = viewModel()
 
 
     NavHost(
@@ -22,14 +23,14 @@ fun Navigation() {
                 AccountSelection(navController)
             }
             composable("CalculatorScreen"){
-                Calculator(navController)
+                Calculator(navController,mainViewModel)
             }
 
             composable("Category"){
-                CategoryScreen(navController)
+                CategoryScreen(navController,mainViewModel)
             }
             composable("GetFoodCards"){
-                FoodScreen(navController)
+                FoodScreen(navController,mainViewModel)
             }
 
         }

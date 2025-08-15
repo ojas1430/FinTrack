@@ -74,7 +74,7 @@ fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) 
                 ),
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis
-                )
+            )
             Spacer(Modifier.height(15.dp))
 
 
@@ -143,7 +143,7 @@ fun CalculatorBtn(btn : String,onClick : ()-> Unit) {
         ) {
             Text(btn,
                 color = getNumberColor(btn),
-                        fontSize = if (btn in listOf("+", "-", "*", "/", "=",".")) 24.sp else 16.sp,
+                fontSize = if (btn in listOf("+", "-", "*", "/", "=",".")) 24.sp else 16.sp,
             )
         }
     }
@@ -172,4 +172,3 @@ fun getNumberColor(btn: String): Color {
     }
     return Color.Black
 }
-

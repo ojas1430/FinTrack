@@ -2,7 +2,6 @@ package com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardC
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,40 +14,32 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardLazyList
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardStructure
-import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsData
-import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsScreen
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.getFoodsCards
 import com.ojasx.wallet_clone.ui.theme.warmwhite
 import com.ojasx.wallet_clone.R
 
 @Composable
-fun FoodScreen(navController: NavController) {  // Removed sharedViewModel parameter
+fun FoodScreen(navController: NavController,
+               viewModel: MainViewModel = viewModel()) {
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -138,17 +129,14 @@ fun FoodScreen(navController: NavController) {  // Removed sharedViewModel param
             getFoodsCards().forEach { card ->
                 CardStructure(
                     cardsDataClass = card,
-                    navController = navController
+                    navController = navController,
+                    onClick = { clickedCard ->
+                        viewModel.updateSelectedTitle(clickedCard.title)
+                        navController.popBackStack()
+                        navController.popBackStack()
+                    },
+
                 )
-
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 4.dp)
-                        .clickable {
-
-                        }
-                ) {}
             }
         }
     }

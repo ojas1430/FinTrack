@@ -12,8 +12,7 @@ fun CardsScreen(navController: NavController) {
         CardLazyList(
                 cards = CardsData(),
                 navController = navController,
-
-        )
+                )
 }
 
 @Preview

@@ -14,24 +14,21 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsDataClass
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
 
 @Composable
 fun CardStructure(
     cardsDataClass: CardsDataClass,
-    navController: NavController
+    navController: NavController,
+    onClick: (CardsDataClass) -> Unit
 ) {
-
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -43,9 +40,7 @@ fun CardStructure(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .clickable {
-                    navController.navigate("")
-                },
+                .clickable { onClick(cardsDataClass) },
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
@@ -56,7 +51,8 @@ fun CardStructure(
             Spacer(Modifier.width(20.dp))
             Column {
                 Text(
-                    text = cardsDataClass.title, style = MaterialTheme.typography.h6
+                    text = cardsDataClass.title,
+                    style = MaterialTheme.typography.h6
                 )
             }
         }
