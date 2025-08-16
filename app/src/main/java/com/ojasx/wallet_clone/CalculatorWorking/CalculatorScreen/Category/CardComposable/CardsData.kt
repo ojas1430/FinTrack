@@ -73,3 +73,49 @@ fun getFoodsCards() : List<CardsDataClass> {
         )
     )
 }
+
+fun getShoppingCards() :List<CardsDataClass>{
+    return listOf(
+        CardsDataClass(
+            title = "Clothes & shoes",
+            images = R.drawable.clothes
+        ),
+        CardsDataClass(
+            title = "Drug-store, chemist",
+            images = R.drawable.drug
+        ),
+        CardsDataClass(
+            title = "Electronics, accessories",
+            images = R.drawable.electronics
+        ),
+        CardsDataClass(
+            title = "Free time",
+            images = R.drawable.freetime
+        ),
+        CardsDataClass(
+            title = "Health and beauty",
+            images = R.drawable.health
+        ),
+        CardsDataClass(
+            title = "Home, garden",
+            images = R.drawable.home
+        ),
+        CardsDataClass(
+            title = "Jewels, accessories",
+            images = R.drawable.jewels
+        ),
+        CardsDataClass(
+            title = "Kids",
+            images = R.drawable.kids
+        ),
+        CardsDataClass(
+            title = "Pets, animals",
+            images = R.drawable.pets
+        ),
+        CardsDataClass(
+            title = "Stationery, tools",
+            images = R.drawable.stationery
+        ),
+
+    )
+}

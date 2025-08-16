@@ -182,7 +182,10 @@ fun Calculator(
                             color = Color.LightGray
                         )
                         androidx.compose.material.Text(
-                            text = category, fontSize = 16.sp, color = Color.White
+                            text = category,
+                            fontSize = 16.sp,
+                            color = Color.White,
+                            maxLines = 1
                         )
                     }
                 }

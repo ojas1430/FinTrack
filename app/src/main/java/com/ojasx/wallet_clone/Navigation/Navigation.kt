@@ -9,6 +9,7 @@ import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelectio
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Calculator
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.FoodScreen
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.Shopping
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CategoryScreen
 
 @Composable
@@ -31,6 +32,9 @@ fun Navigation() {
             }
             composable("GetFoodCards"){
                 FoodScreen(navController,mainViewModel)
+            }
+            composable("getShoppingCards"){
+                Shopping(navController,mainViewModel)
             }
 
         }

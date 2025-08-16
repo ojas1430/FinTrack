@@ -36,6 +36,9 @@ fun CardLazyList(
                         "Food & Drinks" -> {
                             navController.navigate("GetFoodCards")
                         }
+                        "Shopping" -> {
+                            navController.navigate("getShoppingCards")
+                        }
 
 
                     }

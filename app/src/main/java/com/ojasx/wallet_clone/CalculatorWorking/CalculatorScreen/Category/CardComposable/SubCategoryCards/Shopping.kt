@@ -1,6 +1,6 @@
 package com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards
 
-import androidx.compose.foundation.Image
+import  androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -28,15 +30,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardStructure
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.getFoodsCards
-import com.ojasx.wallet_clone.ui.theme.warmwhite
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.getShoppingCards
 import com.ojasx.wallet_clone.R
+import com.ojasx.wallet_clone.ui.theme.warmwhite
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+
 
 @Composable
-fun FoodScreen(navController: NavController,
+fun Shopping(navController: NavController,
                viewModel: MainViewModel = viewModel()) {
 
 
@@ -102,13 +106,13 @@ fun FoodScreen(navController: NavController,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
-                    painter = painterResource(R.drawable.restrauant),
+                    painter = painterResource(R.drawable.shopping),
                     contentDescription = "",
                     Modifier.size(50.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    "Food & Drinks",
+                    "Shopping",
                     style = MaterialTheme.typography.h6
                 )
             }
@@ -127,17 +131,20 @@ fun FoodScreen(navController: NavController,
             Spacer(Modifier.height(12.dp))
 
             // Display each card with clickable behavior
-            getFoodsCards().forEach { card ->
-                CardStructure(
-                    cardsDataClass = card,
-                    navController = navController,
-                    onClick = { clickedCard ->
-                        viewModel.updateSelectedTitle(clickedCard.title)
-                        navController.popBackStack()
-                        navController.popBackStack()
-                    },
-
-                )
+            LazyColumn(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                items(getShoppingCards()) { card ->
+                    CardStructure(
+                        cardsDataClass = card,
+                        navController = navController,
+                        onClick = { clickedCard ->
+                            viewModel.updateSelectedTitle(clickedCard.title)
+                            navController.popBackStack()
+                            navController.popBackStack()
+                        }
+                    )
+                }
             }
         }
     }
