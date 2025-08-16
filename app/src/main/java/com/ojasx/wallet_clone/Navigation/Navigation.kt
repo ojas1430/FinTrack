@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelection.AccountSelection
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Calculator
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.FoodScreen
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.Housing
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.Shopping
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CategoryScreen
@@ -35,6 +36,9 @@ fun Navigation() {
             }
             composable("getShoppingCards"){
                 Shopping(navController,mainViewModel)
+            }
+            composable("getHousingCards"){
+                Housing(navController,mainViewModel)
             }
 
         }

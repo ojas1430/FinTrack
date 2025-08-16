@@ -119,3 +119,32 @@ fun getShoppingCards() :List<CardsDataClass>{
 
     )
 }
+
+fun getHousingCards() : List<CardsDataClass>{
+    return listOf(
+        CardsDataClass(
+            title = "Energy, utilities",
+            images = R.drawable.energy,
+        ),
+        CardsDataClass(
+            title = "Maintenance, repairs",
+            images = R.drawable.maintenance,
+        ),
+        CardsDataClass(
+            title = "Mortgage",
+            images = R.drawable.mortgage,
+        ),
+        CardsDataClass(
+            title = "Property insurance",
+            images = R.drawable.property,
+        ),
+        CardsDataClass(
+            title = "Rent",
+            images = R.drawable.rent,
+        ),
+        CardsDataClass(
+            title = "Services",
+            images = R.drawable.service,
+        ),
+    )
+}
