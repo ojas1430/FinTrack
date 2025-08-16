@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -55,6 +56,7 @@ dependencies {
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.foundation.layout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -112,6 +114,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:1.0.0-alpha04")
 
     implementation("org.mozilla:rhino:1.7R4")
+
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
 
 

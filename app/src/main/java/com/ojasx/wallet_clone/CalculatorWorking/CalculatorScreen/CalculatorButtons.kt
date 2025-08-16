@@ -2,6 +2,7 @@ package com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -37,6 +39,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.FloatingWindow
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButton
 import com.ojasx.wallet_clone.ui.theme.calculatorcolor
 import com.ojasx.wallet_clone.ui.theme.premium
 import com.ojasx.wallet_clone.ui.theme.walletblue
@@ -81,7 +84,8 @@ fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) 
             //placing sign and result in a row
             Row(modifier = Modifier
                 .fillMaxWidth()
-                .padding(15.dp)) {
+                .padding(15.dp),
+                verticalAlignment = Alignment.CenterVertically) {
 
                 //showing sign
                 Spacer(Modifier.width(10.dp))
@@ -100,12 +104,19 @@ fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) 
                     resultText.value ?: ""
                     , modifier = Modifier.weight(1f),
                     style = TextStyle(
-                        fontSize = 80.sp,
+                        fontSize = 50.sp,
                         textAlign = TextAlign.End,
                     ),
-                    maxLines = 3,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
+                Spacer(Modifier.width(20.dp))
+                Text("INR", fontSize = 30.sp,)
+                Spacer(Modifier.width(10.dp))
+
+                // side button
+                SideButton()
+
 
             }
 
@@ -116,7 +127,9 @@ fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) 
             LazyVerticalGrid(
                 columns = GridCells.Fixed(4),
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(2.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 items(buttonlist()){
                     CalculatorBtn(it, onClick = {
@@ -132,12 +145,13 @@ fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) 
 // Providing the size of buttons
 @Composable
 fun CalculatorBtn(btn : String,onClick : ()-> Unit) {
-    Box(
-        modifier = Modifier.padding(8.dp)
-    ){
+
         FloatingActionButton(
             onClick = onClick,
-            modifier = Modifier.size(64.dp),
+            modifier = Modifier
+                .size(64.dp)
+                .aspectRatio(1f)
+                .fillMaxWidth(),
             shape = RoundedCornerShape(10.dp),
             backgroundColor = getBtnColor(btn)
         ) {
@@ -147,7 +161,6 @@ fun CalculatorBtn(btn : String,onClick : ()-> Unit) {
             )
         }
     }
-}
 
 
 fun getBtnColor(btn : String): Color {
