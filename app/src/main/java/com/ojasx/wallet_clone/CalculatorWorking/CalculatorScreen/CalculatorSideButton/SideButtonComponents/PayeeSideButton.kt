@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.ojasx.wallet_clone.ui.theme.walletblue
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -58,7 +59,7 @@ fun PayeeSideButton() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(24.dp)
+            .padding(horizontal = 24.dp, vertical = 8.dp)
     ) {
         // Top label
         Text(
@@ -85,7 +86,7 @@ fun PayeeSideButton() {
                 Column {
 
                         innerTextField()
-
+                    Spacer(Modifier.height(4.dp))
 
                     // underline
                     Box(

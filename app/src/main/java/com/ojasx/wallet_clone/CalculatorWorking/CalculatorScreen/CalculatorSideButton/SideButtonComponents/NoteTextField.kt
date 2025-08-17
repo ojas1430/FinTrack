@@ -36,7 +36,7 @@ fun NoteTextField() {
     var isFocused by remember {
         mutableStateOf(false)
     }
-    Spacer(Modifier.height(6.dp))
+    Spacer(Modifier.height(12.dp))
 
     Column(
         modifier = Modifier

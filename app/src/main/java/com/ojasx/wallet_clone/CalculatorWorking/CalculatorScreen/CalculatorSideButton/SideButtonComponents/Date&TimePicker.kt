@@ -108,7 +108,7 @@ fun DateTimePicker() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(24.dp)
+                .padding(horizontal = 24.dp, vertical = 8.dp)
                 .weight(1f)
         ) {
             // Top label
@@ -150,7 +150,7 @@ fun DateTimePicker() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(24.dp)
+                .padding(horizontal = 24.dp, vertical = 8.dp)
                 .weight(1f)
         ) {
             // Top label
@@ -190,4 +190,5 @@ fun DateTimePicker() {
             )
         }
     }
+    Spacer(Modifier.height(8.dp))
 }

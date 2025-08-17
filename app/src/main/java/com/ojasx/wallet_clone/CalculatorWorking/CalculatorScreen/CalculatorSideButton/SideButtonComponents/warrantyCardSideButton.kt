@@ -65,7 +65,7 @@ import kotlin.math.min
 fun WarrantyPicker() {
     var showDialog by remember { mutableStateOf(false) }
     var selectedMonth by remember { mutableStateOf(12) } // default warranty
-    val minMonth = 1
+    val minMonth = 0
     val maxMonth = 120
 
     Spacer(Modifier.height(6.dp))
@@ -80,7 +80,7 @@ fun WarrantyPicker() {
             color = Color.Gray,
             fontWeight = FontWeight.Medium
         )
-        Spacer(Modifier.height(4.dp))
+        Spacer(Modifier.height(8.dp))
 
         // Simple Text (clickable)
         Text(

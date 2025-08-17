@@ -2,6 +2,7 @@ package com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSide
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.ojasx.wallet_clone.ui.theme.walletblue
 
 @Composable
-fun PlaceSidebutton() {
+fun AttachmentsSidebutton() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -26,7 +27,7 @@ fun PlaceSidebutton() {
     ) {
         // Top label
         Text(
-            text = "Place",
+            text = "Attachments",
             color = Color.Gray,
             fontWeight = FontWeight.Medium
         )
@@ -34,7 +35,7 @@ fun PlaceSidebutton() {
         // text button
         TextButton(onClick = {}) {
             Text(
-                "ADD PLACE",
+                "ADD RECEIPT",
                 fontSize = 14.sp,
                 color = walletblue
             )
@@ -58,4 +59,5 @@ fun PlaceSidebutton() {
                 }
         )
     }
+    Spacer(Modifier.height(100.dp))
 }

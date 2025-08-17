@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.ojasx.wallet_clone.ui.theme.walletblue
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -57,7 +58,7 @@ fun LabelSideButton() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(24.dp)
+            .padding(horizontal = 24.dp, vertical = 8.dp)
     ) {
         // Top label
         Text(
@@ -83,16 +84,19 @@ fun LabelSideButton() {
             decorationBox = { innerTextField ->
                 Column {
                     // text + placeholder
-                    Box(Modifier.fillMaxWidth()) {
+                    Box(
+                        Modifier.fillMaxWidth()
+                    ) {
                         if (label.isEmpty()) {
                             Text(
                                 text = "Add label",
                                 color = Color.Gray,
-                                fontSize = 20.sp
+                                fontSize = 18.sp
                             )
                         }
                         innerTextField()
                     }
+                    Spacer(Modifier.height(4.dp))
 
                     // underline
                     Box(

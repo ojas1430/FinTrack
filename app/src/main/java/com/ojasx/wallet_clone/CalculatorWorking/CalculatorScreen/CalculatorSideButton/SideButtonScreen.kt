@@ -15,11 +15,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.AttachmentsSidebutton
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.DateTimePicker
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.LabelSideButton
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.NoteTextField
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.PayeeSideButton
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.PaymentSidebutton
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.PlaceSidebutton
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.StatusSidebutton
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.TopAppBarSideButton
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.WarrantyPicker
 import com.ojasx.wallet_clone.StatusBarColor
 
 @Preview
@@ -46,6 +51,21 @@ import com.ojasx.wallet_clone.StatusBarColor
                 }
                 item {
                     DateTimePicker()
+                }
+                item {
+                    PaymentSidebutton()
+                }
+                item {
+                    StatusSidebutton()
+                }
+                item{
+                    WarrantyPicker()
+                }
+                item {
+                    PlaceSidebutton()
+                }
+                item {
+                    AttachmentsSidebutton()
                 }
             }
         }
