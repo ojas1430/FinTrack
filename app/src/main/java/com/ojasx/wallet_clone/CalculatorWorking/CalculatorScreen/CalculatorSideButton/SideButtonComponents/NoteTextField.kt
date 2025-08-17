@@ -2,6 +2,7 @@ package com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSide
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -35,11 +36,12 @@ fun NoteTextField() {
     var isFocused by remember {
         mutableStateOf(false)
     }
+    Spacer(Modifier.height(6.dp))
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(24.dp)
+            .padding(horizontal = 24.dp, vertical = 8.dp)
     ) {
         // Top label
         Text(
