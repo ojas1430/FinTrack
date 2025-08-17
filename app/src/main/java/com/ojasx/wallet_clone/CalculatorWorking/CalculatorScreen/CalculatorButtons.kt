@@ -128,7 +128,7 @@ fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) 
                 columns = GridCells.Fixed(4),
                 modifier = Modifier
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(2.dp),
+                horizontalArrangement = Arrangement.spacedBy(0.dp),
                 verticalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 items(buttonlist()){

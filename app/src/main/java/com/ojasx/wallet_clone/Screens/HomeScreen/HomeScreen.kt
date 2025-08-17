@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,11 +33,18 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
+import com.ojasx.wallet_clone.StatusBarColor
+import com.ojasx.wallet_clone.TopAppBar.AppBarCode
 import com.ojasx.wallet_clone.ui.theme.walletblue
+import com.ojasx.wallet_clone.ui.theme.walletgreen
+
+@Preview
 
 @Composable
 fun HomeScreen() {
+
     Scaffold(
+        topBar = { AppBarCode() },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { /* Your FAB action here */ },
@@ -55,9 +63,9 @@ fun HomeScreen() {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            item {
-                topbarscreen()
-            }
+//            item {
+//                topbarscreen()
+//            }
             item {
                 ListOfAccountsMainScreen()
             }

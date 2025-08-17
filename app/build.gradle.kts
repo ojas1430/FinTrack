@@ -42,7 +42,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -57,67 +56,63 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.foundation.layout)
+    implementation(libs.androidx.ui.text)
+    implementation(libs.foundation.layout)
+    implementation(libs.material3)
+    implementation(libs.androidx.runtime)
+    implementation(libs.androidx.appcompat)
+
+    // JUnit (unit tests)
     testImplementation(libs.junit)
+
+    // AndroidX Test (instrumented)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+
+    // Compose UI Test (without old espresso)
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.9.0") {
+        exclude(group = "androidx.test.espresso", module = "espresso-core")
+    }
+
+
+    // ✅ Latest Espresso
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
+
+    // Compose BOM for androidTest
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
-    // images
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.compose.material:material")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.activity:activity-compose:1.8.2")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    // Images & Icons
     implementation("androidx.compose.material:material-icons-core")
     implementation("androidx.compose.material:material-icons-extended")
-    implementation("androidx.compose.ui:ui-graphics")
 
-    implementation("androidx.compose.foundation:foundation:1.5.1")
-    implementation("androidx.compose.runtime:runtime:1.5.1")
-    implementation("androidx.compose.ui:ui:1.5.1")
-// Pager & Indicator
-    implementation("androidx.compose.foundation:foundation:1.5.1")
-
-    implementation("androidx.compose.foundation:foundation:1.6.0-beta01")
-    implementation("androidx.compose.material3:material3:1.2.0")
+    // Accompanist Pager & Indicators
     implementation("com.google.accompanist:accompanist-pager:0.30.1")
     implementation("com.google.accompanist:accompanist-pager-indicators:0.30.1")
 
-    implementation ("androidx.compose:compose-bom:2024.05.00")
-    implementation ("androidx.compose.foundation:foundation")
-    implementation ("androidx.compose.material3:material3")
-
-    // Runtime ^& Live Data
+    // Lifecycle (centralized)
     val lifecycle_version = "2.9.2"
-    val arch_version = "2.2.0"
-
-    // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-    // ViewModel utilities for Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
-    // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-    // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
-    // Lifecycle utilities for Compose
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
-
-    // Saved state module for ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
-
-    // ViewModel integration with Navigation3
     implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:1.0.0-alpha04")
 
+    // Rhino JS
     implementation("org.mozilla:rhino:1.7R4")
 
-    //navigation
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+    //StatusBar
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
 
-
+    //Date and time libraries
+    implementation ("io.github.vanpra.compose-material-dialogs:datetime:0.8.1-rc")
+    coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.1.5")
+    implementation("io.github.vanpra.compose-material-dialogs:datetime:0.9.0")
 
 }

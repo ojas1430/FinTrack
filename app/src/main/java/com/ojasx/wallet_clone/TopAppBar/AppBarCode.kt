@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
@@ -21,12 +22,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import com.ojasx.wallet_clone.StatusBarColor
 import com.ojasx.wallet_clone.ui.theme.walletgreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBarCode(modifier: Modifier = Modifier) {
+
+    StatusBarColor(walletgreen)
+
     TopAppBar(
+       // modifier = modifier.statusBarsPadding(),
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = walletgreen,
             titleContentColor = MaterialTheme.colorScheme.primary,
@@ -37,7 +43,6 @@ fun AppBarCode(modifier: Modifier = Modifier) {
                     imageVector = Icons.Filled.Menu,
                     contentDescription = "Localized description",
                     tint = Color.White
-
                     )
             }
 
@@ -47,8 +52,6 @@ fun AppBarCode(modifier: Modifier = Modifier) {
             )
         },
         actions = {
-
-
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Filled.Notifications,
@@ -56,9 +59,6 @@ fun AppBarCode(modifier: Modifier = Modifier) {
                     tint = Color.White
                 )
             }
-
-
-
         }
     )
 }

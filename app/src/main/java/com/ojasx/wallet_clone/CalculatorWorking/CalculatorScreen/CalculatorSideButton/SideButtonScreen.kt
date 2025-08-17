@@ -26,12 +26,13 @@ import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideB
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.TopAppBarSideButton
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.WarrantyPicker
 import com.ojasx.wallet_clone.StatusBarColor
+import com.ojasx.wallet_clone.ui.theme.walletblue
 
 @Preview
 @Composable
     fun SideButtonScreen() {
         // Set status bar color once
-        StatusBarColor()
+        StatusBarColor(walletblue)
 
         Scaffold(
             topBar = { TopAppBarSideButton() },
