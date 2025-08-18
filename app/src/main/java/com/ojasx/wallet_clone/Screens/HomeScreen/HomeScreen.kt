@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.navigation.NavController
 import com.ojasx.wallet_clone.StatusBarColor
+import com.ojasx.wallet_clone.TopAppBar.AppBarButtons
 import com.ojasx.wallet_clone.TopAppBar.AppBarCode
 import com.ojasx.wallet_clone.ui.theme.walletblue
 import com.ojasx.wallet_clone.ui.theme.walletgreen
@@ -68,9 +69,9 @@ fun HomeScreen(navController: NavController) {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-//            item {
-//                topbarscreen()
-//            }
+            item {
+                AppBarButtons()
+            }
             item {
                 ListOfAccountsMainScreen()
             }

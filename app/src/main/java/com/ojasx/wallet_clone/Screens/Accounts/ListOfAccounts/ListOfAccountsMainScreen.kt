@@ -24,7 +24,7 @@ fun ListOfAccountsMainScreen() {
         Column(modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)) {
-            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(24.dp))
             Row {
                 ListOfAccountsText()
                 Spacer(Modifier.weight(1f))

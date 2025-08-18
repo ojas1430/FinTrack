@@ -24,12 +24,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.ojasx.wallet_clone.ui.theme.walletblue
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ojasx.wallet_clone.StatusBarColor
 
 @Composable
-fun TopAppBarSideButton() {
+fun TopAppBarSideButton(navController: NavController) {
 
 
     TopAppBar(
@@ -50,7 +51,9 @@ fun TopAppBarSideButton() {
 
             //back icon
             IconButton(
-                onClick = {}
+                onClick = {
+                    navController.navigate("CalculatorScreen")
+                }
             ) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,

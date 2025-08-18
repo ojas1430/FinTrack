@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.AttachmentsSidebutton
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.DateTimePicker
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonComponents.LabelSideButton
@@ -28,14 +29,13 @@ import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideB
 import com.ojasx.wallet_clone.StatusBarColor
 import com.ojasx.wallet_clone.ui.theme.walletblue
 
-@Preview
 @Composable
-    fun SideButtonScreen() {
+    fun SideButtonScreen(navController: NavController) {
         // Set status bar color once
         StatusBarColor(walletblue)
 
         Scaffold(
-            topBar = { TopAppBarSideButton() },
+            topBar = { TopAppBarSideButton(navController) },
             contentWindowInsets = WindowInsets(0, 0, 0, 0)
         ) { innerPadding ->
             LazyColumn(

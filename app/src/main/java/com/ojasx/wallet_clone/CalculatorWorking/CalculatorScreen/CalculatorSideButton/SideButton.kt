@@ -30,13 +30,15 @@
     import androidx.compose.material3.*
 
     import androidx.compose.ui.unit.dp
+    import androidx.navigation.NavController
     import com.ojasx.wallet_clone.ui.theme.walletblue
 
-    @Preview
     @Composable
-    fun SideButton() {
+    fun SideButton(navController: NavController) {
             Button(
-                onClick = {},
+                onClick = {
+                    navController.navigate("SideButton")
+                },
                 modifier = Modifier
                     .width(35.dp)
                     .height(80.dp)

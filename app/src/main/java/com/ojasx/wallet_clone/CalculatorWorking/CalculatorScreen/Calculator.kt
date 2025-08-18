@@ -64,7 +64,9 @@ fun Calculator(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             IconButton(
-                onClick = {},
+                onClick = {
+                    navController.navigate("HomeScreen")
+                },
                 modifier = Modifier
                     .background(calculatorcolor)
                     .size(64.dp)
@@ -195,7 +197,7 @@ fun Calculator(
         Spacer(Modifier.height(10.dp))
 
         // passing buttons here
-        CalculatorButtons(viewModel = viewModel(),selectedButton)
+        CalculatorButtons(viewModel = viewModel(),selectedButton,navController)
 
     }
 

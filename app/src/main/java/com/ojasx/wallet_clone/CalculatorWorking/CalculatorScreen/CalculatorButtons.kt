@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,6 +38,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.FloatingWindow
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButton
@@ -53,7 +56,11 @@ fun buttonlist() = listOf(
 )
 
 @Composable
-fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) {
+fun CalculatorButtons(
+    viewModel: CalculatorViewModel ,
+    selectedButton : String ,
+    navController: NavController
+) {
 
     val equationText = viewModel.equationText.observeAsState()
     val resultText = viewModel.resultdata.observeAsState()
@@ -115,7 +122,7 @@ fun CalculatorButtons(viewModel: CalculatorViewModel , selectedButton : String) 
                 Spacer(Modifier.width(10.dp))
 
                 // side button
-                SideButton()
+                SideButton(navController)
 
 
             }
