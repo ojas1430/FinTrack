@@ -30,24 +30,29 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
+import androidx.navigation.NavController
 import com.ojasx.wallet_clone.StatusBarColor
 import com.ojasx.wallet_clone.TopAppBar.AppBarCode
 import com.ojasx.wallet_clone.ui.theme.walletblue
 import com.ojasx.wallet_clone.ui.theme.walletgreen
 
-@Preview
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
+    var showBottomSheet by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = { AppBarCode() },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /* Your FAB action here */ },
+                onClick = { showBottomSheet = true },
                 containerColor = walletblue
             ) {
                 Icon(
@@ -86,10 +91,19 @@ fun HomeScreen() {
             }
         }
     }
+    ActionBottomSheet(
+        showBottomSheet = showBottomSheet,
+        onDismiss = { showBottomSheet = false },
+        onTemplateClick = {
+            // Handle template creation
+            println("Template clicked")
+            // Add your navigation here
+        },
+        onNewRecordClick = {
+            navController.navigate("CalculatorScreen")
+
+        }
+    )
 }
 
-@Preview
-@Composable
-fun MainScreen() {
-    HomeScreen()
-}
+

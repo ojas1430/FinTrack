@@ -9,6 +9,10 @@ import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,17 +23,18 @@ import com.ojasx.wallet_clone.ui.theme.walletblue
 
 @Composable
 fun FloatingButton(modifier: Modifier) {
-        FloatingActionButton(
-            onClick = {},
-            shape = CircleShape,
-            backgroundColor = walletblue,
-            modifier = Modifier.size(60.dp)
-        ) {
-            Icon(
-                imageVector = Icons.Default.Add,
-                contentDescription = "",
-                tint = Color.White,
-                modifier = Modifier.size(34.dp)
-            )
-        }
+    var showBottomSheet by remember { mutableStateOf(false) }
+    FloatingActionButton(
+        onClick = { showBottomSheet = true},
+        shape = CircleShape,
+        backgroundColor = walletblue,
+        modifier = Modifier.size(60.dp)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = "",
+            tint = Color.White,
+            modifier = Modifier.size(34.dp)
+        )
     }
+}
