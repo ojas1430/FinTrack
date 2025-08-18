@@ -11,12 +11,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ojasx.wallet_clone.ui.theme.walletblue
 
+
+// This button is the Templates button on calculator screen
 @Composable
-fun TemplatesButton() {
+fun TemplatesButton(navController: NavController) {
     Button(
-        onClick = {}, 
+        onClick = {
+            navController.navigate("TemplatesScreenCreation")
+        },
         modifier = Modifier
             .fillMaxWidth()
             .border(width = 1.dp, Color.LightGray),
