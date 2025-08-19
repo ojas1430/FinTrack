@@ -75,4 +75,5 @@ fun CategoryTemplate(
         )
 
     }
+    Spacer(Modifier.height(5.dp))
 }

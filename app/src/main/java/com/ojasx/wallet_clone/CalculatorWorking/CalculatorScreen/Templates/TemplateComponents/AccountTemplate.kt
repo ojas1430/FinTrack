@@ -65,4 +65,5 @@ fun AccountTemplate(navController: NavController) {
         )
 
     }
+    Spacer(Modifier.height(5.dp))
 }
