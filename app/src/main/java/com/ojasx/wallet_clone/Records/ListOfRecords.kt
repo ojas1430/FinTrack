@@ -10,10 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
 
 
 @Composable
-fun ListOfRecords(viewModel: RecordsViewModel = viewModel()) {
+fun ListOfRecords(
+    viewModel: RecordsViewModel = viewModel()
+) {
     val records by viewModel.recordlist.observeAsState(emptyList())
 
     Column(modifier = Modifier.padding(16.dp)) {

@@ -25,8 +25,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
 
 
 //@Composable
@@ -76,9 +78,11 @@ import androidx.compose.ui.unit.dp
 //}
 
 
-@Preview
 @Composable
-fun RecordCard() {
+fun RecordCard(
+    record: RecordsDataClass
+) {
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -94,7 +98,7 @@ fun RecordCard() {
         ) {
             // Icon
             Image(
-                painter = painterResource(R.drawable.bar),
+                painter = getRecordIcons(record.icon),
                 contentDescription = "",
                 modifier = Modifier.size(48.dp)
             )
@@ -103,7 +107,7 @@ fun RecordCard() {
 
             // Title on left
             Text(
-                text =" record.title,",
+                text = record.title,
                 style = MaterialTheme.typography.titleMedium
             )
 
@@ -112,11 +116,11 @@ fun RecordCard() {
             // Amount + Date on right
             Column(horizontalAlignment = Alignment.End) {
                 Text(
-                    text = "₹100000",
+                    text = "₹${record.amount}",
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Text(
-                    text = "23 Aug 2025", // replace with formatted date
+                    text = record.date, // replace with formatted date
                     style = MaterialTheme.typography.bodySmall
                 )
             }
