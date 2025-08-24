@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.IconButton
 import androidx.compose.material.TopAppBar
@@ -34,15 +35,25 @@ import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelectio
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsData
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.CardsScreen
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
+import com.ojasx.wallet_clone.StatusBarColor
 import com.ojasx.wallet_clone.ui.theme.walletblue
+import com.ojasx.wallet_clone.ui.theme.walletgreen
 import com.ojasx.wallet_clone.ui.theme.warmwhite
 
 
 @Composable
-fun CategoryScreen(navController: NavController,viewModel: MainViewModel) {
-    Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
+fun CategoryScreen(
+    navController: NavController,
+    viewModel: MainViewModel
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .statusBarsPadding()
+    ) {
+        StatusBarColor(walletgreen)
         Column {
-            Spacer(Modifier.height(25.dp))
             TopAppBar(
                 backgroundColor = walletblue,
                 modifier = Modifier

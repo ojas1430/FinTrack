@@ -43,6 +43,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButton
+import com.ojasx.wallet_clone.Records.RecordIcons
 import com.ojasx.wallet_clone.ui.theme.calculatorcolor
 import com.ojasx.wallet_clone.ui.theme.premium
 import com.ojasx.wallet_clone.ui.theme.walletblue
@@ -57,9 +58,11 @@ fun buttonlist() = listOf(
 
 @Composable
 fun CalculatorButtons(
-    viewModel: CalculatorViewModel ,
-    selectedButton : String ,
-    navController: NavController
+    viewModel: CalculatorViewModel,
+    selectedButton : String,
+    selectedIcon: RecordIcons?,
+    navController: NavController,
+    onResultChange: (String) -> Unit
 ) {
 
     val equationText = viewModel.equationText.observeAsState()
@@ -70,6 +73,9 @@ fun CalculatorButtons(
         "EXPENSE" -> "-"
         else -> ""
     }
+    // whenever result changes, send back combined value
+    val finalAmount = PrefixSign + (resultText.value ?: "")
+    onResultChange(finalAmount)
 
     Box(modifier = Modifier.background(calculatorcolor)) {
         Column(
@@ -153,21 +159,21 @@ fun CalculatorButtons(
 @Composable
 fun CalculatorBtn(btn : String,onClick : ()-> Unit) {
 
-        FloatingActionButton(
-            onClick = onClick,
-            modifier = Modifier
-                .size(64.dp)
-                .aspectRatio(1f)
-                .fillMaxWidth(),
-            shape = RoundedCornerShape(10.dp),
-            backgroundColor = getBtnColor(btn)
-        ) {
-            Text(btn,
-                color = getNumberColor(btn),
-                fontSize = if (btn in listOf("+", "-", "*", "/", "=",".")) 24.sp else 16.sp,
-            )
-        }
+    FloatingActionButton(
+        onClick = onClick,
+        modifier = Modifier
+            .size(64.dp)
+            .aspectRatio(1f)
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(10.dp),
+        backgroundColor = getBtnColor(btn)
+    ) {
+        Text(btn,
+            color = getNumberColor(btn),
+            fontSize = if (btn in listOf("+", "-", "*", "/", "=",".")) 24.sp else 16.sp,
+        )
     }
+}
 
 
 fun getBtnColor(btn : String): Color {

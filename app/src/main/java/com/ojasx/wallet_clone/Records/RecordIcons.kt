@@ -14,6 +14,30 @@ enum class RecordIcons{
     ELECTRONICS , FREETIME , HEALTH , HOME , JEWELS , KIDS , PETS ,STATIONERY
 }
 
+
+fun mapTitleToRecordIcon(title: String): RecordIcons? {
+    return when (title) {
+        //FOOD AND DRINKS
+        "Bar, Cafe" -> RecordIcons.BAR
+        "Groceries" -> RecordIcons.GROCERIES
+        "Food & Drinks" -> RecordIcons.RESTRAUANT
+
+        //SHOPPING
+        "Clothes & shoes" -> RecordIcons.CLOTHES
+        "Drug-store, chemist" -> RecordIcons.DRUG
+        "Electronics, accessories" -> RecordIcons.ELECTRONICS
+        "Free time" -> RecordIcons.FREETIME
+        "Health and beauty" -> RecordIcons.HEALTH
+        "Home, garden" -> RecordIcons.HOME
+        "Jewels, accessories" -> RecordIcons.JEWELS
+        "Kids" -> RecordIcons.KIDS
+        "Pets, animals" -> RecordIcons.PETS
+        "Stationery, tools" -> RecordIcons.STATIONERY
+
+        else -> null
+    }
+}
+
 @Composable
 fun getRecordIcons(icon : RecordIcons): Painter {
 

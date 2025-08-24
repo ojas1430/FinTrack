@@ -13,16 +13,22 @@ import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardCo
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.Shopping
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CategoryScreen
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.CategoryTemplate
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Templates.TemplateMainScreen
+import com.ojasx.wallet_clone.Records.ListOfRecords
+import com.ojasx.wallet_clone.Records.RecordsViewModel
 import com.ojasx.wallet_clone.Screens.HomeScreen.HomeScreen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
     val mainViewModel: MainViewModel = viewModel()
+    val recordsviewModel : RecordsViewModel = viewModel()
 
 
     NavHost(
         navController = navController, startDestination = "HomeScreen", builder = {
+            // navitgates to cash account
             composable("Calculator-Account-Screen"){
                 AccountSelection(navController)
             }
@@ -31,7 +37,7 @@ fun Navigation() {
             }
 
             composable("CalculatorScreen"){
-                Calculator(navController,mainViewModel)
+                Calculator(navController,mainViewModel,recordsviewModel)
             }
 
             //navigates to side button screen
@@ -39,9 +45,21 @@ fun Navigation() {
                 SideButtonScreen(navController)
             }
 
+            // the new template screen opens
+            composable("TemplatesScreenCreation"){
+                TemplateMainScreen(navController)
+            }
+
+            // navigates to all types of categories
             composable("Category"){
                 CategoryScreen(navController,mainViewModel)
             }
+
+            //navigates to list of records screen
+            composable("ListOfRecords"){
+                ListOfRecords(recordsviewModel)
+            }
+
             composable("GetFoodCards"){
                 FoodScreen(navController,mainViewModel)
             }
@@ -50,6 +68,9 @@ fun Navigation() {
             }
             composable("getHousingCards"){
                 Housing(navController,mainViewModel)
+            }
+            composable("Categorytemplate"){
+                CategoryTemplate(navController,mainViewModel)
             }
 
         }

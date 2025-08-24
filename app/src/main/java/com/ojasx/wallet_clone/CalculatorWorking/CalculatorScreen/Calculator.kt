@@ -90,13 +90,16 @@ fun Calculator(
 
                     // Tick button
                     IconButton(
+
                         onClick = {
+
 
                             recordsViewModel.addRecord(
                                 title = category,
                                 amount = amountWithSign,
                                 date = getCurrentDateTime(),
                                 icon = selectedIcon ?: RecordIcons.ELECTRONICS
+
                             )
                             navController.navigate("ListOfRecords")
 
@@ -218,7 +221,7 @@ fun Calculator(
             Spacer(Modifier.height(10.dp))
 
             // passing buttons here
-            CalculatorButtons(viewModel = viewModel(), selectedButton, navController , onResultChange = {latestAmount ->
+            CalculatorButtons(viewModel = viewModel(), selectedButton,selectedIcon, navController , onResultChange = {latestAmount ->
                 amountWithSign = latestAmount } )
 
         }
@@ -226,8 +229,10 @@ fun Calculator(
     }
 
 
+
+// here only date is passed
 fun getCurrentDateTime(): String {
     val current = LocalDateTime.now()
-    val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy, hh:mm a")
+    val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
     return current.format(formatter)
 }

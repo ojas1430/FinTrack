@@ -20,18 +20,28 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
+import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Category.CardComposable.SubCategoryCards.MainViewModel
+import com.ojasx.wallet_clone.Records.mapTitleToRecordIcon
 
 @Composable
 fun CardLazyList(
     cards: List<CardsDataClass>,
     navController: NavController,
-
-    ) {
+    mainViewModel: MainViewModel
+) {
     LazyColumn {
         items(cards) { card ->
             CardItem(
                 card = card,
                 onClick = {
+                    //  update title
+                    mainViewModel.updateSelectedTitle(card.title)
+
+                    // update icon if found
+                    mapTitleToRecordIcon(card.title)?.let { icon ->
+                        mainViewModel.updateSelectedIcon(icon)
+                    }
+
                     when(card.title) {
                         "Food & Drinks" -> {
                             navController.navigate("GetFoodCards")

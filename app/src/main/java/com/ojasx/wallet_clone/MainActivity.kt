@@ -20,6 +20,8 @@ import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.AccountSelectio
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.Calculator
 import com.ojasx.wallet_clone.CalculatorWorking.CalculatorScreen.CalculatorViewModel
 import com.ojasx.wallet_clone.Navigation.Navigation
+import com.ojasx.wallet_clone.Records.RecordCard
+import com.ojasx.wallet_clone.Records.RecordsDataClass
 import com.ojasx.wallet_clone.ui.theme.WalletCloneTheme
 
 class MainActivity : ComponentActivity() {
