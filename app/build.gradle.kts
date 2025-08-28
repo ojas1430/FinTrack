@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ojasx.wallet_clone"
+    namespace = "com.ojasx.FinTrack"
     compileSdk = 36
 
     defaultConfig {
@@ -114,5 +114,6 @@ dependencies {
     implementation ("io.github.vanpra.compose-material-dialogs:datetime:0.8.1-rc")
     coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.1.5")
     implementation("io.github.vanpra.compose-material-dialogs:datetime:0.9.0")
+
 
 }
