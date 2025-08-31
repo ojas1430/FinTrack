@@ -16,7 +16,7 @@ fun ListOfRecords(
     val records by viewModel.recordlist.observeAsState(emptyList())
 
     Column {
-        RecordsTopAppBar()
+        RecordsTopAppBar(viewModel)
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             item {
                 if (records.isEmpty()) {

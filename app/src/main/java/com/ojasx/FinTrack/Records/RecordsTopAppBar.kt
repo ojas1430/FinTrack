@@ -7,6 +7,8 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,9 +21,13 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 import com.ojasx.FinTrack.ui.theme.warmwhite
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun RecordsTopAppBar() {
+fun RecordsTopAppBar( viewModel: RecordsViewModel ) {
+    // summation of all card values
+    val records by viewModel.recordlist.observeAsState(emptyList())
+    val total = records.sumOf { it.amount.toIntOrNull() ?: 0 }
+
+
     // Set status bar color
     StatusBarColor(walletblue)
 
@@ -61,7 +67,7 @@ fun RecordsTopAppBar() {
                 )
                 Spacer(Modifier.weight(1f))
                 Text(
-                    text = "∑ ₹1000",
+                    text = "∑ ₹${if (total >= 0) "+$total" else total}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
                     color = warmwhite,

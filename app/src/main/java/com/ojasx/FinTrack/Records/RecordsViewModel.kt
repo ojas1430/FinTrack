@@ -1,5 +1,7 @@
 package com.ojasx.FinTrack.Records
 
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +18,15 @@ class RecordsViewModel : ViewModel() {
     private val _selectedIcon = MutableLiveData<RecordIcons?>()
     val selectedIcon: LiveData<RecordIcons?> = _selectedIcon
 
+
+
+
+    // Summation sum amount of all cards
+    fun getTotal() : Int{
+        return _recordList.value?.sumOf { it.amount.toIntOrNull() ?: 0 } ?: 0
+    }
+
+    // Adds dynamic record
     fun addRecord(title: String, amount: String, date: String, icon: RecordIcons) {
         val current = _recordList.value.orEmpty()
         val newRecord = RecordsDataClass(
