@@ -17,18 +17,25 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.ui.theme.purpleBlue
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 
-@Preview
+
 @Composable
-fun CashAndAddAccountButton() {
+fun CashAndAddAccountButton(viewModel: RecordsViewModel) {
+    // summation of all card values
+    val records by viewModel.recordlist.observeAsState(emptyList())
+    val total = records.sumOf { it.amount.toIntOrNull() ?: 0 }
+
     Row(
         modifier = Modifier.fillMaxWidth()
             .padding(12.dp),
@@ -45,7 +52,7 @@ fun CashAndAddAccountButton() {
             Column(modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.Start) {
                 Text("Cash")
-                Text("$0")
+                Text("₹${if (total >= 0) "+$total" else total}")
             }
         }
 

@@ -15,10 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.ojasx.FinTrack.Records.RecordsViewModel
 
-@Preview
 @Composable
-fun ListOfAccountsMainScreen(navController: NavController) {
+fun ListOfAccountsMainScreen(
+    navController: NavController,
+    viewModel: RecordsViewModel
+) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -31,7 +34,7 @@ fun ListOfAccountsMainScreen(navController: NavController) {
                 RoundedSettingButton()
                 Spacer(Modifier.width(20.dp))
             }
-            CashAndAddAccountButton()
+            CashAndAddAccountButton(viewModel)
             Row(modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 AccountDetailButton()
