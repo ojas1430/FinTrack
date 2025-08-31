@@ -16,7 +16,6 @@ import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Category.CategorySc
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.CategoryTemplate
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateMainScreen
 import com.ojasx.FinTrack.Records.ListOfRecords
-import com.ojasx.FinTrack.Records.RecordsMainScreen
 import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.Screens.HomeScreen.HomeScreen
 
@@ -34,7 +33,7 @@ fun Navigation() {
                 AccountSelection(navController)
             }
             composable("HomeScreen"){
-                HomeScreen(navController)
+                HomeScreen(navController,recordsviewModel)
             }
 
             composable("CalculatorScreen"){
@@ -59,11 +58,6 @@ fun Navigation() {
             //navigates to list of records screen
             composable("ListOfRecords"){
                 ListOfRecords(recordsviewModel)
-            }
-
-            //navigates to records screen
-            composable("RecordsMainScreen"){
-                RecordsMainScreen(navController)
             }
 
             composable("GetFoodCards"){

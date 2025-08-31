@@ -28,13 +28,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
+import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.TopAppBar.AppBarButtons
 import com.ojasx.FinTrack.TopAppBar.AppBarCode
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(
+    navController: NavController,
+    viewModel: RecordsViewModel
+) {
     var showBottomSheet by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -61,7 +65,7 @@ fun HomeScreen(navController: NavController) {
                 AppBarButtons()
             }
             item {
-                ListOfAccountsMainScreen(navController)
+                ListOfAccountsMainScreen(navController, viewModel)
             }
             item {
                 Box(
