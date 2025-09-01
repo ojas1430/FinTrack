@@ -25,12 +25,10 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import android.util.Log
 import com.ojasx.FinTrack.ui.theme.walletblue
+import java.text.NumberFormat
+import java.util.Locale
 import kotlin.math.ceil
 
-data class BalancePoint(
-    val date: LocalDate,
-    val balance: Int
-)
 
 @Composable
 fun BalanceGraph(
@@ -119,6 +117,7 @@ fun BalanceGraph(
                                 granularity = 1f
                                 axisMinimum = 0f
                                 axisMaximum = totalDays.toFloat()
+                                yOffset = 20f
 
 
                                 valueFormatter = object : ValueFormatter() {
@@ -213,11 +212,11 @@ fun BalanceGraph(
     }
 }
 
-private fun getCurrentBalance(history: List<BalancePoint>): String {
+fun getCurrentBalance(history: List<BalancePoint>): String {
     return if (history.isNotEmpty()) {
         val latest = history.maxByOrNull { it.date }
         val balance = latest?.balance ?: 0
-        formatYAxisValue(balance)
+        NumberFormat.getNumberInstance(Locale("en", "IN")).format(balance)
     } else {
         "0"
     }
