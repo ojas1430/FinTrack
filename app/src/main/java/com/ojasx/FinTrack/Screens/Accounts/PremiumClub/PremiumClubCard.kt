@@ -85,7 +85,7 @@ fun CardText() {
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
-                    text = "Join FinTrack Premium — Unlock powerful insights,\nautomate your finances. Cancel anytime.",
+                    text = "Join FinTrack Premium \n— Unlock powerful insights,\nautomate your finances.\n Cancel anytime.",
                     fontSize = 14.sp,
                     color = Color.Gray,
                     textAlign = TextAlign.Center
