@@ -33,73 +33,79 @@ fun BalanceByAccounts(
     history: List<BalancePoint>
 ) {
     Card(
-        modifier = Modifier.fillMaxSize().padding(16.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
-        // Header
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
+            // Header
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = "Balance by Accounts",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                    Text(
+                        text = "In which accounts do I have most of my money?",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                }
+                Icon(
+                    imageVector = androidx.compose.material.icons.Icons.Default.Share,
+                    contentDescription = "Share",
+                    tint = Color.Gray
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Current Balance Display
             Column {
                 Text(
-                    text = "Balance Trend",
-                    fontSize = 18.sp,
+                    text = "₹${String.format("%.2f", getCurrentBalance(history).toDouble())}",
+                    fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black
                 )
-                Text(
-                    text = "Do I have more money than before?",
-                    fontSize = 14.sp,
-                    color = Color.Gray
+                Row(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Text(
+                        "Cash",
+                        fontSize = 18.sp,
+                        color = Color.Black
+                    )
+                    Spacer(Modifier.weight(1f))
+
+                    Text(
+                        text = "₹${String.format("%.2f", getCurrentBalance(history).toDouble())}",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                }
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp)
+                        .height(22.dp)
+                        .background(walletblue)
                 )
+                Spacer(Modifier.height(12.dp))
             }
-            Icon(
-                imageVector = androidx.compose.material.icons.Icons.Default.Share,
-                contentDescription = "Share",
-                tint = Color.Gray
-            )
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Current Balance Display
-        Column {
-            Text(
-                text = "₹${getCurrentBalance(history)}",
-                fontSize = 32.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black
-            )
-            Row(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                Text(
-                    "Cash",
-                    fontSize = 18.sp,
-                    color = Color.Black
-                )
-                Spacer(Modifier.weight(1f))
-
-                Text(
-                    text = "₹${getCurrentBalance(history)}",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black
-                )
-            }
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-                    .height(22.dp)
-                    .background(walletblue)
-            )
-            Spacer(Modifier.height(12.dp))
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
     }
 }

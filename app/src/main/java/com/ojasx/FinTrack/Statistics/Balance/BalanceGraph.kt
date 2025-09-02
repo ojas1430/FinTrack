@@ -86,7 +86,7 @@ fun BalanceGraph(
                     color = Color.Gray
                 )
                 Text(
-                    text = "₹${getCurrentBalance(history)}",
+                    text = "₹${String.format("%.2f", getCurrentBalance(history).toDouble())}",
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
                     color = walletblue //Color(0xFF2196F3)

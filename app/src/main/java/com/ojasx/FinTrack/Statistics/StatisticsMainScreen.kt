@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.Statistics.Balance.BalanceByAccounts
+import com.ojasx.FinTrack.Statistics.Balance.BalanceByCurrency
 import com.ojasx.FinTrack.Statistics.Balance.BalanceGraph
 
 
@@ -29,5 +30,6 @@ fun StatisticsMainScreen(viewModel: RecordsViewModel = viewModel()) {
     ) {
         BalanceGraph(history)
         BalanceByAccounts(history)
+        BalanceByCurrency(history)
     }
 }

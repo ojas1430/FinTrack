@@ -18,10 +18,13 @@ import androidx.compose.ui.tooling.preview.Preview
 @Preview(showBackground = true)
 @Composable
 fun CashFlowCard() {
+    val CustomRed = Color(0xFFE62727)
+    val CustomGreen = Color(0xFF48A14D)
+
     Card(
         modifier = Modifier
             .padding(8.dp)
-            .fillMaxWidth(), // ✅ Full width
+            .fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         shape = MaterialTheme.shapes.medium
@@ -33,11 +36,11 @@ fun CashFlowCard() {
         ) {
             // Header
             Row(
-                modifier = Modifier.fillMaxWidth(), // ✅ full width row
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(
-                    modifier = Modifier.weight(1f) // ✅ take remaining space
+                    modifier = Modifier.weight(1f)
                 ) {
                     Text(
                         text = "Cash Flow",
@@ -89,7 +92,7 @@ fun CashFlowCard() {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text("Income", fontSize = 18.sp, color = Color.Black)
-                    Spacer(Modifier.weight(1f)) // ✅ pushes amount to right
+                    Spacer(Modifier.weight(1f))
                     Text(
                         text = "₹0.00",
                         fontSize = 18.sp,
@@ -102,7 +105,7 @@ fun CashFlowCard() {
                         .fillMaxWidth()
                         .padding(top = 8.dp)
                         .height(22.dp)
-                        .background(Color.Green)
+                        .background(CustomGreen)
                 )
                 Spacer(Modifier.height(12.dp))
             }
@@ -112,7 +115,7 @@ fun CashFlowCard() {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Expenses", fontSize = 18.sp, color = Color.Black)
-                Spacer(Modifier.weight(1f)) // ✅ pushes amount to right
+                Spacer(Modifier.weight(1f))
                 Text(
                     text = "-₹0.00",
                     fontSize = 18.sp,
@@ -125,7 +128,7 @@ fun CashFlowCard() {
                     .fillMaxWidth()
                     .padding(top = 8.dp)
                     .height(22.dp)
-                    .background(Color.Red)
+                    .background(CustomRed)
             )
             Spacer(Modifier.height(12.dp))
         }
