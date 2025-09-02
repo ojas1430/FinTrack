@@ -31,6 +31,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+        // For LocalDate and other java.time APIs
+      //  coreLibraryDesugaringEnabled true
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -115,5 +117,10 @@ dependencies {
     coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.1.5")
     implementation("io.github.vanpra.compose-material-dialogs:datetime:0.9.0")
 
+
+    // Mp android ( used for graphs )
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.0.4")
 
 }

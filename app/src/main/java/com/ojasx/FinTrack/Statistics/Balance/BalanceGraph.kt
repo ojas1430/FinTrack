@@ -40,7 +40,10 @@ fun BalanceGraph(
     val totalDays = 3 // Covers 4 days (indices 0 to 3: 29 Aug to 1 Sep)
 
     Card(
-        modifier = modifier.fillMaxWidth().padding(16.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .height(400.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
@@ -181,7 +184,7 @@ fun BalanceGraph(
                                 color = AndroidColor.parseColor("#4300FF");     // Blue shade
                                 setCircleColor(AndroidColor.parseColor("#4300FF"));
                                 lineWidth = 2f
-                              //  circleRadius = f
+                                //  circleRadius = f
                                 setDrawValues(false)
                                 setDrawCircles(true)
                                 setDrawCircleHole(true)
@@ -256,4 +259,3 @@ private fun getRoundedMaxValue(maxValue: Float): Float {
         else -> ceil(maxValue / 100).toInt() * 100f
     }
 }
-

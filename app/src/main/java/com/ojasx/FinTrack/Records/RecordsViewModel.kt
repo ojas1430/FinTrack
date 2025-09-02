@@ -1,10 +1,10 @@
 package com.ojasx.FinTrack.Records
 
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ojasx.FinTrack.Statistics.Balance.BalancePoint
+import java.time.LocalDate
 
 class RecordsViewModel : ViewModel() {
 
@@ -18,15 +18,24 @@ class RecordsViewModel : ViewModel() {
     private val _selectedIcon = MutableLiveData<RecordIcons?>()
     val selectedIcon: LiveData<RecordIcons?> = _selectedIcon
 
-
-
-
-    // Summation sum amount of all cards
-    fun getTotal() : Int{
+    // ---- Totals ----
+    fun getTotal(): Int {
         return _recordList.value?.sumOf { it.amount.toIntOrNull() ?: 0 } ?: 0
     }
 
-    // Adds dynamic record
+    fun getIncomeTotal(): Int {
+        return _recordList.value
+            ?.filter { (it.amount.toIntOrNull() ?: 0) > 0 }
+            ?.sumOf { it.amount.toIntOrNull() ?: 0 } ?: 0
+    }
+
+    fun getTotalExpense(): Int {
+        return _recordList.value
+            ?.filter { (it.amount.toIntOrNull() ?: 0) < 0 }
+            ?.sumOf { it.amount.toIntOrNull() ?: 0 } ?: 0
+    }
+
+    // ---- Add / Delete Records ----
     fun addRecord(title: String, amount: String, date: String, icon: RecordIcons) {
         val current = _recordList.value.orEmpty()
         val newRecord = RecordsDataClass(
@@ -37,14 +46,28 @@ class RecordsViewModel : ViewModel() {
             date = date
         )
         _recordList.value = current + newRecord
+        updateBalanceHistory()
     }
 
     fun deleteRecord(id: Int) {
         _recordList.value = _recordList.value?.filterNot { it.id == id }
+        updateBalanceHistory()
     }
 
     fun selectCategory(title: String, icon: RecordIcons) {
         _selectedTitle.value = title
         _selectedIcon.value = icon
+    }
+
+    // ---- Graph Data ----
+    private val _balanceHistory = MutableLiveData<List<BalancePoint>>(emptyList())
+    val balanceHistory: LiveData<List<BalancePoint>> get() = _balanceHistory
+
+    private fun updateBalanceHistory() {
+        val newTotal = getTotal()
+        val today = LocalDate.now()
+        val current = _balanceHistory.value.orEmpty()
+        val updated = current.filterNot { it.date == today } + BalancePoint(today, newTotal)
+        _balanceHistory.value = updated
     }
 }

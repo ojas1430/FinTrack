@@ -29,6 +29,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import com.ojasx.FinTrack.Records.RecordsViewModel
+import com.ojasx.FinTrack.Statistics.Balance.BalanceByAccounts
+import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
 import com.ojasx.FinTrack.TopAppBar.AppBarButtons
 import com.ojasx.FinTrack.TopAppBar.AppBarCode
 import com.ojasx.FinTrack.ui.theme.walletblue
@@ -71,7 +73,7 @@ fun HomeScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(color = warmwhite)
+                      //  .background(color = warmwhite)
                         .padding(14.dp)
                 ) {
                     Column {
@@ -82,6 +84,10 @@ fun HomeScreen(
                     }
                 }
             }
+            item {
+                StatisticsMainScreen(viewModel)
+            }
+
         }
     }
     ActionBottomSheet(
