@@ -15,12 +15,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -34,6 +36,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ojasx.FinTrack.R
 import kotlinx.coroutines.flow.distinctUntilChanged
 import com.ojasx.FinTrack.ui.theme.walletblue
@@ -42,84 +45,119 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 fun Card1(modifier: Modifier) {
     Card(
         modifier = modifier
-            .height(100.dp),
+            .fillMaxWidth()
+            .wrapContentHeight(),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+        Column(
+            modifier = Modifier.wrapContentHeight()
         ) {
-            // Image
-            Image(
-                painter = painterResource(id = R.drawable.business),
-                contentDescription = "",
-                modifier = Modifier.size(50.dp)
-            )
-            Spacer(Modifier.width(12.dp))
-
-            Column(
+            Row(
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(vertical = 4.dp)
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                // Image
+                Image(
+                    painter = painterResource(id = R.drawable.business),
+                    contentDescription = "",
+                    modifier = Modifier.size(50.dp)
+                )
+                Spacer(Modifier.width(12.dp))
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(vertical = 4.dp)
+                ) {
+                    Text(
+                        "FinTrack for your business",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+
+                    Spacer(Modifier.height(6.dp))
+
+                    Text(
+                        "A smart app designed for entrepreneurs and small business.",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                }
+            }
+            TextButton(
+                onClick = {  },
+                modifier = Modifier.padding(start = 16.dp)
             ) {
                 Text(
-                    "FinTrack for your business",
+                    text = "MORE DETAILS",
+                    fontSize = 14.sp,
+                    color = walletblue,
                     fontWeight = FontWeight.Medium
-                )
-
-                Spacer(Modifier.height(6.dp))
-
-                Text(
-                    "A smart app designed for entrepreneurs and small business.",
-                    color = Color.Gray
                 )
             }
         }
     }
 }
 
+
+
 @Composable
 fun Card2(modifier: Modifier) {
     Card(
         modifier = modifier
-            .height(100.dp),
+            .wrapContentHeight(),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+        Column(
+            modifier = Modifier.wrapContentHeight()
         ) {
-            // Image
-            Image(
-                painter = painterResource(id = R.drawable.storage),
-                contentDescription = "",
-                modifier = Modifier.size(50.dp)
-            )
-            Spacer(Modifier.width(12.dp))
-
-            Column(
+            Row(
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(vertical = 4.dp)
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                // Image
+                Image(
+                    painter = painterResource(id = R.drawable.storage),
+                    contentDescription = "",
+                    modifier = Modifier.size(50.dp)
+                )
+                Spacer(Modifier.width(12.dp))
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(vertical = 4.dp)
+                ) {
+                    Text(
+                        "Keep Your Data Safe",
+                        fontWeight = FontWeight.Medium
+                    )
+
+                    Spacer(Modifier.height(6.dp))
+
+                    Text(
+                        "Your information is backed up securely and synced across all your devices, so you never lose track.",
+                        color = Color.Gray
+                    )
+                }
+            }
+            TextButton(
+                onClick = {  },
+                modifier = Modifier.padding(start = 16.dp)
             ) {
                 Text(
-                    "Keep Your Data Safe",
+                    text = "SAVE DATA",
+                    fontSize = 14.sp,
+                    color = walletblue,
                     fontWeight = FontWeight.Medium
-                )
-
-                Spacer(Modifier.height(6.dp))
-
-                Text(
-                    "Your information is backed up securely and synced across all your devices, so you never lose track.",
-                    color = Color.Gray
                 )
             }
         }
@@ -130,40 +168,55 @@ fun Card2(modifier: Modifier) {
 fun Card3(modifier: Modifier) {
     Card(
         modifier = modifier
-            .height(100.dp),
+            .wrapContentHeight(),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+        Column(
+            modifier = Modifier.wrapContentHeight()
         ) {
-            // Image
-            Image(
-                painter = painterResource(id = R.drawable.countdown),
-                contentDescription = "",
-                modifier = Modifier.size(50.dp)
-            )
-            Spacer(Modifier.width(12.dp))
-
-            Column(
+            Row(
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(vertical = 4.dp)
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                // Image
+                Image(
+                    painter = painterResource(id = R.drawable.countdown),
+                    contentDescription = "",
+                    modifier = Modifier.size(50.dp)
+                )
+                Spacer(Modifier.width(12.dp))
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(vertical = 4.dp)
+                ) {
+                    Text(
+                        "FinTrack Reminder",
+                        fontWeight = FontWeight.Medium
+                    )
+
+                    Spacer(Modifier.height(6.dp))
+
+                    Text(
+                        "Get alerts when you forget to record spending.",
+                        color = Color.Gray
+                    )
+                }
+            }
+            TextButton(
+                onClick = {  },
+                modifier = Modifier.padding(start = 16.dp)
             ) {
                 Text(
-                    "FinTrack Reminder",
+                    text = "SWITCH ON REMINDER",
+                    fontSize = 14.sp,
+                    color = walletblue,
                     fontWeight = FontWeight.Medium
-                )
-
-                Spacer(Modifier.height(6.dp))
-
-                Text(
-                    "Get alerts when you forget to record spending.",
-                    color = Color.Gray
                 )
             }
         }
@@ -176,40 +229,55 @@ fun Card3(modifier: Modifier) {
 fun Card4(modifier: Modifier) {
     Card(
         modifier = modifier
-            .height(100.dp),
+            .wrapContentHeight(),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+        Column(
+            modifier = Modifier.wrapContentHeight()
         ) {
-            // Image
-            Image(
-                painter = painterResource(id = R.drawable.bank),
-                contentDescription = "",
-                modifier = Modifier.size(50.dp)
-            )
-            Spacer(Modifier.width(12.dp))
-
-            Column(
+            Row(
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(vertical = 4.dp)
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                // Image
+                Image(
+                    painter = painterResource(id = R.drawable.bank),
+                    contentDescription = "",
+                    modifier = Modifier.size(50.dp)
+                )
+                Spacer(Modifier.width(12.dp))
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(vertical = 4.dp)
+                ) {
+                    Text(
+                        "Add More Accounts",
+                        fontWeight = FontWeight.Medium
+                    )
+
+                    Spacer(Modifier.height(6.dp))
+
+                    Text(
+                        "Add accounts to match every part of your financial life.",
+                        color = Color.Gray
+                    )
+                }
+            }
+            TextButton(
+                onClick = {  },
+                modifier = Modifier.padding(start = 16.dp)
             ) {
                 Text(
-                    "Add More Accounts",
+                    text = "CREATE  ACCOUNT",
+                    fontSize = 14.sp,
+                    color = walletblue,
                     fontWeight = FontWeight.Medium
-                )
-
-                Spacer(Modifier.height(6.dp))
-
-                Text(
-                    "Add accounts to match every part of your financial life.",
-                    color = Color.Gray
                 )
             }
         }
@@ -222,40 +290,55 @@ fun Card4(modifier: Modifier) {
     fun Card5(modifier: Modifier) {
         Card(
             modifier = modifier
-                .height(100.dp),
+                .wrapContentHeight(),
             colors = CardDefaults.cardColors(
                 containerColor = Color.White
             ),
             elevation = CardDefaults.cardElevation(10.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
+            Column(
+                modifier = Modifier.wrapContentHeight()
             ) {
-                // Image
-                Image(
-                    painter = painterResource(id = R.drawable.calendar),
-                    contentDescription = "",
-                    modifier = Modifier.size(50.dp)
-                )
-                Spacer(Modifier.width(12.dp))
-
-                Column(
+                Row(
                     modifier = Modifier
-                        .weight(1f)
-                        .padding(vertical = 4.dp)
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                ) {
+                    // Image
+                    Image(
+                        painter = painterResource(id = R.drawable.calendar),
+                        contentDescription = "",
+                        modifier = Modifier.size(50.dp)
+                    )
+                    Spacer(Modifier.width(12.dp))
+
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(vertical = 4.dp)
+                    ) {
+                        Text(
+                            "Schedule Payments",
+                            fontWeight = FontWeight.Medium
+                        )
+
+                        Spacer(Modifier.height(6.dp))
+
+                        Text(
+                            "Add upcoming payments and forecast your finances",
+                            color = Color.Gray
+                        )
+                    }
+                }
+                TextButton(
+                    onClick = {  },
+                    modifier = Modifier.padding(start = 16.dp)
                 ) {
                     Text(
-                        "Schedule Payments",
+                        text = "CREATE PLANNED PAYMENT",
+                        fontSize = 14.sp,
+                        color = walletblue,
                         fontWeight = FontWeight.Medium
-                    )
-
-                    Spacer(Modifier.height(6.dp))
-
-                    Text(
-                        "Add upcoming payments and forecast your finances",
-                        color = Color.Gray
                     )
                 }
             }
@@ -285,8 +368,7 @@ fun Card4(modifier: Modifier) {
             LazyRow(
                 state = liststate,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp),
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                contentPadding = PaddingValues(horizontal = 2.dp),
                 flingBehavior = rememberSnapFlingBehavior(lazyListState = liststate)
