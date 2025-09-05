@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ojasx.FinTrack.Statistics.Balance.BalancePoint
+import com.ojasx.FinTrack.Statistics.Outlook.EntryType
+import com.ojasx.FinTrack.Statistics.Outlook.ForecastEntry
 import java.time.LocalDate
 
 class RecordsViewModel : ViewModel() {
@@ -34,6 +36,45 @@ class RecordsViewModel : ViewModel() {
             ?.filter { (it.amount.toIntOrNull() ?: 0) < 0 }
             ?.sumOf { it.amount.toIntOrNull() ?: 0 } ?: 0
     }
+
+    //Forecast graph
+    fun getForecastEntries(): List<ForecastEntry> {
+        return try {
+            val income = getIncomeTotal()
+            val expense = getTotalExpense()
+            val total = getTotal()
+
+            // ✅ Safely extract amounts
+            val amounts = recordlist.value.orEmpty().mapNotNull {
+                it.amount.toIntOrNull()
+            }
+
+            val incomes = amounts.filter { it > 0 }
+            val expenses = amounts.filter { it < 0 }
+
+            val avgIncome = if (incomes.isNotEmpty()) incomes.sum() / incomes.size else 0
+            val avgExpense = if (expenses.isNotEmpty()) expenses.sum() / expenses.size else 0
+
+            val startingBalance = total
+            val expectedSpending = avgExpense  // negative number (safe)
+            val expectedIncome = avgIncome
+            val endingBalance = startingBalance + expectedIncome + expectedSpending
+
+            listOf(
+                ForecastEntry("Starting\nBalance", startingBalance, EntryType.STARTING_BALANCE),
+                ForecastEntry("Expected\nSpending", expectedSpending, EntryType.NEGATIVE),
+                ForecastEntry("Expected\nIncome", expectedIncome, EntryType.POSITIVE),
+                ForecastEntry("Ending\nBalance", endingBalance, EntryType.FORECAST)
+            )
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList()
+        }
+    }
+
+
+
 
     // ---- Add / Delete Records ----
     fun addRecord(title: String, amount: String, date: String, icon: RecordIcons) {
