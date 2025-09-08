@@ -41,16 +41,17 @@ fun CategoryScreen(
     navController: NavController,
     viewModel: MainViewModel
 ) {
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .statusBarsPadding()
     ) {
         StatusBarColor(walletgreen)
-        Column {
+
+        Column() {
             TopAppBar(
-                backgroundColor = walletblue,
+                backgroundColor = walletgreen,
                 modifier = Modifier
                     .height(60.dp)
                     .fillMaxWidth(),

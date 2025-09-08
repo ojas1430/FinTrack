@@ -16,20 +16,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.ojasx.FinTrack.StatusBarColor
 import com.ojasx.FinTrack.ui.theme.walletblue
+import com.ojasx.FinTrack.ui.theme.walletgreen
 import com.ojasx.FinTrack.ui.theme.warmwhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RecordsTopAppBar( viewModel: RecordsViewModel ) {
+fun RecordsTopAppBar( viewModel: RecordsViewModel , navController: NavController) {
     // summation of all card values
     val records by viewModel.recordlist.observeAsState(emptyList())
     val total = records.sumOf { it.amount.toIntOrNull() ?: 0 }
 
 
     // Set status bar color
-    StatusBarColor(walletblue)
+    StatusBarColor(walletgreen)
 
     LargeTopAppBar(
         navigationIcon = {
@@ -37,7 +39,9 @@ fun RecordsTopAppBar( viewModel: RecordsViewModel ) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(start = 8.dp)
             ) {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = {
+                    navController.navigate("HomeScreen")
+                }) {
                     Icon(
                         imageVector = Icons.Filled.Menu,
                         contentDescription = "Menu",
@@ -54,7 +58,7 @@ fun RecordsTopAppBar( viewModel: RecordsViewModel ) {
             }
         },
         title = {
-            // ✅ Second row with weeks and total
+            //  Second row with weeks and total
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
@@ -91,6 +95,6 @@ fun RecordsTopAppBar( viewModel: RecordsViewModel ) {
                 )
             }
         },
-        colors = TopAppBarDefaults.largeTopAppBarColors(containerColor = walletblue)
+        colors = TopAppBarDefaults.largeTopAppBarColors(containerColor = walletgreen)
     )
 }

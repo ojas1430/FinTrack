@@ -18,5 +18,6 @@ fun OutlookMainScreen() {
     ) {
         item { PlannedPaymentByCategory() }
         item { PlannedPaymentTimeline() }
+        item { ForecastMainScreen() }
     }
 }

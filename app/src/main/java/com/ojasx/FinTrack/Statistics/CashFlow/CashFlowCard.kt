@@ -14,12 +14,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import com.ojasx.FinTrack.ui.theme.CustomGreen
+import com.ojasx.FinTrack.ui.theme.CustomRed
 
 @Preview(showBackground = true)
 @Composable
 fun CashFlowCard() {
-    val CustomRed = Color(0xFFE62727)
-    val CustomGreen = Color(0xFF48A14D)
 
     Card(
         modifier = Modifier

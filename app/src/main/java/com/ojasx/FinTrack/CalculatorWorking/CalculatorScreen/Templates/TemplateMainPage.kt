@@ -22,6 +22,7 @@ import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateC
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.PaymentTemplate
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.PlaceTemplate
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.TypeTemplate
+import com.ojasx.FinTrack.ui.theme.walletgreen
 
 
 @Composable
@@ -30,7 +31,7 @@ fun TemplateMainScreen(navController: NavController){
 
 
     // Set status bar color once
-    StatusBarColor(walletblue)
+    StatusBarColor(walletgreen)
 
     Scaffold(
         topBar = { TopAppBarTemplate(navController) },

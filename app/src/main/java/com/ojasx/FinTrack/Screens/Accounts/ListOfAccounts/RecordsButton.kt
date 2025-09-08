@@ -39,7 +39,7 @@ fun RecordButton(navController: NavController) {
                     color = Color.Gray,
                     shape = RoundedCornerShape(8.dp)
                 )
-                .padding(horizontal = 12.dp, vertical = 6.dp), // compact padding
+                .padding(horizontal = 12.dp, vertical = 6.dp),
             contentAlignment = Alignment.Center
         ) {
             Row(
@@ -50,7 +50,7 @@ fun RecordButton(navController: NavController) {
                     imageVector = Icons.Default.Menu,
                     contentDescription = "",
                     tint = purpleBlue,
-                    modifier = Modifier.size(14.dp) // smaller icon
+                    modifier = Modifier.size(14.dp)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(

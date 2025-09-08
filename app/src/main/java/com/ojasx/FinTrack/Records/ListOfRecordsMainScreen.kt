@@ -8,15 +8,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 
 @Composable
 fun ListOfRecords(
+    navController: NavController,
     viewModel: RecordsViewModel = viewModel()
 ) {
     val records by viewModel.recordlist.observeAsState(emptyList())
 
     Column {
-        RecordsTopAppBar(viewModel)
+        RecordsTopAppBar(viewModel, navController)
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             item {
                 if (records.isEmpty()) {

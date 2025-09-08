@@ -18,6 +18,9 @@ import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateM
 import com.ojasx.FinTrack.Records.ListOfRecords
 import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.Screens.HomeScreen.HomeScreen
+import com.ojasx.FinTrack.Statistics.Balance.BalanceMainScreen
+import com.ojasx.FinTrack.Statistics.Balance.BalancePoint
+import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
 
 @Composable
 fun Navigation() {
@@ -28,14 +31,18 @@ fun Navigation() {
 
     NavHost(
         navController = navController, startDestination = "HomeScreen", builder = {
+
             // navitgates to cash account
             composable("Calculator-Account-Screen"){
                 AccountSelection(navController)
             }
+
+            //Home Screen
             composable("HomeScreen"){
                 HomeScreen(navController,recordsviewModel)
             }
 
+            //calculator screen
             composable("CalculatorScreen"){
                 Calculator(navController,mainViewModel,recordsviewModel)
             }
@@ -57,7 +64,7 @@ fun Navigation() {
 
             //navigates to list of records screen
             composable("ListOfRecords"){
-                ListOfRecords(recordsviewModel)
+                ListOfRecords(navController,recordsviewModel)
             }
 
             composable("GetFoodCards"){
@@ -72,6 +79,17 @@ fun Navigation() {
             composable("Categorytemplate"){
                 CategoryTemplate(navController,mainViewModel)
             }
+
+            // Statistics main screen
+            composable("StatisticsMainScreen"){
+                StatisticsMainScreen(recordsviewModel)
+            }
+
+            // Records Main Screen
+            composable("RecordsMainScreen"){
+                ListOfRecords(navController,recordsviewModel)
+            }
+
 
         }
 

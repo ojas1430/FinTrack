@@ -20,3 +20,6 @@ val warmwhite = Color(0xFFEFF3EA)
 val premium = Color(0xFF910A67)
 
 val calculatorcolor =   Color(0xFF7A85C1)
+
+val CustomRed = Color(0xFFE62727)
+val CustomGreen = Color(0xFF48A14D)

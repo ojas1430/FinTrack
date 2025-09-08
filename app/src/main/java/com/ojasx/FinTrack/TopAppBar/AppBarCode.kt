@@ -19,35 +19,34 @@ import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppBarCode(modifier: Modifier = Modifier) {
-
+fun AppBarCode(
+    modifier: Modifier = Modifier,
+    onMenuClick: () -> Unit
+) {
     StatusBarColor(walletgreen)
 
     TopAppBar(
-       // modifier = modifier.statusBarsPadding(),
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = walletgreen,
             titleContentColor = MaterialTheme.colorScheme.primary,
         ),
         navigationIcon = {
-            IconButton(onClick = { }) {
+            IconButton(onClick = onMenuClick) {
                 Icon(
                     imageVector = Icons.Filled.Menu,
-                    contentDescription = "Localized description",
+                    contentDescription = "Menu",
                     tint = Color.White
-                    )
+                )
             }
-
-        }, title = {
-            Text(
-                "Home", fontWeight = FontWeight.Bold, color = Color.White
-            )
+        },
+        title = {
+            Text("Home", fontWeight = FontWeight.Bold, color = Color.White)
         },
         actions = {
-            IconButton(onClick = {}) {
+            IconButton(onClick = { /* TODO */ }) {
                 Icon(
                     imageVector = Icons.Filled.Notifications,
-                    contentDescription = "Localized description",
+                    contentDescription = "Notifications",
                     tint = Color.White
                 )
             }

@@ -61,12 +61,11 @@ class RecordsViewModel : ViewModel() {
             val endingBalance = startingBalance + expectedIncome + expectedSpending
 
             listOf(
-                ForecastEntry("Starting\nBalance", startingBalance, EntryType.STARTING_BALANCE),
-                ForecastEntry("Expected\nSpending", expectedSpending, EntryType.NEGATIVE),
-                ForecastEntry("Expected\nIncome", expectedIncome, EntryType.POSITIVE),
-                ForecastEntry("Ending\nBalance", endingBalance, EntryType.FORECAST)
+                ForecastEntry("Starting Balance", startingBalance, EntryType.STARTING_BALANCE),
+                ForecastEntry("Expected Spending", expectedSpending, EntryType.NEGATIVE),
+                ForecastEntry("Expected Income", expectedIncome, EntryType.POSITIVE),
+                ForecastEntry("Ending Balance", endingBalance, EntryType.FORECAST)
             )
-
         } catch (e: Exception) {
             e.printStackTrace()
             emptyList()
