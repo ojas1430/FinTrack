@@ -1,4 +1,4 @@
-package com.ojasx.FinTrack.SideBar
+package com.ojasx.FinTrack.SideBar.UserProfile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,11 +12,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ojasx.FinTrack.R
-import com.ojasx.FinTrack.StatusBarColor
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
@@ -46,11 +44,14 @@ fun SideBarProfileSection() {
             Text(
                 text = "Ojas Choudhary",
                 fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
+                fontSize = 18.sp,
+                color = Color.White
             )
+            Spacer(Modifier.height(4.dp))
             Text(
                 text = "My FinTrack",
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                color = Color.White
             )
         }
     }
