@@ -47,7 +47,7 @@ fun CategoryScreen(
             .fillMaxSize()
             .background(Color.White)
     ) {
-        StatusBarColor(walletgreen)
+        StatusBarColor()
 
         Column() {
             TopAppBar(

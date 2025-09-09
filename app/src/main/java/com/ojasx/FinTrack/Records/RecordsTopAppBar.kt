@@ -31,7 +31,7 @@ fun RecordsTopAppBar( viewModel: RecordsViewModel , navController: NavController
 
 
     // Set status bar color
-    StatusBarColor(walletgreen)
+    StatusBarColor()
 
     LargeTopAppBar(
         navigationIcon = {

@@ -31,7 +31,7 @@ fun TemplateMainScreen(navController: NavController){
 
 
     // Set status bar color once
-    StatusBarColor(walletgreen)
+    StatusBarColor()
 
     Scaffold(
         topBar = { TopAppBarTemplate(navController) },

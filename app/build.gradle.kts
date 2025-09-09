@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.androidx.runtime)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.compose.material.core)
 
     // JUnit (unit tests)
     testImplementation(libs.junit)

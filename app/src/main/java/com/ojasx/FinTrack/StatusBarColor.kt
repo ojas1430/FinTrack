@@ -1,24 +1,22 @@
 package com.ojasx.FinTrack
 
-import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
-
-fun StatusBarColor(color: Color) {
+fun StatusBarColor() {
     val systemUiController = rememberSystemUiController()
 
     SideEffect {
         systemUiController.setStatusBarColor(
-            color = color,
+            color = walletgreen,
             darkIcons = false
         )
         systemUiController.setSystemBarsColor(
-            color = color,
+            color = walletgreen,
             darkIcons = false
         )
-
     }
 }

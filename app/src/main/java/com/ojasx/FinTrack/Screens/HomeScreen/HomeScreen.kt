@@ -30,14 +30,18 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.Screens.Accounts.LazyListCards.LazyListOfCards
 import com.ojasx.FinTrack.Screens.Accounts.ListOfAccounts.ListOfAccountsMainScreen
 import com.ojasx.FinTrack.Screens.Accounts.PremiumClub.PremiumClubCard
 import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
+import com.ojasx.FinTrack.StatusBarColor
 import com.ojasx.FinTrack.TopAppBar.AppBarButtons
+import com.ojasx.FinTrack.TopAppBar.AppBarCode
 import com.ojasx.FinTrack.ui.theme.walletblue
 import com.ojasx.FinTrack.ui.theme.walletgreen
 import kotlinx.coroutines.launch
@@ -53,6 +57,8 @@ fun HomeScreen(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
+    StatusBarColor()
+
     ModalSidebar(
         drawerState = drawerState,
         onNavigate = { route ->
@@ -63,22 +69,8 @@ fun HomeScreen(
         }
     ) {
         Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text("FinTrack") },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = walletgreen,
-                        titleContentColor = Color.White,
-                        navigationIconContentColor = Color.White,
-                        actionIconContentColor = Color.White
-                    ),
-                    navigationIcon = {
-                        IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                            Icon(Icons.Default.Menu, contentDescription = "Menu")
-                        }
-                    }
-                )
-            },
+            topBar = { AppBarCode(drawerState) }
+            ,
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = { showBottomSheet = true },

@@ -23,7 +23,7 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 @Composable
     fun SideButtonScreen(navController: NavController) {
         // Set status bar color once
-        StatusBarColor(walletblue)
+        StatusBarColor()
 
         Scaffold(
             topBar = { TopAppBarSideButton(navController) },

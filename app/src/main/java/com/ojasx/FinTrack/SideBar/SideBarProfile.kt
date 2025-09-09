@@ -16,13 +16,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ojasx.FinTrack.R
+import com.ojasx.FinTrack.StatusBarColor
+import com.ojasx.FinTrack.ui.theme.walletgreen
 
-@Preview
 @Composable
 fun SideBarProfileSection() {
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .background(walletgreen)
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -47,8 +50,7 @@ fun SideBarProfileSection() {
             )
             Text(
                 text = "My FinTrack",
-                fontSize = 14.sp,
-                color = Color.Gray
+                fontSize = 14.sp
             )
         }
     }
