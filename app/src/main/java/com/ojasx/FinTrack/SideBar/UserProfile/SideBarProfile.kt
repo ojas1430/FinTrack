@@ -2,6 +2,7 @@ package com.ojasx.FinTrack.SideBar.UserProfile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
@@ -14,17 +15,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.ojasx.FinTrack.R
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
-fun SideBarProfileSection() {
+fun SideBarProfileSection(navController: NavController) {
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(walletgreen)
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable{
+                navController.navigate("UserProfileScreen")
+            },
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Profile Image
