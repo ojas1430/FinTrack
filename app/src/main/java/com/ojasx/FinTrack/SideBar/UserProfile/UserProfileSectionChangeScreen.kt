@@ -21,7 +21,10 @@ import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UserProfileScreen(navController: NavController) {
+fun UserProfileScreen(
+    navController: NavController,
+    viewModel: ProfileViewModel
+    ) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -37,7 +40,7 @@ fun UserProfileScreen(navController: NavController) {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* back */ }) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "Back",
@@ -46,7 +49,10 @@ fun UserProfileScreen(navController: NavController) {
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* save */ }) {
+                    IconButton(onClick = {
+                        viewModel.updateProfile(firstName,lastName,email)
+                        navController.popBackStack()
+                    }) {
                         Icon(
                             imageVector = Icons.Filled.Check,
                             contentDescription = "Save",

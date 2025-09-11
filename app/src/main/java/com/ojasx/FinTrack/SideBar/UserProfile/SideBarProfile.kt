@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,7 +22,14 @@ import com.ojasx.FinTrack.R
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
-fun SideBarProfileSection(navController: NavController) {
+fun SideBarProfileSection(
+    navController: NavController,
+    viewModel: ProfileViewModel
+    ) {
+
+    val firstName by viewModel.firstName.observeAsState("")
+    val lastName by viewModel.lastName.observeAsState("")
+    val email by viewModel.email.observeAsState("")
 
     Row(
         modifier = Modifier
@@ -47,14 +56,14 @@ fun SideBarProfileSection(navController: NavController) {
         // Name + Subtitle
         Column {
             Text(
-                text = "Ojas Choudhary",
+                text = "$firstName $lastName",
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 color = Color.White
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = "My FinTrack",
+                text = email,
                 fontSize = 14.sp,
                 color = Color.White
             )
