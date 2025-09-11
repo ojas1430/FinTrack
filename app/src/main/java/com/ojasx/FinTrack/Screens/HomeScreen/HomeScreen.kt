@@ -31,6 +31,7 @@ import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.Screens.Accounts.LazyListCards.LazyListOfCards
 import com.ojasx.FinTrack.Screens.Accounts.ListOfAccounts.ListOfAccountsMainScreen
 import com.ojasx.FinTrack.Screens.Accounts.PremiumClub.PremiumClubCard
+import com.ojasx.FinTrack.SideBar.UserProfile.ProfileViewModel
 import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
 import com.ojasx.FinTrack.StatusBarColor
 import com.ojasx.FinTrack.TopAppBar.AppBarButtons
@@ -42,7 +43,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: RecordsViewModel
+    viewModel: RecordsViewModel,
+    profileViewModel: ProfileViewModel
 ) {
     var showBottomSheet by remember { mutableStateOf(false) }
 
@@ -59,7 +61,9 @@ fun HomeScreen(
                 navController.navigate(route)
             }
         },
-        navController = navController
+        navController = navController,
+        profileViewModel
+
     ) {
         Scaffold(
             topBar = { AppBarCode(drawerState) },
