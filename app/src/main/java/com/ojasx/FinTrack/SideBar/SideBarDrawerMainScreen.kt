@@ -1,9 +1,13 @@
 package com.ojasx.FinTrack.SideBar
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,6 +23,8 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,10 +35,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.SideBar.UserProfile.ProfileViewModel
 import com.ojasx.FinTrack.SideBar.UserProfile.SideBarProfileSection
+import com.ojasx.FinTrack.StatusBarColor
 import com.ojasx.FinTrack.ui.theme.walletblue
+import com.ojasx.FinTrack.ui.theme.walletgreen
 
 
 @Composable
@@ -48,6 +57,26 @@ fun ModalSidebar(
     val screenWidth = configuration.screenWidthDp.dp
     val drawerWidth = screenWidth * 0.8f
     val (selectedRoute, setSelectedRoute) = remember { mutableStateOf<String?>(null) }
+
+
+    val systemUiController = rememberSystemUiController()
+
+    // StatusBar icons color to sidebar open/close
+    LaunchedEffect(drawerState.isOpen) {
+        if (drawerState.isOpen) {
+            // Sidebar opened → dark icons
+            systemUiController.setStatusBarColor(
+                color = Color.White,
+                darkIcons = true     // black icons
+            )
+        } else {
+            // Sidebar closed → white icons
+            systemUiController.setStatusBarColor(
+                color = walletgreen,
+                darkIcons = false
+            )
+        }
+    }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -123,8 +152,7 @@ private fun DrawerSection(
 ) {
     items.forEach { item ->
         NavigationDrawerItem(
-            label = { Text(item.label, fontSize = 18.sp,
-                ) },
+            label = { Text(item.label, fontSize = 18.sp,) },
             selected = selectedRoute == item.route,
             onClick = {
                 setSelectedRoute(item.route)
