@@ -1,5 +1,9 @@
 package com.ojasx.FinTrack.SideBar
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -11,22 +15,34 @@ import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.ojasx.FinTrack.Records.RecordsViewModel
+import com.ojasx.FinTrack.SideBar.UserProfile.ProfileViewModel
 import com.ojasx.FinTrack.SideBar.UserProfile.SideBarProfileSection
+import com.ojasx.FinTrack.ui.theme.walletblue
+
 
 @Composable
 fun ModalSidebar(
     drawerState: DrawerState,
     onNavigate: (String) -> Unit,
+    navController: NavController,
+    profileViewModel: ProfileViewModel,
     content: @Composable () -> Unit
+
 ) {
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
@@ -42,7 +58,7 @@ fun ModalSidebar(
                 drawerContentColor = Color.Black
             ) {
                 LazyColumn {
-                    item { SideBarProfileSection() }
+                    item { SideBarProfileSection(navController,profileViewModel) }
 
                     items(allItems) { item ->
                         NavigationDrawerItem(
@@ -78,11 +94,17 @@ fun ModalSidebar(
                         if (item.label == "Get Premium" ||
                             item.label == "Imports" ||
                             item.label == "Planned Payments" ||
-                            item.label == "Other"
+                            item.label == "Other" ||
+                            item.label == "Settings"
                         ) {
                             ThinDivider()
                         }
                     }
+
+                    items(switchItems) { switch ->
+                        SideBarSwitches(switchItem = switch)
+                    }
+
                 }
             }
         }

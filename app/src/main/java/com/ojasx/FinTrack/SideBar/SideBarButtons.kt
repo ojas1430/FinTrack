@@ -23,7 +23,8 @@ import androidx.compose.ui.unit.dp
 data class DrawerItem(
     val label: String,
     val icon: ImageVector,
-    val route: String
+    val route: String,
+    val isSwitch : Boolean = false
 )
 
 val allItems = listOf(
@@ -51,6 +52,11 @@ val allItems = listOf(
     DrawerItem("Settings", Icons.Default.Settings, "settings"),
 
     )
+
+val switchItems = listOf(
+    DrawerItem("Dark Mode", Icons.Default.DarkMode, "", true),
+    DrawerItem("Hide Amounts", Icons.Default.VisibilityOff, "", true)
+)
 
 fun getColor(label: String): Color {
     return when (label) {

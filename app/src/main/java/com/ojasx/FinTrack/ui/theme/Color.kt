@@ -10,9 +10,9 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
-val walletgreen =  Color(0xFF748DAE)
+val walletgreen = Color(0xFF748DAE)
 
-val walletblue = Color(0xFF4300FF) //  Color(0xFFD25D5D)  //Color(0xFFD6A99D)
+val walletblue = Color(0xFF4300FF)
 val purpleBlue = Color(0xFF4300FF)
 
 val warmwhite = Color(0xFFEFF3EA)

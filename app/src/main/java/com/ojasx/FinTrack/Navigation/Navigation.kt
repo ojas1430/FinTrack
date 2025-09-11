@@ -18,6 +18,8 @@ import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateM
 import com.ojasx.FinTrack.Records.ListOfRecords
 import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.Screens.HomeScreen.HomeScreen
+import com.ojasx.FinTrack.SideBar.UserProfile.ProfileViewModel
+import com.ojasx.FinTrack.SideBar.UserProfile.UserProfileScreen
 import com.ojasx.FinTrack.Statistics.Balance.BalanceMainScreen
 import com.ojasx.FinTrack.Statistics.Balance.BalancePoint
 import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
@@ -27,6 +29,7 @@ fun Navigation() {
     val navController = rememberNavController()
     val mainViewModel: MainViewModel = viewModel()
     val recordsviewModel : RecordsViewModel = viewModel()
+    val profileviewmodel : ProfileViewModel = viewModel()
 
 
     NavHost(
@@ -39,7 +42,7 @@ fun Navigation() {
 
             //Home Screen
             composable("HomeScreen"){
-                HomeScreen(navController,recordsviewModel)
+                HomeScreen(navController,recordsviewModel,profileviewmodel)
             }
 
             //calculator screen
@@ -88,6 +91,11 @@ fun Navigation() {
             // Records Main Screen
             composable("RecordsMainScreen"){
                 ListOfRecords(navController,recordsviewModel)
+            }
+
+            // side screen user profile
+            composable("UserProfileScreen"){
+                UserProfileScreen(navController,profileviewmodel)
             }
 
 
