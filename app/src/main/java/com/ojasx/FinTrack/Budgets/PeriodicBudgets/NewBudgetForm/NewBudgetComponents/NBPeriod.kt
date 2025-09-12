@@ -25,7 +25,7 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NBPayment() {
+fun NBPeriod() {
     val options = listOf(
         "Week",
         "Month",

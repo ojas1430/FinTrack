@@ -1,6 +1,5 @@
 package com.ojasx.FinTrack.Budgets.PeriodicBudgets.NewBudgetForm.NewBudgetComponents
 
-import android.widget.Switch
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,9 +22,11 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.draw.scale
+import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
-fun NotificationsCard() {
+fun NBNotificationsCard() {
     var budgetSwitch by remember { mutableStateOf(false) }
     var riskSwitch by remember { mutableStateOf(false) }
 
@@ -35,14 +37,14 @@ fun NotificationsCard() {
     ) {
         // Top Heading
         Text(
-            text = "Notifications",
+            text = "NOTIFICATIONS",
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSurface
         )
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        //Budget Overspent
+        // Budget Overspent
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -54,6 +56,7 @@ fun NotificationsCard() {
                     text = "Budget overspent",
                     style = MaterialTheme.typography.titleMedium
                 )
+                Spacer(Modifier.height(4.dp))
                 Text(
                     text = "Notify when amount has exceeded the budget",
                     style = MaterialTheme.typography.bodyMedium,
@@ -62,7 +65,12 @@ fun NotificationsCard() {
             }
             Switch(
                 checked = budgetSwitch,
-                onCheckedChange = { budgetSwitch = it }
+                onCheckedChange = { budgetSwitch = it },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = walletblue,
+                    checkedTrackColor = walletblue.copy(alpha = 0.5f)
+                ),
+                modifier = Modifier.scale(0.8f)
             )
         }
 
@@ -83,8 +91,7 @@ fun NotificationsCard() {
                     )
                 }
         )
-
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         // Risk of Overspending
         Row(
@@ -98,6 +105,7 @@ fun NotificationsCard() {
                     text = "Risk of overspending",
                     style = MaterialTheme.typography.titleMedium
                 )
+                Spacer(Modifier.height(4.dp))
                 Text(
                     text = "Notify when budget is trending to be overspent",
                     style = MaterialTheme.typography.bodyMedium,
@@ -106,8 +114,31 @@ fun NotificationsCard() {
             }
             Switch(
                 checked = riskSwitch,
-                onCheckedChange = { riskSwitch = it }
+                onCheckedChange = { riskSwitch = it },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = walletblue,
+                    checkedTrackColor = walletblue.copy(alpha = 0.5f)
+                ),
+                modifier = Modifier.scale(0.8f)
             )
         }
+        // Underline
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+                .height(2.dp)
+                .drawBehind {
+                    val strokeWidth = 1.dp.toPx()
+                    val y = size.height - strokeWidth / 2
+                    drawLine(
+                        color = Color.LightGray,
+                        start = Offset(0f, y),
+                        end = Offset(size.width, y),
+                        strokeWidth = strokeWidth
+                    )
+                }
+        )
+
     }
 }
