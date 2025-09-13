@@ -9,11 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.focus.onFocusChanged
@@ -22,13 +19,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ojasx.FinTrack.Budgets.BudgetViewModel
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
-fun NBName() {
-    var name by remember { mutableStateOf("") }
+fun NBName(budgetViewModel: BudgetViewModel) {
+    // observe the current name from ViewModel
+    val name by budgetViewModel.name.observeAsState(initial = "")
 
-    // track focus
     var isFocused by remember { mutableStateOf(false) }
 
     Spacer(Modifier.height(12.dp))
@@ -38,7 +36,6 @@ fun NBName() {
             .fillMaxWidth()
             .padding(horizontal = 24.dp, vertical = 8.dp)
     ) {
-        // Top label
         Text(
             text = "Name",
             color = if (isFocused) walletblue else Color.Gray,
@@ -47,7 +44,9 @@ fun NBName() {
 
         BasicTextField(
             value = name,
-            onValueChange = { name = it },
+            onValueChange = { newValue ->
+                budgetViewModel.updateName(newValue)
+            },
             singleLine = true,
             textStyle = LocalTextStyle.current.copy(
                 color = Color.Black,
@@ -64,7 +63,6 @@ fun NBName() {
                     innerTextField()
                     Spacer(Modifier.height(4.dp))
 
-                    // underline
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()

@@ -1,21 +1,12 @@
 package com.ojasx.FinTrack.Budgets.PeriodicBudgets.NewBudgetForm.NewBudgetComponents
 
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.DialogAmountTemplate
-
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
@@ -23,10 +14,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ojasx.FinTrack.Budgets.BudgetViewModel
 
 @Composable
-fun NBAmountField() {
-    var amount by remember { mutableStateOf("") }
+fun NBAmountField(budgetViewModel: BudgetViewModel) {
+    // Observe amount from ViewModel (default to 0)
+    val amount by budgetViewModel.amount.observeAsState(initial = 0)
     var showDialog by remember { mutableStateOf(false) }
 
     Column(
@@ -41,9 +34,9 @@ fun NBAmountField() {
             fontWeight = FontWeight.Medium
         )
 
-        // Text field
+        // Display amount (clickable)
         Text(
-            text = if (amount.isEmpty()) "0" else amount,
+            text = amount.toString(),
             style = LocalTextStyle.current.copy(fontSize = 20.sp),
             modifier = Modifier
                 .fillMaxWidth()
@@ -75,11 +68,11 @@ fun NBAmountField() {
         DialogAmountTemplate(
             onDismiss = { showDialog = false },
             onInsert = { value ->
-                amount = value
+                // Update ViewModel with integer value (or 0 if invalid)
+                val parsed = value.toIntOrNull() ?: 0
+                budgetViewModel.updateAmount(parsed)
                 showDialog = false
             }
         )
     }
 }
-
-

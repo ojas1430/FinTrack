@@ -28,7 +28,7 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
-fun NBTopAppBar() {
+fun NBTopAppBar(navController: NavController) {
 
 
     TopAppBar(
@@ -77,7 +77,9 @@ fun NBTopAppBar() {
             }
 
             IconButton(
-                onClick = {}
+                onClick = {
+                    navController.popBackStack()
+                }
             ) {
                 Icon(
                     imageVector = Icons.Default.Check,

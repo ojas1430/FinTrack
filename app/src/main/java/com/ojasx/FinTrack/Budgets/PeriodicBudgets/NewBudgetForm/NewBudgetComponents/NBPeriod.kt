@@ -13,6 +13,7 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
@@ -20,27 +21,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ojasx.FinTrack.Budgets.BudgetViewModel
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NBPeriod() {
-    val options = listOf(
-        "Week",
-        "Month",
-        "Year",
-        "One time"
-    )
+fun NBPeriod(
+    budgetViewModel: BudgetViewModel // ✅ Pass ViewModel
+) {
+    val options = listOf("Week", "Month", "Year", "One time")
     var expanded by remember { mutableStateOf(false) }
-    var selectedOption by remember { mutableStateOf(options[0]) }
+
+    // ✅ Use ViewModel's period value instead of local state
+    val selectedOption by budgetViewModel.period.observeAsState(options[0])
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 24.dp, vertical = 8.dp)
     ) {
-        // Top label
         androidx.compose.material.Text(
             text = "Period",
             color = Color.Gray,
@@ -54,9 +54,7 @@ fun NBPeriod() {
             TextField(
                 value = selectedOption,
                 onValueChange = {},
-                textStyle = LocalTextStyle.current.copy(
-                    fontSize = 20.sp
-                ),
+                textStyle = LocalTextStyle.current.copy(fontSize = 20.sp),
                 readOnly = true,
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
@@ -80,9 +78,9 @@ fun NBPeriod() {
             ) {
                 options.forEach { option ->
                     DropdownMenuItem(
-                        text = { Text(option)},
+                        text = { Text(option) },
                         onClick = {
-                            selectedOption = option
+                            budgetViewModel.updatePeriod(option) // ✅ Update ViewModel
                             expanded = false
                         }
                     )
@@ -90,8 +88,7 @@ fun NBPeriod() {
             }
         }
 
-
-        //underline
+        // underline
         Box(
             modifier = Modifier
                 .fillMaxWidth()
