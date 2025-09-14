@@ -26,7 +26,6 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview
 fun PaymentTemplate() {
     val options = listOf(
         "Cash",

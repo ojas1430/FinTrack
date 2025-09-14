@@ -51,7 +51,7 @@ fun HomeScreen(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
-    StatusBarColor()
+
 
     ModalSidebar(
         drawerState = drawerState,
@@ -65,8 +65,11 @@ fun HomeScreen(
         profileViewModel
 
     ) {
+
         Scaffold(
             topBar = { AppBarCode(drawerState) },
+
+            // passing HomeScreen FAB
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = { showBottomSheet = true },

@@ -5,6 +5,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ojasx.FinTrack.Budgets.BudgetMainScreen
+import com.ojasx.FinTrack.Budgets.BudgetViewModel
+import com.ojasx.FinTrack.Budgets.PeriodicBudgets.NewBudgetForm.NewBudgetFormMainScreen
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.AccountSelection.AccountSelection
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Calculator
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.CalculatorSideButton.SideButtonScreen
@@ -30,6 +33,7 @@ fun Navigation() {
     val mainViewModel: MainViewModel = viewModel()
     val recordsviewModel : RecordsViewModel = viewModel()
     val profileviewmodel : ProfileViewModel = viewModel()
+    val budgetViewModel : BudgetViewModel = viewModel()
 
 
     NavHost(
@@ -96,6 +100,15 @@ fun Navigation() {
             // side screen user profile
             composable("UserProfileScreen"){
                 UserProfileScreen(navController,profileviewmodel)
+            }
+
+            // moves to new budget form
+            composable("NewBudgetFormMainScreen"){
+                NewBudgetFormMainScreen(navController, budgetViewModel)
+            }
+
+            composable("BudgetMainScreen"){
+                BudgetMainScreen(navController,budgetViewModel,recordsviewModel)
             }
 
 
