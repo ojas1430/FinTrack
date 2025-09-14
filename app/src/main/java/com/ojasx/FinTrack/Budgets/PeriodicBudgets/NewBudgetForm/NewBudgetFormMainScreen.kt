@@ -18,6 +18,7 @@ import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateC
 import com.ojasx.FinTrack.StatusBarColor
 import com.ojasx.FinTrack.ui.theme.walletblue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ojasx.FinTrack.Budgets.BudgetViewModel
 import com.ojasx.FinTrack.Budgets.PeriodicBudgets.NewBudgetForm.NewBudgetComponents.NBAmountField
 import com.ojasx.FinTrack.Budgets.PeriodicBudgets.NewBudgetForm.NewBudgetComponents.NBCurrency
 import com.ojasx.FinTrack.Budgets.PeriodicBudgets.NewBudgetForm.NewBudgetComponents.NBName
@@ -30,23 +31,25 @@ import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateC
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.TypeTemplate
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
-@Preview
 @Composable
-fun TemplateMainScreen(){
+fun NewBudgetFormMainScreen(
+    navController: NavController,
+    budgetViewModel: BudgetViewModel
+){
 
     // Set status bar color once
     StatusBarColor()
 
     Scaffold(
-        topBar = { NBTopAppBar() },
+        topBar = { NBTopAppBar(navController,budgetViewModel) },
         contentWindowInsets = WindowInsets(0, 0, 0, 0)
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier.padding(innerPadding)
         ) {
-            item { NBName() }
-            item { NBAmountField() }
-            item { NBPeriod() }
+            item { NBName(budgetViewModel) }
+            item { NBAmountField(budgetViewModel) }
+            item { NBPeriod(budgetViewModel) }
             item { NBCurrency() }
             item { NBNotificationsCard() }
         }

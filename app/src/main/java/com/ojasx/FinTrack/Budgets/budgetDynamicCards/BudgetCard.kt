@@ -12,18 +12,40 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import com.ojasx.FinTrack.Budgets.BudgetViewModel
+import com.ojasx.FinTrack.Records.RecordsViewModel
 
-@Preview
 @Composable
-fun BudgetCard() {
-    val spent = 100054
-    val budget = 90000
-    val isOverBudget = spent > budget
-    val progress = (spent.toFloat() / budget.toFloat()).coerceAtMost(1f)
+fun BudgetCard(
+    budgetViewModel: BudgetViewModel,
+    viewModel: RecordsViewModel
+) {
+    val name by budgetViewModel.name.observeAsState(initial = "My Budget")
+    val amount by budgetViewModel.amount.observeAsState(initial = 0)
+    val period by budgetViewModel.period.observeAsState(initial = "Monthly")
+
+    // summation of all card amount
+    val records by viewModel.recordlist.observeAsState(emptyList())
+    val total = records.sumOf { it.amount.toIntOrNull() ?: 0 }
+
+    val spent = "$total"
+    val isOverBudget = spent > amount.toString()
+    val progress = if (amount > 0) (spent.toFloat() / amount.toFloat()).coerceAtMost(1f) else 0f
 
     val arrowColor = Color.Blue
     val budgetTextColor = if (isOverBudget) Color.Red else Color.Green
@@ -37,25 +59,23 @@ fun BudgetCard() {
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            // Top heading
+            // Top heading uses ViewModel data
             Text(
-                text = "This month",
+                text = "$period - $name",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
 
-            // Row with ₹ and summation
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(text = "(₹)", style = MaterialTheme.typography.bodyLarge)
-                Text(text = "$spent / $budget", style = MaterialTheme.typography.bodyLarge)
+                Text(text = "$spent / $amount", style = MaterialTheme.typography.bodyLarge)
             }
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Big clickable section (Bud row + progress bar + arrow)
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -63,19 +83,18 @@ fun BudgetCard() {
                     .padding(top = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Left column with Bud + progress bar
                 Column(modifier = Modifier.weight(1f)) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "Bud",
+                            text = "$name",
                             style = MaterialTheme.typography.bodyMedium,
                             color = Color.Gray
                         )
                         Text(
-                            text = "$spent / $budget",
+                            text = "$spent / $amount",
                             style = MaterialTheme.typography.bodyMedium,
                             color = budgetTextColor
                         )
@@ -92,7 +111,6 @@ fun BudgetCard() {
 
                 Spacer(modifier = Modifier.width(12.dp))
 
-                // ARROW BUTTON
                 Box(
                     modifier = Modifier
                         .height(50.dp)
@@ -109,8 +127,7 @@ fun BudgetCard() {
                 }
             }
 
-            // Show more button
-            TextButton(onClick = {  }) {
+            TextButton(onClick = { }) {
                 Text(text = "SHOW MORE", color = arrowColor)
             }
         }

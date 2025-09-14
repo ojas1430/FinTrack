@@ -1,4 +1,4 @@
-package com.ojasx.FinTrack.Budgets
+package com.ojasx.FinTrack.Budgets.BudgetTopAppBar
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth

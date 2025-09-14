@@ -24,13 +24,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.ojasx.FinTrack.Budgets.BudgetViewModel
 import com.ojasx.FinTrack.ui.theme.walletblue
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
-fun NBTopAppBar(navController: NavController) {
-
-
+fun NBTopAppBar(
+    navController: NavController,
+    budgetViewModel: BudgetViewModel
+) {
     TopAppBar(
         backgroundColor = walletgreen,
         modifier = Modifier
@@ -78,6 +80,7 @@ fun NBTopAppBar(navController: NavController) {
 
             IconButton(
                 onClick = {
+                    budgetViewModel.saveBudget()
                     navController.popBackStack()
                 }
             ) {
@@ -90,5 +93,4 @@ fun NBTopAppBar(navController: NavController) {
             }
         }
     }
-
 }
