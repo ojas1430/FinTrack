@@ -18,6 +18,7 @@ import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Category.CardCompos
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Category.CategoryScreen
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.CategoryTemplate
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateMainScreen
+import com.ojasx.FinTrack.Debts.DebtsMainScreen
 import com.ojasx.FinTrack.Records.ListOfRecords
 import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.Screens.HomeScreen.HomeScreen
@@ -109,6 +110,10 @@ fun Navigation() {
 
             composable("BudgetMainScreen"){
                 BudgetMainScreen(navController,budgetViewModel,recordsviewModel)
+            }
+
+            composable("DebtsMainScreen"){
+                DebtsMainScreen(navController,budgetViewModel)
             }
 
 
