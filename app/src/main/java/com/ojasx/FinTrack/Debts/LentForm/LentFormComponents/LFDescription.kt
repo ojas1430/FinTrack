@@ -25,7 +25,7 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 @Composable
 fun LFDescription(lentViewModel: LentViewModel) {
     // observe the current name from ViewModel
-    val name by lentViewModel.name.observeAsState(initial = "")
+    val name by lentViewModel.description.observeAsState(initial = "")
 
     var isFocused by remember { mutableStateOf(false) }
 

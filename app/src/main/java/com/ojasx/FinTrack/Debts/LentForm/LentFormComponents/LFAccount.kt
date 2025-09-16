@@ -3,6 +3,7 @@ package com.ojasx.FinTrack.Debts.LentForm.LentFormComponents
 import androidx.compose.material3.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -99,5 +100,7 @@ fun LFAccount(
 
         // underline
         ThinLine(isFocused = isFocused)
+        Spacer(Modifier.height(16.dp))
+
     }
 }

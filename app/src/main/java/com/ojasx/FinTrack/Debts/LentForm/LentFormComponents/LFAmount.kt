@@ -52,6 +52,8 @@ fun LFAmountField(lentViewModel : LentViewModel) {
 
         //UnderLine
         ThinLine(isFocused = isFocused)
+        Spacer(Modifier.height(16.dp))
+
 
         if (showDialog) {
             DialogAmountTemplate(
