@@ -19,7 +19,7 @@ fun DebtsTopAppBarButtons(navController: NavController) {
     Row(modifier = Modifier.fillMaxWidth()) {
         Button(
             onClick = {
-                navController.navigate("ActiveAccountScreen")
+
             },
             shape = RectangleShape,
             modifier = Modifier
@@ -34,7 +34,7 @@ fun DebtsTopAppBarButtons(navController: NavController) {
         }
         Button(
             onClick = {
-                navController.navigate("ClosedAccountScreen")
+
             },
             shape = RectangleShape,
             modifier = Modifier
