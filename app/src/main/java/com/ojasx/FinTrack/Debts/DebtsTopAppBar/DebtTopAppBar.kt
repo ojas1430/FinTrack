@@ -1,7 +1,10 @@
 package com.ojasx.FinTrack.Debts.DebtsTopAppBar
 
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -41,6 +44,14 @@ fun DebtTopAppBarCode(drawerState: DrawerState) {
         title = {
             Text("Debts", fontWeight = FontWeight.Bold, color = Color.White)
         },
-
-        )
+        actions = {
+            IconButton(onClick = { /* Notifications click */ }) {
+                Icon(
+                    imageVector = Icons.Filled.Search,
+                    contentDescription = "Notifications",
+                    tint = Color.White
+                )
+            }
+        }
+    )
 }

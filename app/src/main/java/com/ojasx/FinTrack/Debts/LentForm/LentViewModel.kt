@@ -12,10 +12,10 @@ data class LentCard(
 )
 
 class LentViewModel : ViewModel() {
-    private val _name = MutableLiveData("My Budget")
+    private val _name = MutableLiveData("")
     val name: LiveData<String> = _name
 
-    private val _description = MutableLiveData("My Budget")
+    private val _description = MutableLiveData("")
     val description: LiveData<String> = _description
 
     private val _account = MutableLiveData("Week")

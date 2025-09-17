@@ -56,7 +56,7 @@ fun DebtsPopOutButtonsWithFAB(navController: NavController) {
                     Spacer(modifier = Modifier.height(12.dp))
                     IBorrowedButton {
                         isExpanded = false
-                        navController.navigate("IBorrowedScreen")
+                        navController.navigate("BFFormMainScreen")
                     }
                 }
             }

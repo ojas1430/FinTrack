@@ -11,13 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
-fun DebtsTopAppBarButtons() {
+fun DebtsTopAppBarButtons(navController: NavController) {
     Row(modifier = Modifier.fillMaxWidth()) {
         Button(
-            onClick = {  },
+            onClick = {
+                navController.navigate("ActiveAccountScreen")
+            },
             shape = RectangleShape,
             modifier = Modifier
                 .weight(1f)
@@ -30,7 +33,9 @@ fun DebtsTopAppBarButtons() {
             Text(text = "ACTIVE")
         }
         Button(
-            onClick = { /* Handle BUDGETS & GOALS click */ },
+            onClick = {
+                navController.navigate("ClosedAccountScreen")
+            },
             shape = RectangleShape,
             modifier = Modifier
                 .weight(1f)

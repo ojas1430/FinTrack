@@ -57,18 +57,18 @@ fun LFFormMainScreen(
     StatusBarColor()
 
     Scaffold(
-        topBar = { LentFormTopAppBarCode() },
+        topBar = { LentFormTopAppBarCode(navController) },
         contentWindowInsets = WindowInsets(0, 0, 0, 0)
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier.padding(innerPadding)
         ) {
-            item { BFName(lentViewModel) }
-            item { BFDescription(lentViewModel) }
-            item { BFAccount(lentViewModel) }
-            item { BFAmountField(lentViewModel) }
-            item { BFDate() }
-            item { BFDueDate() }
+            item { LFName(lentViewModel) }
+            item { LFDescription(lentViewModel) }
+            item { LFAccount(lentViewModel) }
+            item { LFAmountField(lentViewModel) }
+            item { LFDate() }
+            item { LFDueDate() }
         }
     }
 }
