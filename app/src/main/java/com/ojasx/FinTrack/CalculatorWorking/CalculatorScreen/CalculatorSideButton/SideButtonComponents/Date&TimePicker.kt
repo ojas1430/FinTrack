@@ -31,7 +31,6 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-@Preview
 @Composable
 fun DateTimePicker() {
     // it remembers date and time

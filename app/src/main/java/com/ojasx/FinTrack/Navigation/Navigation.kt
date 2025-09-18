@@ -1,5 +1,6 @@
 package com.ojasx.FinTrack.Navigation
 
+import BorrowedViewModel
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -18,14 +19,17 @@ import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Category.CardCompos
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Category.CategoryScreen
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateComponents.CategoryTemplate
 import com.ojasx.FinTrack.CalculatorWorking.CalculatorScreen.Templates.TemplateMainScreen
+import com.ojasx.FinTrack.Debts.Active.ActiveAccountScreen
+import com.ojasx.FinTrack.Debts.Borrowed.BFFormMainScreen
+import com.ojasx.FinTrack.Debts.Closed.ClosedAccountScreen
 import com.ojasx.FinTrack.Debts.DebtsMainScreen
+import com.ojasx.FinTrack.Debts.LentForm.LFFormMainScreen
+import com.ojasx.FinTrack.Debts.LentForm.LentViewModel
 import com.ojasx.FinTrack.Records.ListOfRecords
 import com.ojasx.FinTrack.Records.RecordsViewModel
 import com.ojasx.FinTrack.Screens.HomeScreen.HomeScreen
 import com.ojasx.FinTrack.SideBar.UserProfile.ProfileViewModel
 import com.ojasx.FinTrack.SideBar.UserProfile.UserProfileScreen
-import com.ojasx.FinTrack.Statistics.Balance.BalanceMainScreen
-import com.ojasx.FinTrack.Statistics.Balance.BalancePoint
 import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
 
 @Composable
@@ -35,6 +39,8 @@ fun Navigation() {
     val recordsviewModel : RecordsViewModel = viewModel()
     val profileviewmodel : ProfileViewModel = viewModel()
     val budgetViewModel : BudgetViewModel = viewModel()
+    val lentViewModel : LentViewModel = viewModel()
+    val borrowedViewModel : BorrowedViewModel = viewModel()
 
 
     NavHost(
@@ -47,7 +53,11 @@ fun Navigation() {
 
             //Home Screen
             composable("HomeScreen"){
-                HomeScreen(navController,recordsviewModel,profileviewmodel)
+                HomeScreen(
+                    navController,
+                    profileviewmodel,
+                    recordsviewModel
+                    )
             }
 
             //calculator screen
@@ -108,6 +118,7 @@ fun Navigation() {
                 NewBudgetFormMainScreen(navController, budgetViewModel)
             }
 
+            // moves to budget Main Screen
             composable("BudgetMainScreen"){
                 BudgetMainScreen(navController,budgetViewModel,recordsviewModel)
             }
@@ -115,6 +126,27 @@ fun Navigation() {
             composable("DebtsMainScreen"){
                 DebtsMainScreen(navController,budgetViewModel)
             }
+
+            // moves to lent form
+            composable("LFFormMainScreen") {
+                LFFormMainScreen(navController, lentViewModel)
+            }
+
+            //moves to borrowed form
+            composable("BFFormMainScreen"){
+                BFFormMainScreen(navController, borrowedViewModel)
+            }
+
+            // moves to debts active screen
+            composable("ActiveAccountScreen"){
+                ActiveAccountScreen(budgetViewModel)
+            }
+
+            // moves to debts closed screen
+            composable("ClosedAccountScreen"){
+                ClosedAccountScreen(budgetViewModel)
+            }
+
 
 
         }

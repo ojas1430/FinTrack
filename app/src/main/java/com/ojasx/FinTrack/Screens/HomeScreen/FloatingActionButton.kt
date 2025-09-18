@@ -17,7 +17,7 @@ import androidx.tv.material3.Icon
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
-fun FloatingButton(modifier: Modifier) {
+fun FloatingButton() {
     var showBottomSheet by remember { mutableStateOf(false) }
     FloatingActionButton(
         onClick = { showBottomSheet = true},

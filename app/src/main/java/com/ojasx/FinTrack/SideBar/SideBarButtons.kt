@@ -37,7 +37,7 @@ val allItems = listOf(
     DrawerItem("Statistics", Icons.Default.BarChart, "statistics"),
     DrawerItem("Planned Payments", Icons.Default.Payments, "planned_payments"),
     DrawerItem("Budgets", Icons.Default.AccountBalanceWallet, "BudgetMainScreen"),
-    DrawerItem("Debts", Icons.Default.MoneyOff, "debts"),
+    DrawerItem("Debts", Icons.Default.MoneyOff, "DebtsMainScreen"),
     DrawerItem("Goals", Icons.Default.Flag, "goals"),
     DrawerItem("Business", Icons.Default.Business, "business"),
     DrawerItem("Shopping List", Icons.Default.ShoppingCart, "shopping_list"),

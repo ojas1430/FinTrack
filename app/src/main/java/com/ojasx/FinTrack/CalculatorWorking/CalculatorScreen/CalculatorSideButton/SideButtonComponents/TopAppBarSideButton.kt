@@ -23,13 +23,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ojasx.FinTrack.ui.theme.walletblue
+import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
 fun TopAppBarSideButton(navController: NavController) {
 
 
     TopAppBar(
-        backgroundColor = walletblue,
+        backgroundColor = walletgreen,
         modifier = Modifier
            .height(80.dp)
             .fillMaxWidth(),

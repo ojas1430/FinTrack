@@ -45,7 +45,7 @@ fun PagerUnderline(
                 modifier = Modifier
                     .offset(x = indicatorOffset)
                     .width(indicatorWidth)
-                    .height(6.dp)
+                    .height(8.dp)
                     .background(selectedColor)
             )
         }

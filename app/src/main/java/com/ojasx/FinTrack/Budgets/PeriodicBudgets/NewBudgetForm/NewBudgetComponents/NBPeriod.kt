@@ -28,12 +28,12 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NBPeriod(
-    budgetViewModel: BudgetViewModel // ✅ Pass ViewModel
+    budgetViewModel: BudgetViewModel
 ) {
     val options = listOf("Week", "Month", "Year", "One time")
     var expanded by remember { mutableStateOf(false) }
 
-    // ✅ Use ViewModel's period value instead of local state
+
     val selectedOption by budgetViewModel.period.observeAsState(options[0])
 
     Column(

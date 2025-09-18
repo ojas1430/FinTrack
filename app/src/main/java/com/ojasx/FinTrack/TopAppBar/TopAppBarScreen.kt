@@ -1,3 +1,5 @@
+package com.ojasx.FinTrack.TopAppBar
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.DrawerValue
@@ -6,17 +8,17 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.ojasx.FinTrack.TopAppBar.AppBarButtons
-import com.ojasx.FinTrack.TopAppBar.AppBarCode
+import androidx.navigation.NavController
+import com.ojasx.FinTrack.Debts.DebtsTopAppBar.DebtTopAppBarCode
+import com.ojasx.FinTrack.Debts.DebtsTopAppBar.DebtsTopAppBarButtons
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun TopBarScreen() {
+fun TopAppBarMainScreen() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column() {
         AppBarCode(drawerState)
-        AppBarButtons()
+        TopAppBarButtons()
     }
 }
