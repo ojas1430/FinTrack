@@ -1,14 +1,11 @@
 package com.ojasx.FinTrack.Screens.HomeScreen
 
-import com.ojasx.FinTrack.SideBar.ModalSidebar
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.DrawerValue
@@ -25,33 +22,29 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.ojasx.FinTrack.Records.RecordsViewModel
-import com.ojasx.FinTrack.Screens.Accounts.LazyListCards.LazyListOfCards
-import com.ojasx.FinTrack.Screens.Accounts.ListOfAccounts.ListOfAccountsMainScreen
-import com.ojasx.FinTrack.Screens.Accounts.PremiumClub.PremiumClubCard
+import com.ojasx.FinTrack.SideBar.ModalSidebar
 import com.ojasx.FinTrack.SideBar.UserProfile.ProfileViewModel
-import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
-import com.ojasx.FinTrack.StatusBarColor
-import com.ojasx.FinTrack.TopAppBar.AppBarButtons
 import com.ojasx.FinTrack.TopAppBar.AppBarCode
+import com.ojasx.FinTrack.PagerUnderline
+import com.ojasx.FinTrack.Records.RecordsViewModel
+import com.ojasx.FinTrack.Screens.Accounts.AccountsMainScreen
+import com.ojasx.FinTrack.Screens.BudgetAndGoals.BudgetAndGoalsMainScreen
+import com.ojasx.FinTrack.TopAppBar.TopAppBarButtons
 import com.ojasx.FinTrack.ui.theme.walletblue
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: RecordsViewModel,
-    profileViewModel: ProfileViewModel
+    profileViewModel: ProfileViewModel,
+    viewModel: RecordsViewModel
 ) {
-    var showBottomSheet by remember { mutableStateOf(false) }
-
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-
-
+    var showBottomSheet by remember { mutableStateOf(false) }
+    val pagerState = rememberPagerState(initialPage = 0, pageCount = { 2 })
 
     ModalSidebar(
         drawerState = drawerState,
@@ -63,13 +56,9 @@ fun HomeScreen(
         },
         navController = navController,
         profileViewModel
-
     ) {
-
         Scaffold(
             topBar = { AppBarCode(drawerState) },
-
-            // passing HomeScreen FAB
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = { showBottomSheet = true },
@@ -83,33 +72,27 @@ fun HomeScreen(
                 }
             }
         ) { paddingValues ->
-            LazyColumn(
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
             ) {
-                item {
-                    AppBarButtons()
-                }
-                item {
-                    ListOfAccountsMainScreen(navController, viewModel)
-                }
-                item {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(14.dp)
-                    ) {
-                        Column {
-                            LazyListOfCards()
-                            Spacer(Modifier.height(12.dp))
-                            PremiumClubCard()
-                            Spacer(Modifier.height(12.dp))
-                        }
+                // Persistent buttons below top app bar
+                TopAppBarButtons()
+
+                PagerUnderline(
+                    pagerState = pagerState,
+                    selectedColor = Color(0xFF3C4A5C) //Color.Black
+                )
+
+                HorizontalPager(
+                    state = pagerState,
+                    modifier = Modifier.fillMaxSize()
+                ) { page ->
+                    when (page) {
+                        0 -> AccountsMainScreen(navController,viewModel)
+                        1 -> BudgetAndGoalsMainScreen()
                     }
-                }
-                item {
-                    StatisticsMainScreen(viewModel)
                 }
             }
         }
@@ -117,12 +100,8 @@ fun HomeScreen(
         ActionBottomSheet(
             showBottomSheet = showBottomSheet,
             onDismiss = { showBottomSheet = false },
-            onTemplateClick = {
-                println("Template clicked")
-            },
-            onNewRecordClick = {
-                navController.navigate("CalculatorScreen")
-            }
+            onTemplateClick = { /* handle template click */ },
+            onNewRecordClick = { navController.navigate("CalculatorScreen") }
         )
     }
 }
