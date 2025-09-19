@@ -28,7 +28,7 @@ fun ListOfAccountsMainScreen(
     Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.White)
+                .background(colors.background)
         ) {
             Spacer(Modifier.height(24.dp))
             Row {
@@ -38,12 +38,13 @@ fun ListOfAccountsMainScreen(
                 Spacer(Modifier.width(20.dp))
             }
             CashAndAddAccountButton(viewModel)
-            Row(modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
                 AccountDetailButton()
                 Spacer(Modifier.weight(1f))
                 RecordButton(navController)
-
             }
             Spacer(Modifier.height(8.dp))
         }

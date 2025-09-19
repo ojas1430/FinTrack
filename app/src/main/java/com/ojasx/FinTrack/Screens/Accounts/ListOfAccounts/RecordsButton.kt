@@ -33,7 +33,6 @@ fun RecordButton(navController: NavController) {
         onClick = {
             navController.navigate("RecordsMainScreen")
         },
-
     ) {
         Box(
             modifier = Modifier
@@ -52,13 +51,13 @@ fun RecordButton(navController: NavController) {
                 Icon(
                     imageVector = Icons.Default.Menu,
                     contentDescription = "",
-                    tint = purpleBlue,
+                    tint = colors.primary,
                     modifier = Modifier.size(14.dp)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
                     text = "RECORDS",
-                    color = Color.Black,
+                    color = colors.onBackground,
                     fontSize = 13.sp
                 )
             }

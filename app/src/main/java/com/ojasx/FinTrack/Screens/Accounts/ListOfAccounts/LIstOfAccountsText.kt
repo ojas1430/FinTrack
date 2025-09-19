@@ -19,7 +19,7 @@ fun ListOfAccountsText() {
     Spacer(Modifier.width(15.dp))
     Text(
         "List of accounts",
-        color = Color.Black,
+        color = colors.onBackground,
         fontSize = 20.sp,
         fontWeight = FontWeight.Medium,
 

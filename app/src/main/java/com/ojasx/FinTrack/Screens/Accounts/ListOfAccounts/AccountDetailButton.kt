@@ -33,7 +33,7 @@ fun AccountDetailButton(modifier: Modifier = Modifier) {
         ) {
             Text(
                 text = "ACCOUNT DETAIL",
-                color = Color.Black,
+                color = colors.onBackground,
                 fontSize = 14.sp
             )
         }

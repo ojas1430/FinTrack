@@ -44,12 +44,15 @@ fun CashAndAddAccountButton(viewModel: RecordsViewModel) {
             .padding(12.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Button(onClick = {}, modifier = Modifier.weight(1f)
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .weight(1f)
             .height(60.dp),
 
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = walletblue,
+                containerColor = colors.primary,
                 contentColor = Color.White
             )) {
             Column(modifier = Modifier.fillMaxWidth(),
@@ -63,19 +66,22 @@ fun CashAndAddAccountButton(viewModel: RecordsViewModel) {
             onClick = {},
             shape = RoundedCornerShape(8.dp),
             modifier = Modifier.weight(1f).height(60.dp),
-            border = BorderStroke(1.dp, color = purpleBlue)
+            border = BorderStroke(1.dp, color = colors.primary)
 
         ) {
-            Text("ADD ACCOUNT", color = purpleBlue, modifier = Modifier.weight(1f))
+            Text(
+                "ADD ACCOUNT",
+                color = colors.primary,
+                modifier = Modifier
+                    .weight(1f)
+            )
 
             Icon(
                 imageVector = Icons.Default.Add,
                 contentDescription = "",
-                tint = purpleBlue,
+                tint = colors.primary,
 
                 )
         }
-
-
     }
 }

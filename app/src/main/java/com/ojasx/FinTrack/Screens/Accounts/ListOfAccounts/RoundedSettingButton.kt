@@ -36,7 +36,7 @@ fun RoundedSettingButton(){
         Icon(
             imageVector = Icons.Default.Settings,
             contentDescription = "",
-            tint = walletblue,
+            tint = colors.primary,
         )
     }
 }
