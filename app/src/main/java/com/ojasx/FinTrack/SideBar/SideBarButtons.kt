@@ -54,7 +54,7 @@ val allItems = listOf(
     )
 
 val switchItems = listOf(
-    DrawerItem("Dark Mode", Icons.Default.DarkMode, "", true),
+   // DrawerItem("Dark Mode", Icons.Default.DarkMode, "", true),
     DrawerItem("Hide Amounts", Icons.Default.VisibilityOff, "", true)
 )
 

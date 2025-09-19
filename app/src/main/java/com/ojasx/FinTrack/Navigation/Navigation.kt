@@ -33,7 +33,10 @@ import com.ojasx.FinTrack.SideBar.UserProfile.UserProfileScreen
 import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
 
 @Composable
-fun Navigation() {
+fun Navigation(
+    darkTheme: Boolean,
+    onToggleTheme: () -> Unit
+) {
     val navController = rememberNavController()
     val mainViewModel: MainViewModel = viewModel()
     val recordsviewModel : RecordsViewModel = viewModel()
@@ -56,8 +59,10 @@ fun Navigation() {
                 HomeScreen(
                     navController,
                     profileviewmodel,
-                    recordsviewModel
-                    )
+                    recordsviewModel,
+                    darkTheme = darkTheme,
+                    onToggleTheme = onToggleTheme
+                )
             }
 
             //calculator screen

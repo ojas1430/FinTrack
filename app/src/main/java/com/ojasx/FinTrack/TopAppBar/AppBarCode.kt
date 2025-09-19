@@ -22,32 +22,33 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBarCode(drawerState: DrawerState) {
+    val colors = MaterialTheme.colorScheme
     val scope = rememberCoroutineScope()
     StatusBarColor()
 
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = walletgreen,
-            titleContentColor = MaterialTheme.colorScheme.primary,
+            containerColor = colors.secondary,
+            titleContentColor = colors.primary,
         ),
         navigationIcon = {
             IconButton(onClick = { scope.launch { drawerState.open() } }) {
                 Icon(
                     imageVector = Icons.Filled.Menu,
                     contentDescription = "Menu",
-                    tint = Color.White
+                    tint = colors.onPrimary
                 )
             }
         },
         title = {
-            Text("Home", fontWeight = FontWeight.Bold, color = Color.White)
+            Text("Home", fontWeight = FontWeight.Bold, color = colors.onPrimary)
         },
         actions = {
             IconButton(onClick = { /* Notifications click */ }) {
                 Icon(
                     imageVector = Icons.Filled.Notifications,
                     contentDescription = "Notifications",
-                    tint = Color.White
+                    tint = colors.onPrimary
                 )
             }
         }

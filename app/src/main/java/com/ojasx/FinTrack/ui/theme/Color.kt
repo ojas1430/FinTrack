@@ -23,3 +23,10 @@ val calculatorcolor =   Color(0xFF7A85C1)
 
 val CustomRed = Color(0xFFE62727)
 val CustomGreen = Color(0xFF48A14D)
+
+
+// Dark mode colors
+val orange = Color(0xFFFF9800)
+val royalblue = Color(0xFF2979FF)
+val surfaceblack = Color(0xFF1E1E1E)
+val backgroundblack = Color(0xFF121212)

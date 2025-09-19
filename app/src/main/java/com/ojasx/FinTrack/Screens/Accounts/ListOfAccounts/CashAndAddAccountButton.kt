@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -35,6 +36,8 @@ fun CashAndAddAccountButton(viewModel: RecordsViewModel) {
     // summation of all card values
     val records by viewModel.recordlist.observeAsState(emptyList())
     val total = records.sumOf { it.amount.toIntOrNull() ?: 0 }
+    val colors = MaterialTheme.colorScheme
+
 
     Row(
         modifier = Modifier.fillMaxWidth()

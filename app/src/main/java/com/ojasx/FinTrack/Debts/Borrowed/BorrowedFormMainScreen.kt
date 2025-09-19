@@ -3,7 +3,6 @@ package com.ojasx.FinTrack.Debts.Borrowed
 import BorrowedViewModel
 import com.ojasx.FinTrack.Debts.LentForm.LentViewModel
 import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFAccount
-import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFAmountField
 import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFDate
 import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFDescription
 import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFDueDate

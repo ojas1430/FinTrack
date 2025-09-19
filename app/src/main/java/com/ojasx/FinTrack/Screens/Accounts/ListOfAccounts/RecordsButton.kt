@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -26,6 +27,8 @@ import com.ojasx.FinTrack.ui.theme.purpleBlue
 
 @Composable
 fun RecordButton(navController: NavController) {
+    val colors = MaterialTheme.colorScheme
+
     TextButton(
         onClick = {
             navController.navigate("RecordsMainScreen")

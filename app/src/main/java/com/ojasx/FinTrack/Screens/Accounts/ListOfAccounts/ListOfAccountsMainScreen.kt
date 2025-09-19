@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,7 +23,9 @@ fun ListOfAccountsMainScreen(
     navController: NavController,
     viewModel: RecordsViewModel
 ) {
-        Column(
+    val colors = MaterialTheme.colorScheme
+
+    Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)

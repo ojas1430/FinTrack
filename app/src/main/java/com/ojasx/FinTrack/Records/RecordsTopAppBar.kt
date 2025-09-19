@@ -28,6 +28,8 @@ fun RecordsTopAppBar( viewModel: RecordsViewModel , navController: NavController
     // summation of all card values
     val records by viewModel.recordlist.observeAsState(emptyList())
     val total = records.sumOf { it.amount.toIntOrNull() ?: 0 }
+    val colors = MaterialTheme.colorScheme
+
 
 
     // Set status bar color
@@ -95,6 +97,6 @@ fun RecordsTopAppBar( viewModel: RecordsViewModel , navController: NavController
                 )
             }
         },
-        colors = TopAppBarDefaults.largeTopAppBarColors(containerColor = walletgreen)
+        colors = TopAppBarDefaults.largeTopAppBarColors(containerColor = colors.secondary)
     )
 }
