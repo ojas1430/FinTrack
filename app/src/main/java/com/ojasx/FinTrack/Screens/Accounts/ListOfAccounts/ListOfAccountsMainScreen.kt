@@ -23,6 +23,7 @@ fun ListOfAccountsMainScreen(
     navController: NavController,
     viewModel: RecordsViewModel
 ) {
+
     val colors = MaterialTheme.colorScheme
 
     Column(
