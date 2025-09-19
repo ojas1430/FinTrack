@@ -2,7 +2,6 @@ package com.ojasx.FinTrack.Debts.LentForm
 
 import androidx.compose.foundation.layout.Spacer
 import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFAccount
-import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFAmountField
 import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFDate
 import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFDescription
 import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFDueDate
@@ -45,6 +44,7 @@ import com.ojasx.FinTrack.Debts.Borrowed.BorrowedFormComponents.BFDate
 import com.ojasx.FinTrack.Debts.Borrowed.BorrowedFormComponents.BFDescription
 import com.ojasx.FinTrack.Debts.Borrowed.BorrowedFormComponents.BFDueDate
 import com.ojasx.FinTrack.Debts.Borrowed.BorrowedFormComponents.BFName
+import com.ojasx.FinTrack.Debts.LentForm.LentFormComponents.LFAmountField
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
@@ -57,7 +57,7 @@ fun LFFormMainScreen(
     StatusBarColor()
 
     Scaffold(
-        topBar = { LentFormTopAppBarCode(navController) },
+        topBar = { LentFormTopAppBarCode(navController,lentViewModel) },
         contentWindowInsets = WindowInsets(0, 0, 0, 0)
     ) { innerPadding ->
         LazyColumn(

@@ -14,16 +14,22 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
+import com.ojasx.FinTrack.Debts.CreateConfirmationDialog
+import com.ojasx.FinTrack.Debts.LentForm.LentViewModel
 import com.ojasx.FinTrack.ExitConfirmationDialog
 import com.ojasx.FinTrack.StatusBarColor
 import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LentFormTopAppBarCode(navController: NavController) {
+fun LentFormTopAppBarCode(
+    navController: NavController,
+    lentViewModel: LentViewModel
+) {
     StatusBarColor()
 
     var showExitDialog by remember { mutableStateOf(false) }
+    var showCreateDialog by remember { mutableStateOf(false) }
 
     if (showExitDialog) {
         ExitConfirmationDialog(
@@ -31,6 +37,18 @@ fun LentFormTopAppBarCode(navController: NavController) {
             onConfirm = {
                 showExitDialog = false
                 navController.popBackStack()
+            }
+        )
+    }
+    if (showCreateDialog) {
+        CreateConfirmationDialog(
+            onDismiss = { showCreateDialog = false },
+            onConfirm = {
+                showCreateDialog = false
+                val saved = lentViewModel.saveBudget()
+                if (saved) {
+                    navController.popBackStack()
+                }
             }
         )
     }
@@ -42,7 +60,7 @@ fun LentFormTopAppBarCode(navController: NavController) {
         ),
         navigationIcon = {
             IconButton(onClick = {
-                showExitDialog = true //  Open dialog
+                showExitDialog = true
             }) {
                 Icon(
                     imageVector = Icons.Filled.Close,
@@ -55,7 +73,14 @@ fun LentFormTopAppBarCode(navController: NavController) {
             Text("I Lent", fontWeight = FontWeight.Bold, color = Color.White)
         },
         actions = {
-            IconButton(onClick = {  }) {
+            IconButton(onClick = {
+                // ✅ Validate when tick icon is clicked
+                val isValid = lentViewModel.validateAll()
+                if (isValid) {
+                    showCreateDialog = true
+                }
+                // If not valid, `nameError` LiveData will update → UI will show error
+            }) {
                 Icon(
                     imageVector = Icons.Filled.Check,
                     contentDescription = "Save",
@@ -65,3 +90,4 @@ fun LentFormTopAppBarCode(navController: NavController) {
         }
     )
 }
+

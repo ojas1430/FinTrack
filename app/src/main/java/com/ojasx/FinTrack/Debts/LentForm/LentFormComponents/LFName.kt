@@ -14,19 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ojasx.FinTrack.Budgets.BudgetViewModel
 import com.ojasx.FinTrack.Debts.LentForm.LentViewModel
 import com.ojasx.FinTrack.ThinLine
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
 fun LFName(lentViewModel: LentViewModel) {
-    // observe the current name from ViewModel
     val name by lentViewModel.name.observeAsState(initial = "")
-
+    val nameError by lentViewModel.nameError.observeAsState(initial = false)
     var isFocused by remember { mutableStateOf(false) }
 
     Spacer(Modifier.height(12.dp))
@@ -38,7 +35,11 @@ fun LFName(lentViewModel: LentViewModel) {
     ) {
         Text(
             text = "Name",
-            color = if (isFocused) walletblue else Color.Gray,
+            color = when {
+                nameError -> Color.Red
+                isFocused -> walletblue
+                else -> Color.Gray
+            },
             fontWeight = FontWeight.Medium
         )
 
@@ -52,16 +53,14 @@ fun LFName(lentViewModel: LentViewModel) {
                 color = Color.Black,
                 fontSize = 20.sp
             ),
-
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
                     isFocused = focusState.isFocused
                 }
-                .padding(top = 6.dp, bottom = 16.dp),
+                .padding(top = 6.dp, bottom = 4.dp),
             decorationBox = { innerTextField ->
                 Column {
-                    //placeholder
                     if (name.isEmpty() && !isFocused) {
                         Text(
                             text = "To whom you have lent?",
@@ -73,10 +72,20 @@ fun LFName(lentViewModel: LentViewModel) {
                     innerTextField()
                     Spacer(Modifier.height(4.dp))
 
-                    //Thin Line
-                    ThinLine(isFocused = isFocused)
+                    ThinLine(
+                        isFocused = isFocused
+                    )
                 }
             }
         )
+
+        if (nameError) {
+            Text(
+                text = "Name cannot be empty",
+                color = Color.Red,
+                fontSize = 14.sp,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+        }
     }
 }

@@ -5,15 +5,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 data class LentCard(
-    val  name : String,
-    val description : String,
-    val amount : Int,
-    val period : String
+    val name: String,
+    val description: String,
+    val amount: Int,
+    val period: String
 )
 
 class LentViewModel : ViewModel() {
     private val _name = MutableLiveData("")
     val name: LiveData<String> = _name
+
+    private val _nameError = MutableLiveData(false)
+    val nameError: LiveData<Boolean> = _nameError
 
     private val _description = MutableLiveData("")
     val description: LiveData<String> = _description
@@ -24,8 +27,13 @@ class LentViewModel : ViewModel() {
     private val _amount = MutableLiveData(90000)
     val amount: LiveData<Int> = _amount
 
+
     fun updateName(newName: String) {
         _name.value = newName
+        if (newName.isNotBlank()) {
+            _nameError.value = false
+        }
+        validateForm()
     }
 
     fun updateDescription(newDescription: String) {
@@ -34,26 +42,72 @@ class LentViewModel : ViewModel() {
 
     fun updateAmount(newAmount: Int) {
         _amount.value = newAmount
+        validateForm()
     }
 
     fun updateAccount(newAccount: String) {
         _account.value = newAccount
     }
 
-    // dynamic list of cards
+    // Validation functions for name and amount only
+    fun validateName(): Boolean {
+        val currentName = _name.value ?: ""
+        val isValid = currentName.isNotBlank()
+        _nameError.value = !isValid
+        return isValid
+    }
 
+    fun validateAmount(): Boolean {
+        val currentAmount = _amount.value ?: 0
+        val isValid = currentAmount > 0
+        return isValid
+    }
+
+    fun validateAll(): Boolean {
+        val nameValid = validateName()
+        val amountValid = validateAmount()
+
+        val allValid = nameValid && amountValid
+        _isFormValid.value = allValid
+        return allValid
+    }
+
+    private fun validateForm() {
+        val nameValid = (_name.value ?: "").isNotBlank()
+        val amountValid = (_amount.value ?: 0) > 0
+
+        _isFormValid.value = nameValid && amountValid
+    }
+
+    // Clear errors for name and amount only
+    fun clearErrors() {
+        _nameError.value = false
+    }
+
+    private val _isFormValid = MutableLiveData(false)
+    val isFormValid: LiveData<Boolean> = _isFormValid
+
+    // Dynamic list of cards
     private val _budgets = MutableLiveData<List<LentCard>>(emptyList())
-    val budgets : LiveData<List<LentCard>> = _budgets
+    val budgets: LiveData<List<LentCard>> = _budgets
 
-    fun saveBudget(){
+    fun saveBudget(): Boolean {
+        // Validate only name and amount before saving
+        if (!validateAll()) {
+            return false
+        }
+
         val newBudget = LentCard(
             name = _name.value ?: "",
-            description = _description.value?: "",
+            description = _description.value ?: "",
             amount = _amount.value ?: 0,
             period = _account.value ?: ""
         )
+
         val updatedList = _budgets.value?.toMutableList() ?: mutableListOf()
         updatedList.add(newBudget)
         _budgets.value = updatedList
+
+        return true
     }
 }
