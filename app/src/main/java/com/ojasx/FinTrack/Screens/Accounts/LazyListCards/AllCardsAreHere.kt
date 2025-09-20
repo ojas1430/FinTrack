@@ -21,6 +21,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -31,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
@@ -43,12 +45,14 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
 fun Card1(modifier: Modifier) {
+    val colors = MaterialTheme.colorScheme
+
     Card(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight(),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = colors.surface
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
@@ -95,7 +99,7 @@ fun Card1(modifier: Modifier) {
                 Text(
                     text = "MORE DETAILS",
                     fontSize = 14.sp,
-                    color = walletblue,
+                    color = colors.primary,
                     fontWeight = FontWeight.Medium
                 )
             }
@@ -107,11 +111,13 @@ fun Card1(modifier: Modifier) {
 
 @Composable
 fun Card2(modifier: Modifier) {
+    val colors = MaterialTheme.colorScheme
+
     Card(
         modifier = modifier
             .wrapContentHeight(),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = colors.surface
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
@@ -156,7 +162,7 @@ fun Card2(modifier: Modifier) {
                 Text(
                     text = "SAVE DATA",
                     fontSize = 14.sp,
-                    color = walletblue,
+                    color = colors.primary,
                     fontWeight = FontWeight.Medium
                 )
             }
@@ -166,11 +172,13 @@ fun Card2(modifier: Modifier) {
 
 @Composable
 fun Card3(modifier: Modifier) {
+    val colors = MaterialTheme.colorScheme
+
     Card(
         modifier = modifier
             .wrapContentHeight(),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = colors.surface
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
@@ -215,7 +223,7 @@ fun Card3(modifier: Modifier) {
                 Text(
                     text = "SWITCH ON REMINDER",
                     fontSize = 14.sp,
-                    color = walletblue,
+                    color = colors.primary,
                     fontWeight = FontWeight.Medium
                 )
             }
@@ -223,15 +231,19 @@ fun Card3(modifier: Modifier) {
     }
 }
 
-// ... existing code ...
 
 @Composable
 fun Card4(modifier: Modifier) {
+    val colors = MaterialTheme.colorScheme
+
     Card(
         modifier = modifier
-            .wrapContentHeight(),
+            .wrapContentHeight()
+            .shadow(
+                elevation = 8.dp
+            ),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = colors.surface
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
@@ -276,7 +288,7 @@ fun Card4(modifier: Modifier) {
                 Text(
                     text = "CREATE  ACCOUNT",
                     fontSize = 14.sp,
-                    color = walletblue,
+                    color = colors.primary,
                     fontWeight = FontWeight.Medium
                 )
             }
@@ -284,15 +296,16 @@ fun Card4(modifier: Modifier) {
     }
 }
 
-// ... existing code ...
 
     @Composable
     fun Card5(modifier: Modifier) {
+        val colors = MaterialTheme.colorScheme
+
         Card(
             modifier = modifier
                 .wrapContentHeight(),
             colors = CardDefaults.cardColors(
-                containerColor = Color.White
+                containerColor = colors.surface
             ),
             elevation = CardDefaults.cardElevation(10.dp)
         ) {
@@ -337,7 +350,7 @@ fun Card4(modifier: Modifier) {
                     Text(
                         text = "CREATE PLANNED PAYMENT",
                         fontSize = 14.sp,
-                        color = walletblue,
+                        color = colors.primary,
                         fontWeight = FontWeight.Medium
                     )
                 }
@@ -347,6 +360,8 @@ fun Card4(modifier: Modifier) {
 
     @Composable
     fun LazyListOfCards() {
+        val colors = MaterialTheme.colorScheme
+
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center
