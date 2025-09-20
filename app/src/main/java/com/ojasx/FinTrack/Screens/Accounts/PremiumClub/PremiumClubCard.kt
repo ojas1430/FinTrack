@@ -27,22 +27,26 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import com.ojasx.FinTrack.ui.theme.premium
 
 
-@Preview
 @Composable
 fun PremiumClubCard() {
-    Card(modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-        contentColor = Color.Black,
-        containerColor = Color.White
-    ), elevation = CardDefaults.cardElevation(10.dp),
+    val colors = androidx.compose.material3.MaterialTheme.colorScheme
+    Card(
+        modifier = Modifier
+            .fillMaxWidth(),
+        colors = CardDefaults
+            .cardColors(
+        contentColor = colors.onBackground,
+        containerColor = colors.surface
+         ),
+        elevation = CardDefaults.cardElevation(10.dp),
         shape = RoundedCornerShape(4.dp),
         border = BorderStroke(width = 1.dp,
             color = premium
-
             )
     ) {
         CardText()
@@ -51,6 +55,7 @@ fun PremiumClubCard() {
 @Preview(showBackground = true)
 @Composable
 fun CardText() {
+    val colors = androidx.compose.material3.MaterialTheme.colorScheme
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -81,7 +86,7 @@ fun CardText() {
                     text = "Join our Premium Club!",
                     fontWeight = FontWeight.Medium,
                     fontSize = 18.sp,
-                    color = Color.Black
+                    color = colors.onBackground
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
