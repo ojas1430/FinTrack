@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 fun RecordCard(
     record: RecordsDataClass
 ) {
+    val colors = MaterialTheme.colorScheme
 
     Card(
         modifier = Modifier
@@ -31,7 +32,7 @@ fun RecordCard(
             .padding(vertical = 6.dp)
             .clickable {},
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = colors.surface
         ),
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
@@ -55,7 +56,8 @@ fun RecordCard(
             // Title on left
             Text(
                 text = record.title,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
+                color = colors.onBackground
             )
 
             Spacer(modifier = Modifier.weight(1f))
@@ -75,7 +77,8 @@ fun RecordCard(
                 //Date
                 Text(
                     text = FormatDate(record.date),
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.bodySmall,
+                    color = colors.onBackground
                 )
             }
         }

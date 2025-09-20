@@ -2,6 +2,7 @@ package com.ojasx.FinTrack.Records
 
 import android.graphics.Color
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,9 +23,13 @@ import com.ojasx.FinTrack.R
 
 @Composable
 fun NoRecordsYet() {
+    val colors = androidx.compose.material3.MaterialTheme.colorScheme
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(
+                color = colors.background
+            )
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -47,7 +52,7 @@ fun NoRecordsYet() {
                 "List of records",
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
-                color = androidx.compose.ui.graphics.Color(Color.BLACK)
+                color = colors.onBackground
 
             )
             Spacer(modifier = Modifier.height(16.dp))
