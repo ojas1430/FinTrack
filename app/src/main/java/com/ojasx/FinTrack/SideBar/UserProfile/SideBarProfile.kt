@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,7 +27,7 @@ fun SideBarProfileSection(
     navController: NavController,
     viewModel: ProfileViewModel
     ) {
-
+    val colors = MaterialTheme.colorScheme
     val firstName by viewModel.firstName.observeAsState("")
     val lastName by viewModel.lastName.observeAsState("")
     val email by viewModel.email.observeAsState("")
@@ -34,7 +35,7 @@ fun SideBarProfileSection(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(walletgreen)
+            .background(colors.secondary)
             .padding(16.dp)
             .clickable{
                 navController.navigate("UserProfileScreen")

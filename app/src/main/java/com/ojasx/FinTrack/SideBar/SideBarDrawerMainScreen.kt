@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
@@ -46,7 +47,7 @@ fun ModalSidebar(
     val screenWidth = configuration.screenWidthDp.dp
     val drawerWidth = screenWidth * 0.8f
     val (selectedRoute, setSelectedRoute) = remember { mutableStateOf<String?>(null) }
-
+    val colors = MaterialTheme.colorScheme
 
     val systemUiController = rememberSystemUiController()
 
@@ -55,7 +56,7 @@ fun ModalSidebar(
         if (drawerState.isOpen) {
             // Sidebar opened → dark icons
             systemUiController.setStatusBarColor(
-                color = Color.White,
+                color = colors.background,
                 darkIcons = true     // black icons
             )
         } else {
@@ -72,8 +73,8 @@ fun ModalSidebar(
         drawerContent = {
             ModalDrawerSheet(
                 modifier = Modifier.width(drawerWidth),
-                drawerContainerColor = Color.White,
-                drawerContentColor = Color.Black
+                drawerContainerColor = colors.background,
+                drawerContentColor = colors.onBackground
             ) {
                 LazyColumn {
                     item { SideBarProfileSection(navController,profileViewModel) }
@@ -84,7 +85,8 @@ fun ModalSidebar(
                                 Text(
                                     item.label,
                                     fontSize = 18.sp,
-                                    modifier = Modifier.padding(start = 12.dp)
+                                    modifier = Modifier.padding(start = 12.dp),
+                                    color = colors.onBackground
                                 )
                             },
                             selected = selectedRoute == item.route,

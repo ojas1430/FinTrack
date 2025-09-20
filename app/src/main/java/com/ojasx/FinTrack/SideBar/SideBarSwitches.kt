@@ -2,6 +2,7 @@ package com.ojasx.FinTrack.SideBar
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -16,6 +17,7 @@ import com.ojasx.FinTrack.ui.theme.walletblue
 @Composable
 fun SideBarSwitches(switchItem: DrawerItem) {
     var isChecked by remember { mutableStateOf(false) }
+    val colors = MaterialTheme.colorScheme
 
     Row(
         modifier = Modifier
@@ -30,13 +32,14 @@ fun SideBarSwitches(switchItem: DrawerItem) {
             Icon(
                 imageVector = switchItem.icon,
                 contentDescription = switchItem.label,
-                tint = getColor(switchItem.label),
+                tint = colors.onBackground,
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(12.dp))
             Text(
                 text = switchItem.label,
-                fontSize = 18.sp
+                fontSize = 18.sp,
+                color = colors.onBackground
             )
         }
 
