@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ojasx.FinTrack.Budgets.BudgetViewModel
+import com.ojasx.FinTrack.ThinLine
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 
@@ -32,8 +33,8 @@ fun NBPeriod(
 ) {
     val options = listOf("Week", "Month", "Year", "One time")
     var expanded by remember { mutableStateOf(false) }
-
-
+    var isFocused by remember { mutableStateOf(false) }
+    val colors = MaterialTheme.colorScheme
     val selectedOption by budgetViewModel.period.observeAsState(options[0])
 
     Column(
@@ -54,7 +55,10 @@ fun NBPeriod(
             TextField(
                 value = selectedOption,
                 onValueChange = {},
-                textStyle = LocalTextStyle.current.copy(fontSize = 20.sp),
+                textStyle = LocalTextStyle.current.copy(
+                    fontSize = 20.sp,
+                    color = colors.onBackground
+                ),
                 readOnly = true,
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
@@ -64,8 +68,8 @@ fun NBPeriod(
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedLabelColor = walletblue,
                     unfocusedLabelColor = Color.Gray,
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White
+                    focusedContainerColor = colors.background,
+                    unfocusedContainerColor = colors.background
                 ),
                 modifier = Modifier
                     .menuAnchor()
@@ -89,21 +93,8 @@ fun NBPeriod(
         }
 
         // underline
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 2.dp)
-                .height(2.dp)
-                .drawBehind {
-                    val strokeWidth = 1.dp.toPx()
-                    val y = size.height - strokeWidth / 2
-                    drawLine(
-                        color = Color.LightGray,
-                        start = Offset(0f, y),
-                        end = Offset(size.width, y),
-                        strokeWidth = strokeWidth
-                    )
-                }
+        ThinLine(
+            isFocused = isFocused
         )
     }
 }

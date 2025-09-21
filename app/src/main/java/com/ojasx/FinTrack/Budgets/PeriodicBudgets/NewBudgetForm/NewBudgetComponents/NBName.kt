@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -20,13 +21,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ojasx.FinTrack.Budgets.BudgetViewModel
+import com.ojasx.FinTrack.ThinLine
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
 fun NBName(budgetViewModel: BudgetViewModel) {
     // observe the current name from ViewModel
     val name by budgetViewModel.name.observeAsState(initial = "")
-
+    val colors = MaterialTheme.colorScheme
     var isFocused by remember { mutableStateOf(false) }
 
     Spacer(Modifier.height(12.dp))
@@ -38,7 +40,7 @@ fun NBName(budgetViewModel: BudgetViewModel) {
     ) {
         Text(
             text = "Name",
-            color = if (isFocused) walletblue else Color.Gray,
+            color = if (isFocused) colors.primary else Color.Gray,
             fontWeight = FontWeight.Medium
         )
 
@@ -49,7 +51,7 @@ fun NBName(budgetViewModel: BudgetViewModel) {
             },
             singleLine = true,
             textStyle = LocalTextStyle.current.copy(
-                color = Color.Black,
+                color = colors.onBackground,
                 fontSize = 20.sp
             ),
             modifier = Modifier
@@ -63,21 +65,9 @@ fun NBName(budgetViewModel: BudgetViewModel) {
                     innerTextField()
                     Spacer(Modifier.height(4.dp))
 
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 2.dp)
-                            .height(2.dp)
-                            .drawBehind {
-                                val strokeWidth = 1.dp.toPx()
-                                val y = size.height - strokeWidth / 2
-                                drawLine(
-                                    color = if (isFocused) walletblue else Color.LightGray,
-                                    start = Offset(0f, y),
-                                    end = Offset(size.width, y),
-                                    strokeWidth = strokeWidth
-                                )
-                            }
+                    //underline
+                    ThinLine(
+                        isFocused = isFocused
                     )
                 }
             }

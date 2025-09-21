@@ -22,16 +22,20 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BudgetTopAppBarCode(drawerState: DrawerState) {
+    val colors = MaterialTheme.colorScheme
     val scope = rememberCoroutineScope()
+
     StatusBarColor()
 
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = walletgreen,
+            containerColor = colors.secondary,
             titleContentColor = MaterialTheme.colorScheme.primary,
         ),
         navigationIcon = {
-            IconButton(onClick = { scope.launch { drawerState.open() } }) {
+            IconButton(
+                onClick = { scope.launch { drawerState.open() } }
+            ) {
                 Icon(
                     imageVector = Icons.Filled.Menu,
                     contentDescription = "Menu",
@@ -40,8 +44,11 @@ fun BudgetTopAppBarCode(drawerState: DrawerState) {
             }
         },
         title = {
-            Text("Budgets", fontWeight = FontWeight.Bold, color = Color.White)
+            Text(
+                "Budgets",
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
         },
-
-        )
+    )
 }

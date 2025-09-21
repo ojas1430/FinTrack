@@ -23,12 +23,16 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.scale
+import androidx.core.content.contentValuesOf
+import com.ojasx.FinTrack.ThinLine
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
 fun NBNotificationsCard() {
+    var colors = MaterialTheme.colorScheme
     var budgetSwitch by remember { mutableStateOf(false) }
     var riskSwitch by remember { mutableStateOf(false) }
+    var isFocused by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -54,7 +58,8 @@ fun NBNotificationsCard() {
             ) {
                 Text(
                     text = "Budget overspent",
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    color = colors.onBackground
                 )
                 Spacer(Modifier.height(4.dp))
                 Text(
@@ -67,30 +72,20 @@ fun NBNotificationsCard() {
                 checked = budgetSwitch,
                 onCheckedChange = { budgetSwitch = it },
                 colors = SwitchDefaults.colors(
-                    checkedThumbColor = walletblue,
-                    checkedTrackColor = walletblue.copy(alpha = 0.5f)
+                    checkedThumbColor = colors.primary,
+                    checkedTrackColor = colors.primary.copy(alpha = 0.5f)
                 ),
                 modifier = Modifier.scale(0.8f)
             )
         }
+        Spacer(Modifier.height(2.dp))
+
 
         // Underline
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp)
-                .height(2.dp)
-                .drawBehind {
-                    val strokeWidth = 1.dp.toPx()
-                    val y = size.height - strokeWidth / 2
-                    drawLine(
-                        color = Color.LightGray,
-                        start = Offset(0f, y),
-                        end = Offset(size.width, y),
-                        strokeWidth = strokeWidth
-                    )
-                }
+        ThinLine(
+            isFocused = isFocused
         )
+
         Spacer(modifier = Modifier.height(16.dp))
 
         // Risk of Overspending
@@ -103,7 +98,8 @@ fun NBNotificationsCard() {
             ) {
                 Text(
                     text = "Risk of overspending",
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    color = colors.onBackground
                 )
                 Spacer(Modifier.height(4.dp))
                 Text(
@@ -116,29 +112,17 @@ fun NBNotificationsCard() {
                 checked = riskSwitch,
                 onCheckedChange = { riskSwitch = it },
                 colors = SwitchDefaults.colors(
-                    checkedThumbColor = walletblue,
-                    checkedTrackColor = walletblue.copy(alpha = 0.5f)
+                    checkedThumbColor = colors.onPrimary,
+                    checkedTrackColor = colors.onPrimary.copy(alpha = 0.5f)
                 ),
                 modifier = Modifier.scale(0.8f)
             )
         }
-        // Underline
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp)
-                .height(2.dp)
-                .drawBehind {
-                    val strokeWidth = 1.dp.toPx()
-                    val y = size.height - strokeWidth / 2
-                    drawLine(
-                        color = Color.LightGray,
-                        start = Offset(0f, y),
-                        end = Offset(size.width, y),
-                        strokeWidth = strokeWidth
-                    )
-                }
-        )
+        Spacer(Modifier.height(2.dp))
 
+        // Underline
+        ThinLine(
+            isFocused = isFocused
+        )
     }
 }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +23,8 @@ import com.ojasx.FinTrack.R
 
 @Composable
 fun NoBudgetYet() {
+    val colors = MaterialTheme.colorScheme
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -47,7 +50,7 @@ fun NoBudgetYet() {
                 "List of Budgets",
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
-                color = androidx.compose.ui.graphics.Color(Color.BLACK)
+                color = colors.onBackground
 
             )
             Spacer(modifier = Modifier.height(16.dp))

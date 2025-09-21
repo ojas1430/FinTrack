@@ -21,17 +21,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ojasx.FinTrack.ThinLine
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NBCurrency() {
+    val colors = MaterialTheme.colorScheme
+
     val options = listOf(
         "INR"
     )
     var expanded by remember { mutableStateOf(false) }
     var selectedOption by remember { mutableStateOf(options[0]) }
+    var isFocused by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -53,7 +57,8 @@ fun NBCurrency() {
                 value = selectedOption,
                 onValueChange = {},
                 textStyle = LocalTextStyle.current.copy(
-                    fontSize = 20.sp
+                    fontSize = 20.sp,
+                    color = colors.onBackground
                 ),
                 readOnly = true,
                 trailingIcon = {
@@ -64,8 +69,8 @@ fun NBCurrency() {
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedLabelColor = walletblue,
                     unfocusedLabelColor = Color.Gray,
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White
+                    focusedContainerColor = colors.background,
+                    unfocusedContainerColor = colors.background
                 ),
                 modifier = Modifier
                     .menuAnchor()
@@ -90,21 +95,8 @@ fun NBCurrency() {
 
 
         //underline
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 2.dp)
-                .height(2.dp)
-                .drawBehind {
-                    val strokeWidth = 1.dp.toPx()
-                    val y = size.height - strokeWidth / 2
-                    drawLine(
-                        color = Color.LightGray,
-                        start = Offset(0f, y),
-                        end = Offset(size.width, y),
-                        strokeWidth = strokeWidth
-                    )
-                }
+        ThinLine(
+            isFocused = isFocused
         )
     }
 }

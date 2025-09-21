@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,8 +34,10 @@ fun NBTopAppBar(
     navController: NavController,
     budgetViewModel: BudgetViewModel
 ) {
+    val colors = MaterialTheme.colorScheme
+
     TopAppBar(
-        backgroundColor = walletgreen,
+        backgroundColor = colors.secondary,
         modifier = Modifier
             .height(80.dp)
             .fillMaxWidth(),

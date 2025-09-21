@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -15,12 +16,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ojasx.FinTrack.Budgets.BudgetViewModel
+import com.ojasx.FinTrack.ThinLine
 
 @Composable
 fun NBAmountField(budgetViewModel: BudgetViewModel) {
     // Observe amount from ViewModel (default to 0)
     val amount by budgetViewModel.amount.observeAsState(initial = 0)
     var showDialog by remember { mutableStateOf(false) }
+    var isFocused by remember { mutableStateOf(false) }
+    val colors = MaterialTheme.colorScheme
 
     Column(
         modifier = Modifier
@@ -38,29 +42,18 @@ fun NBAmountField(budgetViewModel: BudgetViewModel) {
         Text(
             text = amount.toString(),
             style = LocalTextStyle.current.copy(fontSize = 20.sp),
+            color = colors.onBackground,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
                 .clickable { showDialog = true }
+
         )
 
         Spacer(Modifier.height(4.dp))
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 2.dp)
-                .height(2.dp)
-                .drawBehind {
-                    val strokeWidth = 1.dp.toPx()
-                    val y = size.height - strokeWidth / 2
-                    drawLine(
-                        color = Color.LightGray,
-                        start = Offset(0f, y),
-                        end = Offset(size.width, y),
-                        strokeWidth = strokeWidth
-                    )
-                }
+        ThinLine(
+            isFocused = isFocused
         )
     }
 

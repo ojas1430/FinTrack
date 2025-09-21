@@ -35,6 +35,7 @@ fun BudgetCard(
     budgetViewModel: BudgetViewModel,
     viewModel: RecordsViewModel
 ) {
+    val colors = MaterialTheme.colorScheme
     val name by budgetViewModel.name.observeAsState(initial = "My Budget")
     val amount by budgetViewModel.amount.observeAsState(initial = 0)
     val period by budgetViewModel.period.observeAsState(initial = "Monthly")
@@ -47,7 +48,7 @@ fun BudgetCard(
     val isOverBudget = spent > amount.toString()
     val progress = if (amount > 0) (spent.toFloat() / amount.toFloat()).coerceAtMost(1f) else 0f
 
-    val arrowColor = Color.Blue
+    val arrowColor = colors.primary
     val budgetTextColor = if (isOverBudget) Color.Red else Color.Green
 
     Card(

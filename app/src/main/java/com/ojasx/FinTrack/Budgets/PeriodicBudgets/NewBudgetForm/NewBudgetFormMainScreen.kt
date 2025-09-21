@@ -1,11 +1,14 @@
 package com.ojasx.FinTrack.Budgets.PeriodicBudgets.NewBudgetForm
 
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.ojasx.FinTrack.Budgets.PeriodicBudgets.NewBudgetForm.NewBudgetComponents.NBTopAppBar
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
@@ -36,7 +39,7 @@ fun NewBudgetFormMainScreen(
     navController: NavController,
     budgetViewModel: BudgetViewModel
 ){
-
+    val colors = androidx.compose.material3.MaterialTheme.colorScheme
     // Set status bar color once
     StatusBarColor()
 
@@ -45,7 +48,10 @@ fun NewBudgetFormMainScreen(
         contentWindowInsets = WindowInsets(0, 0, 0, 0)
     ) { innerPadding ->
         LazyColumn(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
+                .fillMaxSize()
+                .background(colors.background)
+                .padding(innerPadding)
         ) {
             item { NBName(budgetViewModel) }
             item { NBAmountField(budgetViewModel) }

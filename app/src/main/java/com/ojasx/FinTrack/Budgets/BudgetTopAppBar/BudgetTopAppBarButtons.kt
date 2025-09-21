@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,6 +16,8 @@ import com.ojasx.FinTrack.ui.theme.walletgreen
 
 @Composable
 fun BudgetTopAppBarButtons() {
+    val colors = MaterialTheme.colorScheme
+
     Row(modifier = Modifier.fillMaxWidth()) {
         Button(
             onClick = {  },
@@ -24,7 +27,7 @@ fun BudgetTopAppBarButtons() {
                 .height(40.dp),
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
-                containerColor = walletgreen
+                containerColor = colors.secondary
             )
         ) {
             Text(text = "PERIODIC")
@@ -37,7 +40,7 @@ fun BudgetTopAppBarButtons() {
                 .height(40.dp)
             , colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
-                containerColor = walletgreen
+                containerColor = colors.secondary
             )
         ) {
             Text(text = "ONE TIME")
