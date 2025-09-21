@@ -5,7 +5,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
+import com.ojasx.FinTrack.ui.theme.BrightWhite
+import com.ojasx.FinTrack.ui.theme.CardWhite
 import com.ojasx.FinTrack.ui.theme.Typography
+import com.ojasx.FinTrack.ui.theme.cardblack
 import com.ojasx.FinTrack.ui.theme.orange
 import com.ojasx.FinTrack.ui.theme.royalblue
 import com.ojasx.FinTrack.ui.theme.walletblue
@@ -14,11 +17,11 @@ import com.ojasx.FinTrack.ui.theme.walletgreen
 private val LightColors = lightColorScheme(
     primary = walletblue,
     secondary = walletgreen, // topappbar
-    background = Color.White,
-    surface = Color.White,
+    background = BrightWhite,
+    surface = CardWhite,
     onPrimary = Color.White,
     onSecondary = Color.Black,
-    onBackground = Color.Black,
+    onBackground = Color.Black, // black or white
     onSurface = Color.Black
 )
 
@@ -26,10 +29,10 @@ private val DarkColors = darkColorScheme(
     primary = orange,
     secondary = royalblue,  // topappbar
     background =  Color(0xFF121212), // background
-    surface = Color(0xFF1E1E1E),     // cards,etc
+    surface = cardblack,    // cards,etc
     onPrimary = Color.White,
     onSecondary = Color.White,
-    onBackground = Color.White,
+    onBackground = Color.White, // black or white
     onSurface = Color.White
 )
 

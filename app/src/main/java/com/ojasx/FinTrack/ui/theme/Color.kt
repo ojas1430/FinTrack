@@ -16,6 +16,10 @@ val walletblue = Color(0xFF4300FF)
 val purpleBlue = Color(0xFF4300FF)
 
 val warmwhite = Color(0xFFEFF3EA)
+val BrightWhite = Color(0xFFFFFFFF)
+val CardWhite = Color(0xFFF5F5F5)
+
+
 
 val premium = Color(0xFF910A67)
 
@@ -30,3 +34,4 @@ val orange = Color(0xFFFF9800)
 val royalblue = Color(0xFF2979FF)
 val surfaceblack = Color(0xFF1E1E1E)
 val backgroundblack = Color(0xFF121212)
+val cardblack = Color(0xFF1E1E1E)
