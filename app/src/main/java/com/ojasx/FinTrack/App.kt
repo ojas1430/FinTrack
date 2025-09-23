@@ -11,15 +11,17 @@ import com.ojasx.FinTrack.Navigation.Navigation
 fun App() {
     // ✅ Global dark mode state
     var darkTheme by remember { mutableStateOf(false) }
+    var isBlurEnabled by remember { mutableStateOf(false) }
 
     // ✅ Remember NavController once for the whole app
     val navController = rememberNavController()
 
-    // ✅ Wrap everything inside FinTrackTheme so it re-composes on toggle
     FinTrackTheme(darkTheme = darkTheme) {
         Navigation(
-            darkTheme = darkTheme,                 // ✅ pass global state
-            onToggleTheme = { darkTheme = !darkTheme } // ✅ pass toggle function
+            darkTheme = darkTheme,
+            onToggleTheme = { darkTheme = !darkTheme },
+            isBlurEnabled = isBlurEnabled,
+            onBlurChanged = { isBlurEnabled = it }
         )
     }
 }
