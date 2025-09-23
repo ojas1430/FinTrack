@@ -35,7 +35,9 @@ import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
 @Composable
 fun Navigation(
     darkTheme: Boolean,
-    onToggleTheme: () -> Unit
+    onToggleTheme: () -> Unit,
+    isBlurEnabled: Boolean,
+    onBlurChanged: (Boolean) -> Unit
 ) {
     val navController = rememberNavController()
     val mainViewModel: MainViewModel = viewModel()
@@ -61,7 +63,10 @@ fun Navigation(
                     profileviewmodel,
                     recordsviewModel,
                     darkTheme = darkTheme,
+                    isBlurEnabled = isBlurEnabled,
+                    onBlurChanged = onBlurChanged,
                     onToggleTheme = onToggleTheme
+
                 )
             }
 
