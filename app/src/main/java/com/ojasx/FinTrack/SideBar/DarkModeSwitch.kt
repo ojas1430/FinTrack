@@ -27,6 +27,7 @@ fun DarkModeSwitche(
     isDarkMode: Boolean,
     onDarkModeChanged: (Boolean)-> Unit
 ) {
+    var colors = MaterialTheme.colorScheme
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -53,8 +54,8 @@ fun DarkModeSwitche(
             checked = isDarkMode,
             onCheckedChange = onDarkModeChanged, // This will now receive the new checked state
             colors = SwitchDefaults.colors(
-                checkedThumbColor = walletblue,
-                checkedTrackColor = walletblue.copy(alpha = 0.5f),
+                checkedThumbColor = colors.primary,
+                checkedTrackColor = colors.primary.copy(alpha = 0.5f),
                 uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant
             ),
