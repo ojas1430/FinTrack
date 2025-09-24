@@ -21,7 +21,9 @@ import com.ojasx.FinTrack.Records.RecordsViewModel
 @Composable
 fun ListOfAccountsMainScreen(
     navController: NavController,
-    viewModel: RecordsViewModel
+    viewModel: RecordsViewModel,
+    isBlurEnabled: Boolean,
+    onBlurChanged: (Boolean) -> Unit,
 ) {
 
     val colors = MaterialTheme.colorScheme
@@ -38,7 +40,11 @@ fun ListOfAccountsMainScreen(
                 RoundedSettingButton()
                 Spacer(Modifier.width(20.dp))
             }
-            CashAndAddAccountButton(viewModel)
+            CashAndAddAccountButton(
+                viewModel,
+                isBlurEnabled = isBlurEnabled ,
+                onBlurChanged = onBlurChanged
+            )
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)

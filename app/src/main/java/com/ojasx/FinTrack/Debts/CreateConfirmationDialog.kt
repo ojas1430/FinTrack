@@ -17,6 +17,7 @@ fun CreateConfirmationDialog(
     onDismiss: () -> Unit,
     onConfirm: () -> Unit
 ) {
+    val colors = MaterialTheme.colorScheme
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
 
@@ -26,6 +27,7 @@ fun CreateConfirmationDialog(
     Dialog(onDismissRequest = { onDismiss() }) {
         Surface(
             shape = MaterialTheme.shapes.large,
+            color = colors.surface,
             tonalElevation = 4.dp,
             modifier = Modifier
                 .width(dialogWidth)
@@ -40,7 +42,8 @@ fun CreateConfirmationDialog(
                 Text(
                     text = "Do you want to create a Record for this Debt?",
                     style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = colors.onBackground
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -58,11 +61,11 @@ fun CreateConfirmationDialog(
                     horizontalArrangement = Arrangement.End
                 ) {
                     TextButton(onClick = { onDismiss() }) {
-                        Text("No", color = Color.Blue)
+                        Text("No", color = colors.primary)
                     }
                     Spacer(modifier = Modifier.width(12.dp))
                     TextButton(onClick = { onConfirm() }) {
-                        Text("YES, CREATE RECORD", color = Color.Blue)
+                        Text("YES, CREATE RECORD", color = colors.primary)
                     }
                 }
             }

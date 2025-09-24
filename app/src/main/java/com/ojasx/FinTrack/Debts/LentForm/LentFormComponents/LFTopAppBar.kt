@@ -28,6 +28,7 @@ fun LentFormTopAppBarCode(
 ) {
     StatusBarColor()
 
+    var colors = MaterialTheme.colorScheme
     var showExitDialog by remember { mutableStateOf(false) }
     var showCreateDialog by remember { mutableStateOf(false) }
 
@@ -55,7 +56,7 @@ fun LentFormTopAppBarCode(
 
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = walletgreen,
+            containerColor = colors.secondary,
             titleContentColor = MaterialTheme.colorScheme.primary,
         ),
         navigationIcon = {

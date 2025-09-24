@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -30,6 +31,7 @@ fun DebtsMainScreen(
     navController: NavController,
     budgetViewModel: BudgetViewModel
 ) {
+    var colors = MaterialTheme.colorScheme
     val pagerState = rememberPagerState(initialPage = 0, pageCount = { 2 })
 
     Scaffold(
@@ -43,7 +45,7 @@ fun DebtsMainScreen(
         ) {
             PagerUnderline(
                 pagerState = pagerState,
-                selectedColor = walletblue
+                selectedColor = colors.primary
             )
 
             HorizontalPager(

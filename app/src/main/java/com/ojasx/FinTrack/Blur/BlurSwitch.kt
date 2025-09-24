@@ -1,4 +1,4 @@
-package com.ojasx.FinTrack
+package com.ojasx.FinTrack.Blur
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

@@ -27,7 +27,6 @@ import com.ojasx.FinTrack.Debts.LentForm.LentViewModel
 import com.ojasx.FinTrack.ThinLine
 import com.ojasx.FinTrack.ui.theme.walletblue
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LFAccount(
@@ -40,10 +39,9 @@ fun LFAccount(
         "Credit Card",
         "Debit Card"
     )
+    var colors = MaterialTheme.colorScheme
     var isFocused by remember { mutableStateOf(false) }
     var expanded by remember { mutableStateOf(false) }
-
-
     val selectedOption by lentViewModel.account.observeAsState(options[0])
 
     Column(
@@ -74,8 +72,8 @@ fun LFAccount(
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedLabelColor = walletblue,
                     unfocusedLabelColor = Color.Gray,
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White
+                    focusedContainerColor = colors.background,
+                    unfocusedContainerColor = colors.background
                 ),
                 modifier = Modifier
                     .menuAnchor()
@@ -88,7 +86,7 @@ fun LFAccount(
             ) {
                 options.forEach { option ->
                     DropdownMenuItem(
-                        text = { Text(option) },
+                        text = { Text(option)},
                         onClick = {
                             lentViewModel.updateAccount(option)
                             expanded = false

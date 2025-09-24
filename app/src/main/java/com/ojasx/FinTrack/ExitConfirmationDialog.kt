@@ -16,6 +16,7 @@ fun ExitConfirmationDialog(
     onDismiss: () -> Unit,
     onConfirm: () -> Unit
 ) {
+    var colors = MaterialTheme.colorScheme
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
 
@@ -25,6 +26,7 @@ fun ExitConfirmationDialog(
     Dialog(onDismissRequest = { onDismiss() }) {
         Surface(
             shape = MaterialTheme.shapes.large,
+            color = colors.surface,
             tonalElevation = 4.dp,
             modifier = Modifier
                 .width(dialogWidth)
@@ -39,6 +41,7 @@ fun ExitConfirmationDialog(
                 Text(
                     text = "Exit",
                     style = MaterialTheme.typography.titleLarge,
+                    color = colors.onBackground,
                     fontWeight = FontWeight.Bold
                 )
 
@@ -57,11 +60,11 @@ fun ExitConfirmationDialog(
                     horizontalArrangement = Arrangement.End
                 ) {
                     TextButton(onClick = { onDismiss() }) {
-                        Text("No", color = Color.Blue)
+                        Text("No", color = colors.primary)
                     }
                     Spacer(modifier = Modifier.width(12.dp))
                     TextButton(onClick = { onConfirm() }) {
-                        Text("Yes", color = Color.Blue)
+                        Text("Yes", color = colors.primary)
                     }
                 }
             }

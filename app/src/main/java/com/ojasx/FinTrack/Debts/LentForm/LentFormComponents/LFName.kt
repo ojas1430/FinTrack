@@ -16,12 +16,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.tv.material3.MaterialTheme
 import com.ojasx.FinTrack.Debts.LentForm.LentViewModel
 import com.ojasx.FinTrack.ThinLine
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
 fun LFName(lentViewModel: LentViewModel) {
+    var colors = MaterialTheme.colorScheme
     val name by lentViewModel.name.observeAsState(initial = "")
     val nameError by lentViewModel.nameError.observeAsState(initial = false)
     var isFocused by remember { mutableStateOf(false) }
@@ -37,7 +39,7 @@ fun LFName(lentViewModel: LentViewModel) {
             text = "Name",
             color = when {
                 nameError -> Color.Red
-                isFocused -> walletblue
+                isFocused -> colors.primary
                 else -> Color.Gray
             },
             fontWeight = FontWeight.Medium
@@ -50,7 +52,7 @@ fun LFName(lentViewModel: LentViewModel) {
             },
             singleLine = true,
             textStyle = LocalTextStyle.current.copy(
-                color = Color.Black,
+                color = colors.onBackground,
                 fontSize = 20.sp
             ),
             modifier = Modifier

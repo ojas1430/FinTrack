@@ -23,7 +23,9 @@ import com.ojasx.FinTrack.Statistics.StatisticsMainScreen
 @Composable
 fun AccountsMainScreen(
     navController: NavController,
-    viewModel: RecordsViewModel
+    viewModel: RecordsViewModel,
+    isBlurEnabled: Boolean,
+    onBlurChanged: (Boolean) -> Unit,
 ) {
     Box(modifier = Modifier.fillMaxSize()){
         LazyColumn(
@@ -32,7 +34,11 @@ fun AccountsMainScreen(
                 .padding()
         ) {
             item {
-                ListOfAccountsMainScreen(navController, viewModel)
+                ListOfAccountsMainScreen(
+                    navController,
+                    viewModel,
+                    isBlurEnabled = isBlurEnabled,
+                    onBlurChanged = onBlurChanged)
             }
             item {
                 Box(

@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.ojasx.FinTrack.Blur.BlurSwitch
 import com.ojasx.FinTrack.SideBar.UserProfile.ProfileViewModel
 import com.ojasx.FinTrack.SideBar.UserProfile.SideBarProfileSection
 import com.ojasx.FinTrack.ui.theme.walletgreen
@@ -34,6 +35,8 @@ import com.ojasx.FinTrack.ui.theme.walletgreen
 @Composable
 fun ModalSidebar(
     drawerState: DrawerState,
+    isBlurEnabled: Boolean,
+    onBlurChanged: (Boolean) -> Unit,
     isDarkMode: Boolean,
     onThemeToggle: () -> Unit,
     onNavigate: (String) -> Unit,
@@ -131,6 +134,13 @@ fun ModalSidebar(
                                 onThemeToggle()
                             }
                         )
+                    }
+                    item {
+                        BlurSwitch(
+                            isBlurEnabled = isBlurEnabled,
+                            onBlurChanged = onBlurChanged
+                        )
+
                     }
 
                 }

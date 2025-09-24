@@ -10,10 +10,12 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.tv.material3.MaterialTheme
 import com.ojasx.FinTrack.ui.theme.walletblue
 
 @Composable
 fun ThinLine(isFocused: Boolean) {
+    val colors = MaterialTheme.colorScheme
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -23,7 +25,7 @@ fun ThinLine(isFocused: Boolean) {
                 val strokeWidth = 1.dp.toPx()
                 val y = size.height - strokeWidth / 2
                 drawLine(
-                    color = if (isFocused) walletblue else Color.LightGray,
+                    color = if (isFocused) colors.primary else Color.LightGray,
                     start = Offset(0f, y),
                     end = Offset(size.width, y),
                     strokeWidth = strokeWidth

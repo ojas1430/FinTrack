@@ -24,12 +24,13 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DebtTopAppBarCode(drawerState: DrawerState) {
+    var colors = MaterialTheme.colorScheme
     val scope = rememberCoroutineScope()
     StatusBarColor()
 
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = walletgreen,
+            containerColor = colors.secondary,
             titleContentColor = MaterialTheme.colorScheme.primary,
         ),
         navigationIcon = {

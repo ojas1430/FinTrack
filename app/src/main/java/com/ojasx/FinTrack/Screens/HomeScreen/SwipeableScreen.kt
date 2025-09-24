@@ -23,14 +23,16 @@ import com.ojasx.FinTrack.ui.theme.walletgreen
 fun MainSwipeableScreen(
     navController: NavController,
     budgetViewModel: BudgetViewModel,
-    recordsViewModel: RecordsViewModel
+    recordsViewModel: RecordsViewModel,
+    isBlurEnabled: Boolean,
+    onBlurChanged: (Boolean) -> Unit,
 ) {
     val pagerState = rememberPagerState(initialPage = 0, pageCount = { 2 })
 
     Scaffold(
         topBar = {
             PagerUnderline(
-                pagerState = pagerState, // androidx.compose.foundation.pager.PagerState
+                pagerState = pagerState,
                 selectedColor = Color.Gray
             )
         }
@@ -42,7 +44,7 @@ fun MainSwipeableScreen(
                 .padding(paddingValues)
         ) { page ->
             when (page) {
-                0 -> AccountsMainScreen(navController,recordsViewModel)
+                0 -> AccountsMainScreen(navController,recordsViewModel,isBlurEnabled,onBlurChanged)
                 1 -> BudgetAndGoalsMainScreen()
             }
         }

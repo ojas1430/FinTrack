@@ -22,6 +22,7 @@ import com.ojasx.FinTrack.R
 
 @Composable
 fun NoClosedDebtsYet() {
+    var colors = androidx.tv.material3.MaterialTheme.colorScheme
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -47,7 +48,7 @@ fun NoClosedDebtsYet() {
                 "No closed debts",
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
-                color = androidx.compose.ui.graphics.Color(Color.BLACK)
+                color = colors.onBackground
 
             )
         }

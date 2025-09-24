@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -24,6 +25,7 @@ fun LFAmountField(lentViewModel : LentViewModel) {
     val amount by lentViewModel.amount.observeAsState(initial = 0)
     var showDialog by remember { mutableStateOf(false) }
     var isFocused by remember { mutableStateOf(false) }
+    var colors = MaterialTheme.colorScheme
 
 
     Column(
@@ -41,6 +43,7 @@ fun LFAmountField(lentViewModel : LentViewModel) {
         // Display amount (clickable)
         Text(
             text = amount.toString(),
+            color = colors.onBackground,
             style = LocalTextStyle.current.copy(fontSize = 20.sp),
             modifier = Modifier
                 .fillMaxWidth()

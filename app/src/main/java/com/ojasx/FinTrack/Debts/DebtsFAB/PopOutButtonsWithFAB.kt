@@ -6,8 +6,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDownward
@@ -20,11 +23,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.navigation.NavController
-import androidx.tv.material3.Icon
-import com.ojasx.FinTrack.ui.theme.walletblue
+
 
 @Composable
 fun DebtsPopOutButtonsWithFAB(navController: NavController) {
+    var colors = MaterialTheme.colorScheme
     var isExpanded by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -65,7 +68,7 @@ fun DebtsPopOutButtonsWithFAB(navController: NavController) {
         FloatingActionButton(
             onClick = { isExpanded = !isExpanded },
             shape = CircleShape,
-            backgroundColor = walletblue,
+            backgroundColor = colors.primary,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
@@ -82,16 +85,17 @@ fun DebtsPopOutButtonsWithFAB(navController: NavController) {
 }
 @Composable
 fun ILentButton(onClick: () -> Unit) {
+    val colors = MaterialTheme.colorScheme
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(12.dp))
-            .background(Color.White)
+            .background(colors.surface)
             .padding(horizontal = 16.dp, vertical = 10.dp)
             .clickable { onClick() },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Text(text = "I Lent", color = Color.Black)
+        Text(text = "I Lent", color = colors.onBackground)
         IconButton(
             onClick = onClick,
             modifier = Modifier
@@ -110,16 +114,17 @@ fun ILentButton(onClick: () -> Unit) {
 
 @Composable
 fun IBorrowedButton(onClick: () -> Unit) {
+    val colors = MaterialTheme.colorScheme
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(12.dp))
-            .background(Color.White)
+            .background(colors.surface)
             .padding(horizontal = 16.dp, vertical = 10.dp)
             .clickable { onClick() },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Text(text = "I Borrowed", color = Color.Black)
+        Text(text = "I Borrowed", color = colors.onBackground)
         IconButton(
             onClick = onClick,
             modifier = Modifier

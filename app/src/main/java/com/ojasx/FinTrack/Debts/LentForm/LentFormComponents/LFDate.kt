@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material3.MaterialTheme
 import com.ojasx.FinTrack.ThinLine
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.datetime.date.datepicker
@@ -28,6 +29,7 @@ import java.time.format.DateTimeFormatter
 
 @Composable
 fun LFDate() {
+    var colors = MaterialTheme.colorScheme
     var isFocused by remember { mutableStateOf(false) }
 
     // Remember selected date
@@ -77,7 +79,7 @@ fun LFDate() {
             // Selected Date
             Text(
                 text = formattedDate,
-                color = Color.Black,
+                color = colors.onBackground,
                 fontSize = 20.sp,
                 modifier = Modifier.clickable { dateDialogState.show() }
             )
