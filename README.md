@@ -35,8 +35,16 @@ The app provides simple insights to understand spending habits and manage money 
   <img src="screenshots/s13-portrait.png" width="200" alt="Screenshot 2"/>
   <img src="screenshots/s14-portrait.png" width="200" alt="Screenshot 3"/>
   <img src="screenshots/s15-portrait.png" width="200" alt="Screenshot 3"/>
-
 </p>
+
+**Create a Budget**
+
+<p align="center">
+  <img src="screenshots/s16-portrait.png" width="200" alt="Screenshot 1"/>
+  <img src="screenshots/s17-portrait.png" width="200" alt="Screenshot 2"/>
+  <img src="screenshots/s18-portrait.png" width="200" alt="Screenshot 2"/>
+</p>
+
 
 ---
 
