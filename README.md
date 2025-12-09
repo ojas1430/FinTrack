@@ -45,6 +45,14 @@ The app provides simple insights to understand spending habits and manage money 
   <img src="screenshots/s18-portrait.png" width="200" alt="Screenshot 2"/>
 </p>
 
+**Debts**
+
+<p align="center">
+  <img src="screenshots/s19-portrait.png" width="200" alt="Screenshot 1"/>
+  <img src="screenshots/s20-portrait.png" width="200" alt="Screenshot 2"/>
+  <img src="screenshots/s21-portrait.png" width="200" alt="Screenshot 3"/>
+</p>
+
 
 ---
 
