@@ -15,6 +15,13 @@ The app provides simple insights to understand spending habits and manage money 
   <img src="screenshots/s3-portrait.png" width="200" alt="Screenshot 3"/>
 </p>
 
+**Side Bar**
+
+<p align="center">
+  <img src="screenshots/s4-portrait.png" width="200" alt="Screenshot 1"/>
+  <img src="screenshots/s5-portrait.png" width="200" alt="Screenshot 2"/>
+</p>
+
 ---
 
 ## 📱 Features
