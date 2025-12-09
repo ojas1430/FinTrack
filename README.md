@@ -53,6 +53,15 @@ The app provides simple insights to understand spending habits and manage money 
   <img src="screenshots/s21-portrait.png" width="200" alt="Screenshot 3"/>
 </p>
 
+**Dark Mode Preview**
+
+<p align="center">
+  <img src="screenshots/d1-portrait.png" width="200" alt="Screenshot 1"/>
+  <img src="screenshots/d2-portrait.png" width="200" alt="Screenshot 2"/>
+  <img src="screenshots/d3-portrait.png" width="200" alt="Screenshot 3"/>
+  <img src="screenshots/d4-portrait.png" width="200" alt="Screenshot 3"/>
+</p>
+
 
 ---
 
