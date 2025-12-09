@@ -22,6 +22,20 @@ The app provides simple insights to understand spending habits and manage money 
   <img src="screenshots/s5-portrait.png" width="200" alt="Screenshot 2"/>
 </p>
 
+**Add Expense or Income**
+
+<p align="center">
+  <img src="screenshots/s6-portrait.png" width="200" alt="Screenshot 1"/>
+  <img src="screenshots/s7-portrait.png" width="200" alt="Screenshot 2"/>
+  <img src="screenshots/s8-portrait.png" width="200" alt="Screenshot 3"/>
+  <img src="screenshots/s9-portrait.png" width="200" alt="Screenshot 1"/>
+  <img src="screenshots/s10-portrait.png" width="200" alt="Screenshot 2"/>
+  <img src="screenshots/s11-portrait.png" width="200" alt="Screenshot 3"/>
+  <img src="screenshots/s12-portrait.png" width="200" alt="Screenshot 1"/>
+  <img src="screenshots/s13-portrait.png" width="200" alt="Screenshot 2"/>
+  <img src="screenshots/s14-portrait.png" width="200" alt="Screenshot 3"/>
+</p>
+
 ---
 
 ## 📱 Features
